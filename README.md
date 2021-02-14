@@ -15,7 +15,7 @@ Bibliotecas utlilizadas
 [EM ANDAMENTO] - Room para a persistência de dados<br/>
 [EM ANDAMENTO] - ConstraintLayout e MotionLayout para a construção de telas e animações<br/>
 [EM ANDAMENTO] - JUnit, Mockito, Espresso e Robolectric para os testes unitários e instrumentados<br/>
-[EM ANDAMENTO] - Gson para desserialização de objetos JSON
+[EM ANDAMENTO] - Gson para a desserialização de objetos JSON
 
 
-A api de criptomoedas é fornecida pelo CoinMarketCap\n
+A api de criptomoedas é fornecida pelo CoinMarketCap
