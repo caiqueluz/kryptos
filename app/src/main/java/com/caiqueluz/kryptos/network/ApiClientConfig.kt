@@ -3,8 +3,9 @@ package com.caiqueluz.kryptos.network
 import okhttp3.OkHttpClient
 import retrofit2.Converter
 import retrofit2.Retrofit
+import javax.inject.Inject
 
-class ApiClientConfig(
+class ApiClientConfig @Inject constructor(
     private val baseUrl: String,
     private val retrofitBuilder: Retrofit.Builder,
     private val converterFactory: Converter.Factory,
