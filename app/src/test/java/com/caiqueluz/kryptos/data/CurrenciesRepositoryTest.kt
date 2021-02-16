@@ -17,8 +17,8 @@ class CurrenciesRepositoryTest {
 
     @Test
     fun whenFetchCurrenciesInformationIsCalled_verifyApiIsCalled() {
-        repository.fetchCurrenciesInformation()
+        repository.fetchCurrencies()
 
-        verify(mockApi).fetchCurrenciesInformation()
+        verify(mockApi).fetchCurrencies()
     }
 }

@@ -20,6 +20,11 @@ object NetworkModule {
         Retrofit.Builder()
 
     @Provides
+    fun provideRetrofitInstance(
+        apiClientConfig: ApiClientConfig
+    ): Retrofit = apiClientConfig.create()
+
+    @Provides
     fun provideConverterFactory(): Converter.Factory =
         GsonConverterFactory.create()
 
@@ -35,6 +40,10 @@ object NetworkModule {
         OkHttpClientFactory(
             okHttpBuilder, authenticationInterceptor
         )
+
+    @Provides
+    fun provideGsonConverterFactory(): GsonConverterFactory =
+        GsonConverterFactory.create()
 
     @Provides
     fun provideApiClientConfig(

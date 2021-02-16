@@ -6,5 +6,5 @@ import retrofit2.http.GET
 interface CurrenciesApi {
 
     @GET("/v1/cryptocurrency/info")
-    fun fetchCurrenciesInformation(): Call<CurrenciesInformationDTO>
+    fun fetchCurrencies(): Call<CurrenciesDTO>
 }

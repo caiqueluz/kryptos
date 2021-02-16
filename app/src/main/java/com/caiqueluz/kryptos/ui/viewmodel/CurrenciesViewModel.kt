@@ -22,7 +22,7 @@ class CurrenciesViewModel @Inject constructor(
     val currencies: LiveData<NetworkResponse<CurrenciesVO>> =
         _currencies.switchMap {
             return@switchMap networkResponseLiveData {
-                repository.fetchCurrenciesInformation()
+                repository.fetchCurrencies()
                     .asNetworkResponse()
                     .mapContent { dto -> converter.convert(dto) }
             }

@@ -7,6 +7,5 @@ class CurrenciesRepository @Inject constructor(
     private val api: CurrenciesApi
 ) {
 
-    fun fetchCurrenciesInformation(): Call<CurrenciesInformationDTO> =
-        api.fetchCurrenciesInformation()
+    fun fetchCurrencies(): Call<CurrenciesDTO> = api.fetchCurrencies()
 }
