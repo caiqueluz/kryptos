@@ -1,11 +1,11 @@
 package com.caiqueluz.kryptos.ui.viewmodel
 
-import com.caiqueluz.kryptos.data.CurrenciesInformationResponseDTO
+import com.caiqueluz.kryptos.data.CurrenciesInformationDTO
 import com.caiqueluz.kryptos.data.CurrencyItemDTO
 
 class CurrenciesConverter {
 
-    fun convert(dto: CurrenciesInformationResponseDTO): CurrenciesVO =
+    fun convert(dto: CurrenciesInformationDTO): CurrenciesVO =
         CurrenciesVO(
             currencies = convertCurrencyList(dto.currencies)
         )

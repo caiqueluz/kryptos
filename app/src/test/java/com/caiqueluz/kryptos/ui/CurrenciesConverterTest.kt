@@ -1,6 +1,6 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.data.CurrenciesInformationResponseDTO
+import com.caiqueluz.kryptos.data.CurrenciesInformationDTO
 import com.caiqueluz.kryptos.data.CurrencyItemDTO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
 import org.junit.Assert.assertEquals
@@ -25,7 +25,7 @@ class CurrenciesConverterTest {
 
     private fun fakeResponseDTO(
         description: String? = null
-    ) = CurrenciesInformationResponseDTO(
+    ) = CurrenciesInformationDTO(
         currencies = fakeCurrencyListDTO(description)
     )
 
