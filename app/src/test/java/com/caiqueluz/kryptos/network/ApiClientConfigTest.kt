@@ -1,6 +1,5 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.network
 
-import com.caiqueluz.kryptos.network.ApiClientConfig
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.spy
 import com.nhaarman.mockitokotlin2.verify
