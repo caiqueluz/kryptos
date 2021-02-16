@@ -1,11 +1,10 @@
 package com.caiqueluz.kryptos.network
 
+import retrofit2.Retrofit
+
 class ApiServiceFactory(
-    private val clientConfig: ApiClientConfig
+    private val retrofit: Retrofit
 ) {
 
-    fun <T> create(api: Class<T>): T {
-        val client = clientConfig.create()
-        return client.create(api)
-    }
+    fun <T> create(api: Class<T>): T = retrofit.create(api)
 }
