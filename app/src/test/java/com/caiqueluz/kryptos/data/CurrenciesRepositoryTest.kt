@@ -7,11 +7,11 @@ import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 
 @RunWith(JUnit4::class)
-class CurrencyRepositoryTest {
+class CurrenciesRepositoryTest {
 
-    private val mockApi = mock<CurrencyApi>()
+    private val mockApi = mock<CurrenciesApi>()
 
-    private val repository = CurrencyRepository(
+    private val repository = CurrenciesRepository(
         api = mockApi
     )
 

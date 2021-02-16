@@ -3,8 +3,8 @@ package com.caiqueluz.kryptos.data
 import retrofit2.Call
 import retrofit2.http.GET
 
-interface CurrencyApi {
+interface CurrenciesApi {
 
     @GET("/v1/cryptocurrency/info")
-    fun fetchCurrenciesInformation(): Call<CurrencyInformationResponseDTO>
+    fun fetchCurrenciesInformation(): Call<CurrenciesInformationResponseDTO>
 }
