@@ -1,7 +1,7 @@
 package com.caiqueluz.kryptos.network
 
 class ApiServiceFactory(
-        private val clientConfig: ApiClientConfig
+    private val clientConfig: ApiClientConfig
 ) {
 
     fun <T> create(api: Class<T>): T {

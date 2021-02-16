@@ -2,6 +2,7 @@ package com.caiqueluz.kryptos
 
 import com.caiqueluz.kryptos.network.ApiClientConfig
 import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.spy
 import com.nhaarman.mockitokotlin2.verify
 import okhttp3.OkHttpClient
 import org.junit.Assert.assertEquals
@@ -15,12 +16,15 @@ import retrofit2.Retrofit
 @RunWith(JUnit4::class)
 class ApiClientConfigTest {
 
-    private val mockRetrofitBuilder = mock<Retrofit.Builder>()
+    private val mockBaseUrl = "https://mockurl.com"
+    private val spyRetrofitBuilder = spy<Retrofit.Builder>()
+
     private val mockConverterFactory = mock<Converter.Factory>()
     private val mockOkHttpClient = mock<OkHttpClient>()
 
     private val apiConfig = ApiClientConfig(
-        retrofitBuilder = mockRetrofitBuilder,
+        baseUrl = mockBaseUrl,
+        retrofitBuilder = spyRetrofitBuilder,
         converterFactory = mockConverterFactory,
         okHttpClient = mockOkHttpClient
     )
@@ -30,6 +34,11 @@ class ApiClientConfigTest {
     @Before
     fun setup() {
         apiClient = apiConfig.create()
+    }
+
+    @Test
+    fun whenCreateIsCalled_verifyApiClientHasCorrectBaseUrl() {
+        verify(spyRetrofitBuilder).baseUrl(mockBaseUrl)
     }
 
     @Test
@@ -44,6 +53,6 @@ class ApiClientConfigTest {
 
     @Test
     fun whenCreateIsCalled_verifyApiClientHasCorrectOkHttpClient() {
-        verify(mockRetrofitBuilder).client(mockOkHttpClient)
+        verify(spyRetrofitBuilder).client(mockOkHttpClient)
     }
 }
