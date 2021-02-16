@@ -5,9 +5,11 @@ import java.util.concurrent.TimeUnit
 
 private const val READ_TIMEOUT = 30L
 
-class OkHttpClientFactory {
+class OkHttpClientFactory(
+    private val okHttpBuilder: OkHttpClient.Builder
+) {
 
-    fun create(): OkHttpClient = OkHttpClient.Builder()
+    fun create(): OkHttpClient = okHttpBuilder
         .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
         .build()
 }
