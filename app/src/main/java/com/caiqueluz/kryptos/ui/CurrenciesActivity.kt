@@ -1,7 +1,8 @@
 package com.caiqueluz.kryptos.ui
 
 import android.os.Bundle
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caiqueluz.kryptos.databinding.ActivityCurrenciesBinding
@@ -41,16 +42,16 @@ class CurrenciesActivity : AppCompatActivity() {
     }
 
     private fun renderLoading() {
-        binding.currenciesLoadingProgressbar.visibility = View.VISIBLE
+        binding.currenciesLoadingProgressbar.visibility = VISIBLE
     }
 
     private fun renderContent(data: CurrenciesVO) {
         // render content
-        binding.currenciesLoadingProgressbar.visibility = View.GONE
+        binding.currenciesLoadingProgressbar.visibility = GONE
     }
 
     private fun renderError(throwable: Throwable) {
         // render error
-        binding.currenciesLoadingProgressbar.visibility = View.GONE
+        binding.currenciesLoadingProgressbar.visibility = GONE
     }
 }

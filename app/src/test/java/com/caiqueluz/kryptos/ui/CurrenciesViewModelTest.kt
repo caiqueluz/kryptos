@@ -31,8 +31,6 @@ class CurrenciesViewModelTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
-    private val testDispatcher = TestCoroutineDispatcher()
-
     private val mockRepository = mock<CurrenciesRepository>()
     private val mockConverter = mock<CurrenciesConverter> {
         on { convert(any()) } doReturn mock()
@@ -54,7 +52,7 @@ class CurrenciesViewModelTest {
 
     @Before
     fun setup() {
-        Dispatchers.setMain(testDispatcher)
+        Dispatchers.setMain(dispatcher = TestCoroutineDispatcher())
     }
 
     @After
