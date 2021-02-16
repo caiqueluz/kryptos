@@ -20,6 +20,11 @@ android {
     }
 
     buildTypes {
+        all {
+            buildConfigField "String", "BASE_URL", "MOCK_BASE_URL"
+            buildConfigField "String", "API_KEY", "MOCK_API_KEY"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
