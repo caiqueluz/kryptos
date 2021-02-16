@@ -28,7 +28,7 @@ class CurrenciesActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
-        //viewModel.fetchCurrencies()
+        viewModel.fetchCurrencies()
 
         renderLoading()
 
@@ -43,15 +43,21 @@ class CurrenciesActivity : AppCompatActivity() {
 
     private fun renderLoading() {
         binding.currenciesLoadingProgressbar.visibility = VISIBLE
+        binding.currenciesContentView.visibility = GONE
     }
 
     private fun renderContent(data: CurrenciesVO) {
-        // render content
+        binding.currenciesContentView.visibility = VISIBLE
         binding.currenciesLoadingProgressbar.visibility = GONE
+
+        binding.currenciesRecyclerView.adapter = CurrencyAdapter(
+            currencies = data.currencies
+        )
     }
 
     private fun renderError(throwable: Throwable) {
         // render error
+        binding.currenciesContentView.visibility = GONE
         binding.currenciesLoadingProgressbar.visibility = GONE
     }
 }
