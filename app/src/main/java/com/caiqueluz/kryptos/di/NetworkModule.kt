@@ -17,14 +17,6 @@ import javax.inject.Named
 object NetworkModule {
 
     @Provides
-    @Named("baseUrl")
-    fun provideBaseUrl(): String = BuildConfig.BASE_URL
-
-    @Provides
-    @Named("apiKey")
-    fun providesApiKey(): String = BuildConfig.API_KEY
-
-    @Provides
     fun provideRetrofitBuilder(): Retrofit.Builder =
         Retrofit.Builder()
 
@@ -47,12 +39,11 @@ object NetworkModule {
 
     @Provides
     fun provideApiClientConfig(
-        @Named("baseUrl") baseUrl: String,
         retrofitBuilder: Retrofit.Builder,
         converterFactory: GsonConverterFactory,
         okHttpClient: OkHttpClient
     ): ApiClientConfig = ApiClientConfig(
-        baseUrl, retrofitBuilder, converterFactory, okHttpClient
+        BuildConfig.BASE_URL, retrofitBuilder, converterFactory, okHttpClient
     )
 
     @Provides
@@ -61,10 +52,9 @@ object NetworkModule {
     ): ApiServiceFactory = ApiServiceFactory(retrofit)
 
     @Provides
-    fun provideAuthenticationHeaderConfig(
-        @Named("apiKey") apiKey: String
-    ): AuthenticationHeaderConfig = AuthenticationHeaderConfig(
-            header = "HEADER", value = apiKey
+    fun provideAuthenticationHeaderConfig(): AuthenticationHeaderConfig =
+        AuthenticationHeaderConfig(
+            header = "X-CMC_PRO_API_KEY", value = BuildConfig.API_KEY
         )
 
     @Provides

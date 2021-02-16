@@ -21,8 +21,8 @@ android {
 
     buildTypes {
         all {
-            buildConfigField "String", "BASE_URL", "MOCK_BASE_URL"
-            buildConfigField "String", "API_KEY", "MOCK_API_KEY"
+            buildConfigField "String", "BASE_URL", "COINMARKETCAP_BASE_URL"
+            buildConfigField "String", "API_KEY", "COINMARKETCAP_BASE_URL"
         }
 
         release {

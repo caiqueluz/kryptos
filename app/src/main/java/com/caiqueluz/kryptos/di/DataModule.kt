@@ -10,7 +10,7 @@ import dagger.hilt.components.SingletonComponent
 
 @Module
 @InstallIn(SingletonComponent::class)
-object CurrenciesModule {
+object DataModule {
 
     @Provides
     fun provideCurrenciesApi(
