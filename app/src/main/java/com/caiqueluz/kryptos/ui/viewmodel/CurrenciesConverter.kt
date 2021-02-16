@@ -16,6 +16,7 @@ class CurrenciesConverter {
         CurrencyItemVO(
             name = item.name,
             symbol = item.symbol,
+            category = item.category,
             logoUrl = item.logoUrl,
             description = item.description
         )
