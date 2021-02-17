@@ -34,6 +34,7 @@ class CurrencyAdapter(
         fun bind(data: CurrencyItemVO) {
             binding.currencyItemName.text = data.name
             binding.currencyItemSymbol.text = data.symbol
+            binding.currencyItemLogo.setImageBitmap(data.logo)
         }
     }
 }
