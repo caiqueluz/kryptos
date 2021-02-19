@@ -28,15 +28,13 @@ class CurrenciesActivity : AppCompatActivity() {
     }
 
     private fun setupObserver() {
-        viewModel.fetchCurrencies()
-
-        renderLoading()
+        viewModel.currencies.start(Unit)
 
         viewModel.currencies.observe(this) { response ->
             when (response) {
                 is Loading -> renderLoading()
-                is Content -> renderContent(data = response.content)
-                is Error -> renderError(throwable = response.throwable)
+                is Content -> renderContent(response.content)
+                is Error -> renderError(response.error)
             }
         }
     }
@@ -55,8 +53,7 @@ class CurrenciesActivity : AppCompatActivity() {
         )
     }
 
-    private fun renderError(throwable: Throwable) {
-        // render error
+    private fun renderError(error: Throwable) {
         binding.currenciesContentView.visibility = GONE
         binding.currenciesLoadingProgressbar.visibility = GONE
     }

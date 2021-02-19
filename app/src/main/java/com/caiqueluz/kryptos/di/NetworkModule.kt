@@ -7,6 +7,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,8 +17,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 object NetworkModule {
 
     @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder =
-        Retrofit.Builder()
+    fun provideRetrofitBuilder(): Retrofit.Builder = Retrofit.Builder()
 
     @Provides
     fun provideRetrofitInstance(
@@ -35,11 +35,13 @@ object NetworkModule {
     @Provides
     fun provideOkHttpClientFactory(
         okHttpBuilder: OkHttpClient.Builder,
-        authenticationInterceptor: NetworkAuthenticationInterceptor
-    ): OkHttpClientFactory =
-        OkHttpClientFactory(
-            okHttpBuilder, authenticationInterceptor
-        )
+        authenticationInterceptor: NetworkAuthenticationInterceptor,
+        httpLoggingInterceptor: HttpLoggingInterceptor
+    ): OkHttpClientFactory = OkHttpClientFactory(
+        okHttpBuilder,
+        authenticationInterceptor,
+        httpLoggingInterceptor
+    )
 
     @Provides
     fun provideOkHttpClient(
@@ -76,4 +78,10 @@ object NetworkModule {
     ): NetworkAuthenticationInterceptor = NetworkAuthenticationInterceptor(
         headerConfig
     )
+
+    @Provides
+    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
+        HttpLoggingInterceptor().setLevel(
+            HttpLoggingInterceptor.Level.BODY
+        )
 }

@@ -15,8 +15,7 @@ object DataModule {
     @Provides
     fun provideCurrenciesApi(
         apiServiceFactory: ApiServiceFactory
-    ): CurrenciesApi =
-        apiServiceFactory.create(CurrenciesApi::class.java)
+    ): CurrenciesApi = apiServiceFactory.create(CurrenciesApi::class.java)
 
     @Provides
     fun provideCurrenciesRepository(

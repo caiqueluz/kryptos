@@ -1,6 +1,7 @@
 package com.caiqueluz.kryptos.di
 
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
+import com.caiqueluz.kryptos.utils.ImageLoader
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -11,6 +12,7 @@ import dagger.hilt.components.SingletonComponent
 object UiModule {
 
     @Provides
-    fun provideCurrenciesConverter(): CurrenciesConverter =
-        CurrenciesConverter()
+    fun provideCurrenciesConverter(
+        imageLoader: ImageLoader
+    ): CurrenciesConverter = CurrenciesConverter(imageLoader)
 }

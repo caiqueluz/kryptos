@@ -1,10 +1,13 @@
 package com.caiqueluz.kryptos.ui.viewmodel
 
-import android.graphics.BitmapFactory
 import com.caiqueluz.kryptos.data.CurrenciesDTO
 import com.caiqueluz.kryptos.data.CurrencyItemDTO
+import com.caiqueluz.kryptos.utils.ImageLoader
+import javax.inject.Inject
 
-class CurrenciesConverter {
+class CurrenciesConverter @Inject constructor(
+    private val imageLoader: ImageLoader
+) {
 
     fun convert(dto: CurrenciesDTO): CurrenciesVO =
         CurrenciesVO(
@@ -18,7 +21,7 @@ class CurrenciesConverter {
             name = item.name,
             symbol = item.symbol,
             category = item.category,
-            logo = BitmapFactory.decodeFile(""),
+            logo = imageLoader.loadImage(item.logoUrl),
             description = item.description
         )
     }
