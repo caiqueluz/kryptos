@@ -2,7 +2,7 @@ package com.caiqueluz.kryptos.data
 
 import com.google.gson.annotations.SerializedName
 
-class CurrenciesDTO(
+class CurrenciesImagesDTO(
     @SerializedName("data")
-    val currencies: List<CurrencyItemDTO>
+    val data: Map<String, CurrencyImageItemDTO>
 )

@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caiqueluz.kryptos.databinding.ActivityCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse.*
+import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,13 +25,20 @@ class CurrenciesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setupObserver()
+        viewModel.fetchCurrenciesListing()
+        setupObservers()
     }
 
-    private fun setupObserver() {
-        viewModel.currencies.start(Unit)
+    private fun setupObservers() {
+        viewModel.currenciesListing.observe(this) { response ->
+            when (response) {
+                is Loading -> renderLoading()
+                is Content -> fetchCurrenciesImages(response.content)
+                is Error -> renderError(response.error)
+            }
+        }
 
-        viewModel.currencies.observe(this) { response ->
+        viewModel.currenciesImages.observe(this) { response ->
             when (response) {
                 is Loading -> renderLoading()
                 is Content -> renderContent(response.content)
@@ -39,13 +47,22 @@ class CurrenciesActivity : AppCompatActivity() {
         }
     }
 
+    private fun fetchCurrenciesImages(content: CurrenciesListingVO) {
+        val ids = content.currencies
+            .map { it.id.toString() }
+            .joinToString { it }
+            .filterNot { it.isWhitespace() }
+
+        viewModel.fetchCurrenciesImages(ids)
+    }
+
     private fun renderLoading() {
         binding.currenciesLoadingProgressbar.visibility = VISIBLE
-        binding.currenciesContentView.visibility = GONE
+        binding.currenciesRecyclerView.visibility = GONE
     }
 
     private fun renderContent(data: CurrenciesVO) {
-        binding.currenciesContentView.visibility = VISIBLE
+        binding.currenciesRecyclerView.visibility = VISIBLE
         binding.currenciesLoadingProgressbar.visibility = GONE
 
         binding.currenciesRecyclerView.adapter = CurrencyAdapter(
@@ -54,7 +71,7 @@ class CurrenciesActivity : AppCompatActivity() {
     }
 
     private fun renderError(error: Throwable) {
-        binding.currenciesContentView.visibility = GONE
+        binding.currenciesRecyclerView.visibility = GONE
         binding.currenciesLoadingProgressbar.visibility = GONE
     }
 }

@@ -1,8 +1,10 @@
 package com.caiqueluz.kryptos.network
 
 import okhttp3.OkHttpClient
+import retrofit2.CallAdapter
 import retrofit2.Converter
 import retrofit2.Retrofit
+import java.lang.reflect.Type
 import javax.inject.Inject
 
 class ApiClientConfig @Inject constructor(

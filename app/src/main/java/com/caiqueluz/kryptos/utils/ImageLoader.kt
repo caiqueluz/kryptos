@@ -4,5 +4,5 @@ import android.graphics.Bitmap
 
 interface ImageLoader {
 
-    fun loadImage(url: String): Bitmap
+    fun loadImage(url: String): Bitmap?
 }

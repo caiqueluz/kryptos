@@ -2,17 +2,16 @@ package com.caiqueluz.kryptos.utils
 
 import android.graphics.Bitmap
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class PicassoImageLoader @Inject constructor(
-    private val picasso: Picasso
+    private val picasso: Picasso,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : ImageLoader {
 
-    override fun loadImage(url: String): Bitmap = runBlocking {
-        val deferredBitmap = async(Dispatchers.IO) {
+    override fun loadImage(url: String) = runBlocking<Bitmap?> {
+        val deferredBitmap = async(dispatcher) {
             picasso.load(url).get()
         }
 

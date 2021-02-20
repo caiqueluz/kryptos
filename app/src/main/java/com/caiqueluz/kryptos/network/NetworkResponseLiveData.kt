@@ -31,3 +31,6 @@ class NetworkResponseLiveData<RI, RO, NRT>(
         }
     }
 }
+
+fun <RI, RO, NRT> NetworkResponseLiveData<RI, RO, NRT>.asLiveData() =
+    this as LiveData<NetworkResponse<NRT>>
