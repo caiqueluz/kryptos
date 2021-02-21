@@ -1,36 +1,26 @@
 package com.caiqueluz.kryptos.network
 
 import androidx.lifecycle.LiveData
-import kotlinx.coroutines.*
+import androidx.lifecycle.liveData
+import kotlinx.coroutines.CoroutineDispatcher
 import retrofit2.Response
 
 /**
  *
- * RI - Request input
  * RO - Request output
  * NRT - NetworkResponse type
  *
  * */
-class NetworkResponseLiveData<RI, RO, NRT>(
-    dispatcher: CoroutineDispatcher = Dispatchers.IO,
-    private val request: suspend (RI) -> (Response<RO>),
-    private val transformation: (RO) -> NRT
-) : LiveData<NetworkResponse<NRT>>() {
+fun <RO, NRT> networkResponseLiveData(
+    dispatcher: CoroutineDispatcher,
+    request: suspend () -> (Response<RO>),
+    transformation: (RO) -> NRT
+): LiveData<NetworkResponse<NRT>> = liveData(dispatcher) {
+    emit(NetworkResponse.Loading)
 
-    private val scope = CoroutineScope(Job() + dispatcher)
+    val networkResponse = request.invoke()
+        .asNetworkResponse()
+        .mapContent(transformation)
 
-    fun start(requestInput: RI) {
-        postValue(NetworkResponse.Loading)
-
-        scope.launch {
-            val networkResponse = request.invoke(requestInput)
-                .asNetworkResponse()
-                .mapContent(transformation)
-
-            postValue(networkResponse)
-        }
-    }
+    emit(networkResponse)
 }
-
-fun <RI, RO, NRT> NetworkResponseLiveData<RI, RO, NRT>.asLiveData() =
-    this as LiveData<NetworkResponse<NRT>>

@@ -18,7 +18,8 @@ class OkHttpClientFactoryTest {
 
     private val okHttpFactory = OkHttpClientFactory(
         okHttpBuilder = spyOkHttpBuilder,
-        authenticationInterceptor = mockInterceptor
+        authenticationInterceptor = mockInterceptor,
+        httpLoggingInterceptor = mock()
     )
 
     @Test
