@@ -1,10 +1,16 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.data.CurrenciesDTO
-import com.caiqueluz.kryptos.data.CurrencyItemDTO
+import android.graphics.Bitmap
+import com.caiqueluz.kryptos.data.CurrenciesImagesDTO
+import com.caiqueluz.kryptos.data.CurrenciesListingDTO
+import com.caiqueluz.kryptos.data.CurrenciesListingItemDTO
+import com.caiqueluz.kryptos.data.CurrencyImageItemDTO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
+import com.caiqueluz.kryptos.utils.ImageLoader
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.doReturn
+import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertNull
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -12,92 +18,90 @@ import org.junit.runners.JUnit4
 @RunWith(JUnit4::class)
 class CurrenciesConverterTest {
 
-    private fun fakeCurrencyListDTO(description: String? = null) = listOf(
-        CurrencyItemDTO(
-            id = 123,
-            name = "MockItemName",
-            symbol = "MOCK",
-            category = "MockCategory",
-            logoUrl = "mocklogourl.com",
-            description = description
+    private val mockBitmap = mock<Bitmap>()
+
+    private val mockImageLoader = mock<ImageLoader> {
+        on { loadImage(any()) } doReturn mockBitmap
+    }
+
+    private val fakeListingResponse = CurrenciesListingDTO(
+        data = listOf(
+            fakeListingDTO(),
+            fakeListingDTO(),
+            fakeListingDTO(),
+            fakeListingDTO(),
+            fakeListingDTO()
         )
     )
 
-    private fun fakeResponseDTO(
-        description: String? = null
-    ) = CurrenciesDTO(
-        currencies = fakeCurrencyListDTO(description)
+    private val fakeImagesResponse = CurrenciesImagesDTO(
+        data = mapOf(
+            "1" to fakeImageItemDTO(),
+            "2" to fakeImageItemDTO(),
+            "3" to fakeImageItemDTO(),
+            "4" to fakeImageItemDTO(),
+            "5" to fakeImageItemDTO()
+        )
     )
 
-    private val converter = CurrenciesConverter()
+    private val converter = CurrenciesConverter(
+        imageLoader = mockImageLoader
+    )
 
     @Test
-    fun whenConvertIsCalled_verifyResponseHasCorrectSize() {
-        val response = converter.convert(fakeResponseDTO())
-
-        val expected = 1
-        val actual = response.currencies.size
+    fun whenConvertCurrenciesListingIsCalled_verifyResponseHasCorrectSize() {
+        val expected = 5
+        val actual =
+            converter.convertCurrenciesListing(fakeListingResponse).currencies.size
 
         assertEquals(expected, actual)
     }
 
     @Test
-    fun whenConvertIsCalled_verifyCurrencyItemHasCorrectName() {
-        val response = converter.convert(fakeResponseDTO())
-
-        val expected = "MockItemName"
-        val actual = response.currencies[0].name
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun whenConvertIsCalled_verifyCurrencyItemHasCorrectSymbol() {
-        val response = converter.convert(fakeResponseDTO())
-
-        val expected = "MOCK"
-        val actual = response.currencies[0].symbol
+    fun whenConvertCurrenciesListingIsCalled_verifyResponseItemHasCorrectId() {
+        val expected = 5
+        val actual =
+            converter.convertCurrenciesListing(fakeListingResponse).currencies[0].id
 
         assertEquals(expected, actual)
     }
 
     @Test
-    fun whenConvertIsCalled_verifyCurrencyItemHasCorrectCategory() {
-        val response = converter.convert(fakeResponseDTO())
-
-        val expected = "MockCategory"
-        val actual = response.currencies[0].category
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
-    fun whenConvertIsCalled_verifyCurrencyItemHasCorrectLogoUrl() {
-        val response = converter.convert(fakeResponseDTO())
-
-        val expected = "mocklogourl.com"
-        val actual = response.currencies[0].logoUrl
+    fun whenConvertCurrenciesListingIsCalled_verifyResponseItemHasCorrectName() {
+        val expected = "name"
+        val actual =
+            converter.convertCurrenciesListing(fakeListingResponse).currencies[0].name
 
         assertEquals(expected, actual)
     }
 
     @Test
-    fun whenConvertIsCalled_withCurrencyItemNotNullDescription_verifyCurrencyItemHasCorrectDescription() {
-        val expected = "Mock description"
-
-        val response = converter.convert(fakeResponseDTO(description = expected))
-
-        val actual = response.currencies[0].description
+    fun whenConvertCurrenciesListingIsCalled_verifyResponseItemHasCorrectSymbol() {
+        val expected = "symbol"
+        val actual =
+            converter.convertCurrenciesListing(fakeListingResponse).currencies[0].symbol
 
         assertEquals(expected, actual)
     }
 
     @Test
-    fun whenConvertIsCalled_withCurrencyItemNullDescription_verifyCurrencyItemHasNullDescription() {
-        val response = converter.convert(fakeResponseDTO())
+    fun whenConvertCurrenciesImagesIsCalled_verifyResponseHasCorrectImage() {
+        val expected = mockBitmap
+        val actual =
+            converter.convertCurrenciesImages(fakeImagesResponse).currencies[0].image
 
-        val actual = response.currencies[0].description
-
-        assertNull(actual)
+        assertEquals(expected, actual)
     }
+
+    private fun fakeListingDTO() = CurrenciesListingItemDTO(
+        id = 5,
+        name = "name",
+        symbol = "symbol"
+    )
+
+    private fun fakeImageItemDTO() = CurrencyImageItemDTO(
+        name = "name",
+        symbol = "symbol",
+        imageUrl = "imageurl.com"
+    )
 }
