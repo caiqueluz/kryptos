@@ -16,6 +16,11 @@ class CurrenciesConverter @Inject constructor(
             currencies = dto.data.convertListing()
         )
 
+    fun convertUrls(listing: CurrenciesListingVO): String =
+        listing.currencies.map { it.id.toString() }
+            .joinToString { it }
+            .filterNot { it.isWhitespace() }
+
     fun convertCurrenciesImages(dto: CurrenciesImagesDTO): CurrenciesVO =
         CurrenciesVO(
             currencies = dto.data.convertImages()
