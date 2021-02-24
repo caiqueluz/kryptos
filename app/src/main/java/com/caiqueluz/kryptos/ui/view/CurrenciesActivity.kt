@@ -7,7 +7,6 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caiqueluz.kryptos.databinding.ActivityCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse.*
-import com.caiqueluz.kryptos.ui.view.CurrencyAdapter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,22 +29,6 @@ class CurrenciesActivity : AppCompatActivity() {
     }
 
     private fun setupObservers() {
-        /*viewModel.currenciesListing.observe(this) { response ->
-            when (response) {
-                is Loading -> renderLoading()
-                is Content -> fetchCurrenciesImages(response.content)
-                is Error -> renderError(response.error)
-            }
-        }
-
-        viewModel.currenciesImages.observe(this) { response ->
-            when (response) {
-                is Loading -> renderLoading()
-                is Content -> renderContent(response.content)
-                is Error -> renderError(response.error)
-            }
-        }*/
-
         viewModel.currencies.observe(this) { response ->
             when (response) {
                 is Loading -> renderLoading()
@@ -54,11 +37,6 @@ class CurrenciesActivity : AppCompatActivity() {
             }
         }
     }
-
-    /*private fun fetchCurrenciesImages(content: CurrenciesListingVO) {
-        val ids = content.currencies.getUrls()
-        viewModel.fetchCurrenciesImages(ids)
-    }*/
 
     private fun renderLoading() {
         binding.currenciesLoadingProgressbar.visibility = VISIBLE
