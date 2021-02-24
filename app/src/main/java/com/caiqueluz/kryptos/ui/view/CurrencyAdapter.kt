@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.ui
+package com.caiqueluz.kryptos.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

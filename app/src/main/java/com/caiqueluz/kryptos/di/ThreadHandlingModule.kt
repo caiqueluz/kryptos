@@ -14,6 +14,6 @@ object ThreadHandlingModule {
 
     @IODispatcher
     @Provides
-    fun provideCoroutineDispatcher(): CoroutineDispatcher =
+    fun provideIODispatcher(): CoroutineDispatcher =
         Dispatchers.IO
 }

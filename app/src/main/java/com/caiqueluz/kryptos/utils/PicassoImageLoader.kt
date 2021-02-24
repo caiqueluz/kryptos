@@ -7,7 +7,8 @@ import javax.inject.Inject
 
 class PicassoImageLoader @Inject constructor(
     private val picasso: Picasso,
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO
+    @IODispatcher
+    private val dispatcher: CoroutineDispatcher
 ) : ImageLoader {
 
     override fun loadImage(url: String) = runBlocking<Bitmap?> {
