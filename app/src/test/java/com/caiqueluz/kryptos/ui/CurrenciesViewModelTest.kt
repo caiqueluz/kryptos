@@ -23,7 +23,7 @@ class CurrenciesViewModelTest : CoroutinesTest() {
     private val mockConverter = mock<CurrenciesConverter> {
         on { convertCurrenciesListing(any()) } doReturn mock()
         on { convertCurrenciesImages(any()) } doReturn mock()
-        on { convertUrls(anyOrNull()) } doReturn String()
+        on { convertIds(anyOrNull()) } doReturn String()
     }
 
     private val listingResponse = successResponse<CurrenciesListingDTO>()

@@ -13,17 +13,17 @@ class CurrenciesConverter @Inject constructor(
 
     fun convertCurrenciesListing(dto: CurrenciesListingDTO): CurrenciesListingVO =
         CurrenciesListingVO(
-            currencies = dto.data.convertListing()
+            currencies = dto.currencies.convertListing()
         )
 
-    fun convertUrls(listing: CurrenciesListingVO): String =
+    fun convertIds(listing: CurrenciesListingVO): String =
         listing.currencies.map { it.id.toString() }
             .joinToString { it }
             .filterNot { it.isWhitespace() }
 
     fun convertCurrenciesImages(dto: CurrenciesImagesDTO): CurrenciesVO =
         CurrenciesVO(
-            currencies = dto.data.convertImages()
+            currencies = dto.currenciesImages.convertImages()
         )
 
     private fun List<CurrenciesListingItemDTO>.convertListing(): List<CurrenciesListingItemVO> =

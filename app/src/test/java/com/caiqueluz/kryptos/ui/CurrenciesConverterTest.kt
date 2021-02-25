@@ -6,6 +6,8 @@ import com.caiqueluz.kryptos.data.CurrenciesListingDTO
 import com.caiqueluz.kryptos.data.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.data.CurrencyImageItemDTO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
+import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingItemVO
+import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingVO
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
@@ -25,7 +27,7 @@ class CurrenciesConverterTest {
     }
 
     private val fakeListingResponse = CurrenciesListingDTO(
-        data = listOf(
+        currencies = listOf(
             fakeListingDTO(),
             fakeListingDTO(),
             fakeListingDTO(),
@@ -34,8 +36,18 @@ class CurrenciesConverterTest {
         )
     )
 
+    private val fakeVOListingResponse = CurrenciesListingVO(
+        currencies = listOf(
+            fakeListingVO(),
+            fakeListingVO(),
+            fakeListingVO(),
+            fakeListingVO(),
+            fakeListingVO()
+        )
+    )
+
     private val fakeImagesResponse = CurrenciesImagesDTO(
-        data = mapOf(
+        currenciesImages = mapOf(
             "1" to fakeImageItemDTO(),
             "2" to fakeImageItemDTO(),
             "3" to fakeImageItemDTO(),
@@ -85,6 +97,14 @@ class CurrenciesConverterTest {
     }
 
     @Test
+    fun whenConvertIdsIsCalled_verifyResponseIsCorrect() {
+        val expected = "5,5,5,5,5"
+        val actual = converter.convertIds(fakeVOListingResponse)
+
+        assertEquals(expected, actual)
+    }
+
+    @Test
     fun whenConvertCurrenciesImagesIsCalled_verifyResponseHasCorrectImage() {
         val expected = mockBitmap
         val actual =
@@ -94,6 +114,12 @@ class CurrenciesConverterTest {
     }
 
     private fun fakeListingDTO() = CurrenciesListingItemDTO(
+        id = 5,
+        name = "name",
+        symbol = "symbol"
+    )
+
+    private fun fakeListingVO() = CurrenciesListingItemVO(
         id = 5,
         name = "name",
         symbol = "symbol"

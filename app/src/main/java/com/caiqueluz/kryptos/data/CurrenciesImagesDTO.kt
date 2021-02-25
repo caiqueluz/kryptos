@@ -4,5 +4,5 @@ import com.google.gson.annotations.SerializedName
 
 class CurrenciesImagesDTO(
     @SerializedName("data")
-    val data: Map<String, CurrencyImageItemDTO>
+    val currenciesImages: Map<String, CurrencyImageItemDTO>
 )
