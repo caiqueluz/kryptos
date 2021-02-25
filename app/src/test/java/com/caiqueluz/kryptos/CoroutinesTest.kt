@@ -26,5 +26,6 @@ open class CoroutinesTest {
     @After
     fun tearDown() {
         Dispatchers.resetMain()
+        testDispatcher.cleanupTestCoroutines()
     }
 }

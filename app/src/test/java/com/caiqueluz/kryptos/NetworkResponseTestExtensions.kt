@@ -18,10 +18,11 @@ fun <TYPE> errorResponse(): Response<TYPE> =
 fun <TYPE> networkResponseObserver(): Observer<NetworkResponse<TYPE>> = mock()
 
 fun <TYPE> verifyLoadingResponse(
-    observer: Observer<NetworkResponse<TYPE>>
+    observer: Observer<NetworkResponse<TYPE>>,
+    times: Int
 ) {
     val captor = argumentCaptor<NetworkResponse<TYPE>>()
-    verify(observer, times(2)).onChanged(captor.capture())
+    verify(observer, times(times)).onChanged(captor.capture())
 
     assertTrue(captor.firstValue is NetworkResponse.Loading)
 }

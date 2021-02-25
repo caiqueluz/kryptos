@@ -5,13 +5,9 @@ import com.caiqueluz.kryptos.data.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.CurrenciesListingDTO
 import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
-import com.nhaarman.mockitokotlin2.any
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test
@@ -27,7 +23,11 @@ class CurrenciesViewModelTest : CoroutinesTest() {
     private val mockConverter = mock<CurrenciesConverter> {
         on { convertCurrenciesListing(any()) } doReturn mock()
         on { convertCurrenciesImages(any()) } doReturn mock()
+        on { convertUrls(anyOrNull()) } doReturn String()
     }
+
+    private val listingResponse = successResponse<CurrenciesListingDTO>()
+    private val imagesResponse = successResponse<CurrenciesImagesDTO>()
 
     private val viewModel = CurrenciesViewModel(
         dispatcher = testDispatcher,
@@ -36,27 +36,27 @@ class CurrenciesViewModelTest : CoroutinesTest() {
     )
 
     @Test
-    fun whenFetchCurrenciesListingIsCalled_verifyLoadingResponse() = runBlockingTest {
-        val response = successResponse<CurrenciesListingDTO>()
-        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
+    fun whenFetchCurrenciesIsCalled_verifyLoadingResponse() = runBlockingTest {
+        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
+        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesListingVO>()
-        viewModel.currenciesListing.observeForever(observer)
+        val observer = networkResponseObserver<CurrenciesVO>()
+        viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrenciesListing()
+        viewModel.fetchCurrencies()
 
-        verifyLoadingResponse(observer)
+        verifyLoadingResponse(observer, 2)
     }
 
     @Test
-    fun whenFetchCurrenciesListingIsCalled_verifyContentResponse() = runBlockingTest {
-        val response = successResponse<CurrenciesListingDTO>()
-        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
+    fun whenFetchCurrenciesIsCalled_verifyContentResponse() = runBlockingTest {
+        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
+        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesListingVO>()
-        viewModel.currenciesListing.observeForever(observer)
+        val observer = networkResponseObserver<CurrenciesVO>()
+        viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrenciesListing()
+        viewModel.fetchCurrencies()
 
         verifyContentResponse(observer)
     }
@@ -66,48 +66,10 @@ class CurrenciesViewModelTest : CoroutinesTest() {
         val response = errorResponse<CurrenciesListingDTO>()
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
 
-        val observer = networkResponseObserver<CurrenciesListingVO>()
-        viewModel.currenciesListing.observeForever(observer)
-
-        viewModel.fetchCurrenciesListing()
-
-        verifyErrorResponse(observer)
-    }
-
-    @Test
-    fun whenFetchCurrenciesImagesIsCalled_verifyLoadingResponse() = runBlockingTest {
-        val response = successResponse<CurrenciesImagesDTO>()
-        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(response)
-
         val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currenciesImages.observeForever(observer)
+        viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrenciesImages(String())
-
-        verifyLoadingResponse(observer)
-    }
-
-    @Test
-    fun whenFetchCurrenciesImagesIsCalled_verifyContentResponse() = runBlockingTest {
-        val response = successResponse<CurrenciesImagesDTO>()
-        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(response)
-
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currenciesImages.observeForever(observer)
-
-        viewModel.fetchCurrenciesImages(String())
-
-        verifyContentResponse(observer)
-    }
-
-    @Test
-    fun whenFetchCurrenciesImagesIsCalled_verifyErrorResponse() = runBlockingTest {
-        val response = errorResponse<CurrenciesImagesDTO>()
-        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(response)
-
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currenciesImages.observeForever(observer)
-        viewModel.fetchCurrenciesImages(String())
+        viewModel.fetchCurrencies()
 
         verifyErrorResponse(observer)
     }

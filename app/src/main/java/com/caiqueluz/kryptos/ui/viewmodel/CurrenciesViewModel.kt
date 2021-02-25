@@ -32,13 +32,12 @@ class CurrenciesViewModel @Inject constructor(
         }.combine(dispatcher) { listing ->
             val urls = converter.convertUrls(listing)
 
-            repository
-                .fetchCurrenciesImages(urls)
+            repository.fetchCurrenciesImages(urls)
                 .mapResponse(converter::convertCurrenciesImages)
         }
     }
 
-    fun fetchCurrenciesListing() {
+    fun fetchCurrencies() {
         _currenciesListing.postValue(CURRENCIES_LISTING_LIMIT)
     }
 }

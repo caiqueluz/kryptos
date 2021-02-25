@@ -24,7 +24,7 @@ class CurrenciesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.fetchCurrenciesListing()
+        viewModel.fetchCurrencies()
         setupObservers()
     }
 
