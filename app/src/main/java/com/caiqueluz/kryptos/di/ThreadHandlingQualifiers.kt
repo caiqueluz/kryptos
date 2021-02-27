@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.utils
+package com.caiqueluz.kryptos.di
 
 import javax.inject.Qualifier
 

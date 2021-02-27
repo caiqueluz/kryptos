@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.data
+package com.caiqueluz.kryptos.data.domain
 
 import com.google.gson.annotations.SerializedName
 

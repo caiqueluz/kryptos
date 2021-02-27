@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.ui.viewmodel
+package com.caiqueluz.kryptos.ui.domain
 
 import android.graphics.Bitmap
 

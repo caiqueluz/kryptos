@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caiqueluz.kryptos.databinding.ActivityCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse.*
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesVO
+import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

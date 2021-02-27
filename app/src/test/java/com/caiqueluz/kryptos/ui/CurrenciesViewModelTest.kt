@@ -1,11 +1,11 @@
 package com.caiqueluz.kryptos.ui
 
 import com.caiqueluz.kryptos.*
-import com.caiqueluz.kryptos.data.CurrenciesImagesDTO
-import com.caiqueluz.kryptos.data.CurrenciesListingDTO
+import com.caiqueluz.kryptos.data.domain.CurrenciesImagesDTO
+import com.caiqueluz.kryptos.data.domain.CurrenciesListingDTO
 import com.caiqueluz.kryptos.data.CurrenciesRepository
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesVO
+import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
+import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi

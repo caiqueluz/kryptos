@@ -1,6 +1,5 @@
 package com.caiqueluz.kryptos.di
 
-import com.caiqueluz.kryptos.utils.IODispatcher
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.caiqueluz.kryptos.utils.PicassoImageLoader
 import com.squareup.picasso.Picasso

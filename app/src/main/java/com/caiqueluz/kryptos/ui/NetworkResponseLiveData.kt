@@ -11,6 +11,10 @@ fun <TYPE> networkResponseLiveData(
 ): LiveData<NetworkResponse<TYPE>> = liveData(dispatcher) {
     emit(NetworkResponse.Loading)
 
-    val networkResponse = request.invoke()
-    emit(networkResponse)
+    try {
+        val networkResponse = request.invoke()
+        emit(networkResponse)
+    } catch (exception: Exception) {
+        emit(NetworkResponse.Error(exception))
+    }
 }

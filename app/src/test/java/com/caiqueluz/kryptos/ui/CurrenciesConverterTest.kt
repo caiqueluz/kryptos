@@ -1,13 +1,13 @@
-package com.caiqueluz.kryptos.ui
+/*package com.caiqueluz.kryptos.ui
 
 import android.graphics.Bitmap
-import com.caiqueluz.kryptos.data.CurrenciesImagesDTO
-import com.caiqueluz.kryptos.data.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.CurrenciesListingItemDTO
-import com.caiqueluz.kryptos.data.CurrencyImageItemDTO
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingItemVO
-import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesListingVO
+import com.caiqueluz.kryptos.data.domain.CurrenciesImagesDTO
+import com.caiqueluz.kryptos.data.domain.CurrenciesListingDTO
+import com.caiqueluz.kryptos.data.domain.CurrenciesListingItemDTO
+import com.caiqueluz.kryptos.data.domain.CurrencyImageItemDTO
+import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
+import com.caiqueluz.kryptos.ui.domain.CurrenciesListingItemVO
+import com.caiqueluz.kryptos.ui.domain.CurrenciesListingVO
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn

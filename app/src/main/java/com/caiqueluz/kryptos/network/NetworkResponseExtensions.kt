@@ -21,7 +21,7 @@ fun <FROM, TO> NetworkResponse<FROM>.mapContent(
     )
 }
 
-private fun <TYPE> Response<TYPE>.asNetworkResponse(): NetworkResponse<TYPE> =
+fun <TYPE> Response<TYPE>.asNetworkResponse(): NetworkResponse<TYPE> =
     when (this.isSuccessful) {
         true -> buildNetworkResponse(content = this.body())
         false -> buildErrorNetworkResponse()

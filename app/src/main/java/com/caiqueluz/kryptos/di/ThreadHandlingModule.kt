@@ -1,6 +1,5 @@
 package com.caiqueluz.kryptos.di
 
-import com.caiqueluz.kryptos.utils.IODispatcher
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
