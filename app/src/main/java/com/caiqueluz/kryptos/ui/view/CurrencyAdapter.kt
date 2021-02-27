@@ -7,7 +7,8 @@ import com.caiqueluz.kryptos.databinding.CurrencyListItemBinding
 import com.caiqueluz.kryptos.ui.domain.CurrencyItemVO
 
 class CurrencyAdapter(
-    private val currencies: List<CurrencyItemVO>
+    private val currencies: List<CurrencyItemVO>,
+    private val onItemClickAction: (String) -> Unit
 ) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -31,16 +32,24 @@ class CurrencyAdapter(
         private val binding: CurrencyListItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: CurrencyItemVO) {
-            data.image?.let {
+        fun bind(item: CurrencyItemVO) {
+            item.image?.let {
                 binding.currencyItemImage.setImageBitmap(it)
             }
 
-            binding.currencyItemName.text = data.name
-            binding.currencyItemSymbol.text = data.symbol
+            binding.currencyItemName.text = item.name
+            binding.currencyItemSymbol.text = item.symbol
 
-            val price = data.quote.priceInUsd.price
+            val price = item.quote.priceInUsd.price
             binding.currencyItemPrice.text = price
+
+            setupOnClickListener(item.name)
+        }
+
+        private fun setupOnClickListener(currencyName: String) {
+            binding.currencyItemPriceInformation.setOnClickListener {
+                onItemClickAction.invoke(currencyName)
+            }
         }
     }
 }

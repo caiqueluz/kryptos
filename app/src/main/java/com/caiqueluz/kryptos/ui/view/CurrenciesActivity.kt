@@ -9,6 +9,7 @@ import com.caiqueluz.kryptos.databinding.ActivityCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse.*
 import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
+import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -48,8 +49,15 @@ class CurrenciesActivity : AppCompatActivity() {
         binding.currenciesLoadingProgressbar.visibility = GONE
 
         binding.currenciesRecyclerView.adapter = CurrencyAdapter(
-            currencies = data.currencies
+            currencies = data.currencies,
+            onItemClickAction = ::onCurrencyItemClickAction
         )
+    }
+
+    private fun onCurrencyItemClickAction(currencyName: String) {
+        Snackbar
+            .make(binding.root, currencyName, Snackbar.LENGTH_SHORT)
+            .show()
     }
 
     private fun renderError(error: Throwable) {
