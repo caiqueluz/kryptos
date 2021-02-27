@@ -10,7 +10,7 @@ Bibliotecas utlilizadas
 Hilt para a injeção de dependências<br/>
 ViewBinding para o binding dos layouts<br/>
 Retrofit e OkHttp para o consumo de apis<br/>
-[EM ANDAMENTO] - Coroutines para a programação assíncrona<br/>
+Coroutines para a programação assíncrona<br/>
 LiveData e ViewModel para a implementação do padrão MVVM<br/>
 [EM ANDAMENTO] - Navigation para a navegação<br/>
 [EM ANDAMENTO] - Room para a persistência de dados<br/>
