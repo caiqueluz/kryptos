@@ -19,21 +19,22 @@ class CurrenciesConverter @Inject constructor(
             .joinToString { it }
             .filterNot { it.isWhitespace() }
 
-    fun convertCurrenciesImages(
+    fun convertCurrencies(
         listing: CurrenciesListingDTO, images: CurrenciesImagesDTO
     ): CurrenciesVO = CurrenciesVO(
-        currencies = images.currenciesImages.convertImages(listing)
+        currencies = images.currenciesImages.convertCurrencyItems(listing)
     )
 
-    private fun Map<String, CurrencyImageItemDTO>.convertImages(
+    private fun Map<String, CurrencyImageItemDTO>.convertCurrencyItems(
         listing: CurrenciesListingDTO
     ): List<CurrencyItemVO> = this.map { (_, dto) ->
-        val quoteDTO = listing.getListingItem(dto).quote
+        val listingItem = listing.getListingItem(dto)
+        val quoteDTO = listingItem.quote
         val quote = quoteConverter.convertQuote(quoteDTO)
 
         CurrencyItemVO(
-            name = dto.name,
-            symbol = dto.symbol,
+            name = listingItem.name,
+            symbol = listingItem.symbol,
             image = imageLoader.loadImage(dto.imageUrl),
             quote = quote
         )
@@ -42,6 +43,6 @@ class CurrenciesConverter @Inject constructor(
     private fun CurrenciesListingDTO.getListingItem(
         imageItem: CurrencyImageItemDTO
     ): CurrenciesListingItemDTO = this.currencies.first { listingItem ->
-        listingItem.name == imageItem.name
+        listingItem.id == imageItem.id
     }
 }
