@@ -7,7 +7,9 @@ import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.network.mapResponse
 import com.caiqueluz.kryptos.ui.combine
 import com.caiqueluz.kryptos.ui.networkResponseLiveData
-import com.caiqueluz.kryptos.utils.IODispatcher
+import com.caiqueluz.kryptos.di.IODispatcher
+import com.caiqueluz.kryptos.network.asNetworkResponse
+import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import javax.inject.Inject
@@ -28,12 +30,14 @@ class CurrenciesViewModel @Inject constructor(
         networkResponseLiveData(dispatcher) {
             repository
                 .fetchCurrenciesListing(limit)
-                .mapResponse(converter::convertCurrenciesListing)
+                .asNetworkResponse()
         }.combine(dispatcher) { listing ->
             val ids = converter.convertIds(listing)
 
             repository.fetchCurrenciesImages(ids)
-                .mapResponse(converter::convertCurrenciesImages)
+                .mapResponse { images ->
+                    converter.convertCurrenciesImages(listing, images)
+                }
         }
     }
 

@@ -32,12 +32,15 @@ class CurrencyAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: CurrencyItemVO) {
-            binding.currencyItemName.text = data.name
-            binding.currencyItemSymbol.text = data.symbol
-
             data.image?.let {
                 binding.currencyItemImage.setImageBitmap(it)
             }
+
+            binding.currencyItemName.text = data.name
+            binding.currencyItemSymbol.text = data.symbol
+
+            val price = data.quote.priceInUsd.price
+            binding.currencyItemPrice.text = price
         }
     }
 }
