@@ -21,8 +21,7 @@ class CurrenciesViewModelTest : CoroutinesTest() {
     private val mockRepository = mock<CurrenciesRepository>()
 
     private val mockConverter = mock<CurrenciesConverter> {
-        on { convertCurrenciesListing(any()) } doReturn mock()
-        on { convertCurrenciesImages(any()) } doReturn mock()
+        on { convertCurrenciesImages(any(), any()) } doReturn mock()
         on { convertIds(anyOrNull()) } doReturn String()
     }
 
