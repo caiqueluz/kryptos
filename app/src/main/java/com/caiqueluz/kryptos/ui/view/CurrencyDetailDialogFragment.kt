@@ -1,19 +1,17 @@
 package com.caiqueluz.kryptos.ui.view
 
 import android.app.Dialog
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caiqueluz.kryptos.databinding.DialogCurrencyDetailBinding
+import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CurrencyDetailDialogFragment(
-    private val currencyImage: Bitmap?,
-    private val currencyName: String,
-    private val currencySymbol: String
+    private val detailDialogVO: CurrencyDetailDialogVO
 ) : BottomSheetDialogFragment() {
 
     private val binding by lazy {
@@ -47,14 +45,14 @@ class CurrencyDetailDialogFragment(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupLayout(currencyImage)
+        setupLayout()
     }
 
-    private fun setupLayout(currencyImage: Bitmap?) {
-        binding.currencyDetailName.text = currencyName
-        binding.currencyDetailSymbol.text = currencySymbol
+    private fun setupLayout() {
+        binding.currencyDetailName.text = detailDialogVO.name
+        binding.currencyDetailSymbol.text = detailDialogVO.symbol
 
-        currencyImage?.let { image ->
+        detailDialogVO.image?.let { image ->
             binding.currencyDetailImage.setImageBitmap(image)
         }
     }

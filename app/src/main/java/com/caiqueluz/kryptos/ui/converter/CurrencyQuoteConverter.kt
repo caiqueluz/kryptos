@@ -21,8 +21,6 @@ class CurrencyQuoteConverter @Inject constructor(
             price = formatPrice(this.price)
         )
 
-    private fun formatPrice(price: Double): String {
-        val currencyValue = numberFormatter.format(price)
-        return currencyValue.filterNot { it.isWhitespace() }
-    }
+    private fun formatPrice(price: Double): String =
+        "U${numberFormatter.format(price)}"
 }

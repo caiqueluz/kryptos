@@ -4,11 +4,12 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.caiqueluz.kryptos.databinding.CurrencyListItemBinding
+import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
 import com.caiqueluz.kryptos.ui.domain.CurrencyItemVO
 
 class CurrencyAdapter(
     private val currencies: List<CurrencyItemVO>,
-    private val onItemClickAction: (String) -> Unit
+    private val onItemClickAction: (CurrencyDetailDialogVO) -> Unit
 ) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -43,12 +44,19 @@ class CurrencyAdapter(
             val price = item.quote.priceInUsd.price
             binding.currencyItemPrice.text = price
 
-            setupOnClickListener(item.name)
+            setupPriceInformationClickListener(item)
         }
 
-        private fun setupOnClickListener(currencyName: String) {
+        private fun setupPriceInformationClickListener(item: CurrencyItemVO) {
             binding.currencyItemPriceInformation.setOnClickListener {
-                onItemClickAction.invoke(currencyName)
+
+                val detailDialogVO = CurrencyDetailDialogVO(
+                    image = item.image,
+                    name = item.name,
+                    symbol = item.symbol
+                )
+
+                onItemClickAction.invoke(detailDialogVO)
             }
         }
     }
