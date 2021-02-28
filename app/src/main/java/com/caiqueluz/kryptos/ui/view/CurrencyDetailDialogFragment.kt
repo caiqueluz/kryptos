@@ -1,37 +1,41 @@
 package com.caiqueluz.kryptos.ui.view
 
 import android.app.Dialog
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import com.caiqueluz.kryptos.databinding.DialogCurrencyPriceDetailBinding
+import com.caiqueluz.kryptos.databinding.DialogCurrencyDetailBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CurrencyPriceDetailDialogFragment(
+class CurrencyDetailDialogFragment(
+    private val currencyImage: Bitmap?,
     private val currencyName: String,
     private val currencySymbol: String
 ) : BottomSheetDialogFragment() {
 
     private val binding by lazy {
-        DialogCurrencyPriceDetailBinding.inflate(layoutInflater)
+        DialogCurrencyDetailBinding.inflate(layoutInflater)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
-
-        dialog.setOnShowListener {
-            val layout = dialog.findViewById<View>(
-                com.google.android.material.R.id.design_bottom_sheet
-            ) as FrameLayout
-
-            val behavior = BottomSheetBehavior.from(layout)
-            behavior.state = BottomSheetBehavior.STATE_EXPANDED
-        }
+        setupBottomSheetBehavior(dialog)
 
         return dialog
+    }
+
+    private fun setupBottomSheetBehavior(dialog: Dialog) {
+        dialog.setOnShowListener {
+            val bottomSheetContainer = dialog.findViewById<View>(
+                com.google.android.material.R.id.design_bottom_sheet
+            )
+
+            val behavior = BottomSheetBehavior.from(bottomSheetContainer)
+            behavior.state = BottomSheetBehavior.STATE_EXPANDED
+        }
     }
 
     override fun onCreateView(
@@ -43,11 +47,15 @@ class CurrencyPriceDetailDialogFragment(
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setupLayout()
+        setupLayout(currencyImage)
     }
 
-    private fun setupLayout() {
-        binding.currencyPriceDetailName.text = currencyName
-        binding.currencyPriceDetailSymbol.text = currencySymbol
+    private fun setupLayout(currencyImage: Bitmap?) {
+        binding.currencyDetailName.text = currencyName
+        binding.currencyDetailSymbol.text = currencySymbol
+
+        currencyImage?.let { image ->
+            binding.currencyDetailImage.setImageBitmap(image)
+        }
     }
 }
