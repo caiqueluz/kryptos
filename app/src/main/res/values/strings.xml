@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Kryptos</string>
+
+    <string name="currency_detail_title">Última atualização</string>
 </resources>

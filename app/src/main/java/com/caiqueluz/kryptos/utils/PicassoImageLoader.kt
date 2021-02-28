@@ -7,9 +7,9 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 class PicassoImageLoader @Inject constructor(
-    private val picasso: Picasso,
     @IODispatcher
-    private val dispatcher: CoroutineDispatcher
+    private val dispatcher: CoroutineDispatcher,
+    private val picasso: Picasso
 ) : ImageLoader {
 
     override fun loadImage(url: String) = runBlocking<Bitmap?> {

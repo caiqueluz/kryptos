@@ -20,5 +20,5 @@ object UtilsModule {
     fun provideImageLoader(
         picasso: Picasso,
         @IODispatcher dispatcher: CoroutineDispatcher
-    ): ImageLoader = PicassoImageLoader(picasso, dispatcher)
+    ): ImageLoader = PicassoImageLoader(dispatcher, picasso)
 }

@@ -7,5 +7,5 @@ class ApiServiceFactory @Inject constructor(
     private val retrofit: Retrofit
 ) {
 
-    fun <T> create(api: Class<T>): T = retrofit.create(api)
+    fun <TYPE> create(api: Class<TYPE>): TYPE = retrofit.create(api)
 }
