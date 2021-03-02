@@ -19,4 +19,4 @@ LiveData e ViewModel para a implementação do padrão MVVM<br/>
 Gson para a desserialização de objetos JSON
 
 
-A api de criptomoedas é fornecida pelo CoinMarketCap
+A api de criptomoedas é fornecida pelo CoinMarketCap (https://coinmarketcap.com/)
