@@ -5,16 +5,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.caiqueluz.kryptos.databinding.DialogCurrencyDetailBinding
-import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
+import com.caiqueluz.kryptos.databinding.DialogErrorBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class CurrencyDetailDialogFragment(
-    private val detailDialogVO: CurrencyDetailDialogVO
+class ErrorDialogFragment(
+    private val tryAgainAction: () -> Unit
 ) : BottomSheetDialogFragment() {
 
     private val binding by lazy {
-        DialogCurrencyDetailBinding.inflate(layoutInflater)
+        DialogErrorBinding.inflate(layoutInflater)
     }
 
     override fun onCreateView(
@@ -25,23 +24,18 @@ class CurrencyDetailDialogFragment(
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dialog = super.onCreateDialog(savedInstanceState)
+        dialog.setCanceledOnTouchOutside(false)
+
         dialog.setupBottomSheetBehavior()
+        setupTryAgainButtonClickListener(dialog)
 
         return dialog
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        setupLayout()
-    }
-
-    private fun setupLayout() {
-        binding.currencyDetailName.text = detailDialogVO.name
-        binding.currencyDetailSymbol.text = detailDialogVO.symbol
-
-        detailDialogVO.image?.let { image ->
-            binding.currencyDetailImage.setImageBitmap(image)
+    private fun setupTryAgainButtonClickListener(dialog: Dialog) {
+        binding.buttonTryAgain.setOnClickListener {
+            dialog.dismiss()
+            tryAgainAction.invoke()
         }
     }
 }

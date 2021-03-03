@@ -25,7 +25,6 @@ class CurrenciesViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val _currenciesListing = MutableLiveData<Int>()
-
     val currencies = _currenciesListing.switchMap { limit ->
         networkResponseLiveData(dispatcher) {
             repository

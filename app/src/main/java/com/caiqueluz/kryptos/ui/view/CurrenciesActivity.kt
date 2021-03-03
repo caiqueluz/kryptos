@@ -66,5 +66,10 @@ class CurrenciesActivity : AppCompatActivity() {
     private fun renderError(error: Throwable) {
         binding.currenciesRecyclerView.visibility = GONE
         binding.currenciesLoadingProgressbar.visibility = GONE
+
+        ErrorDialogFragment { viewModel.fetchCurrencies() }
+            .show(
+                supportFragmentManager, null
+            )
     }
 }

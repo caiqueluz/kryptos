@@ -2,4 +2,6 @@
     <string name="app_name">Kryptos</string>
 
     <string name="currency_detail_title">Última atualização</string>
+    <string name="error_message">Erro ao carregar informações.</string>
+    <string name="button_try_again">Tentar novamente</string>
 </resources>

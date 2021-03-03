@@ -1,8 +1,6 @@
 package com.caiqueluz.kryptos.network
 
-import javax.inject.Inject
-
-class AuthenticationHeaderConfig @Inject constructor(
+class AuthenticationHeaderConfig(
     val header: String,
     val value: String
 )
