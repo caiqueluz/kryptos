@@ -1,26 +1,24 @@
 package com.caiqueluz.kryptos.ui.converter
 
 import java.text.ParseException
-import java.text.SimpleDateFormat
-import java.util.*
 import javax.inject.Inject
 
-private const val TIME_ZONE_ID = "UTC"
+private const val TIME_ZONE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
 class DateConverter @Inject constructor(
-    private val formatter: SimpleDateFormat
+    private val formatFactory: DateFormatFactory
 ) {
 
-    fun convertDate(value: String, pattern: String): String? {
-        formatter.timeZone = TimeZone.getTimeZone(TIME_ZONE_ID)
+    fun convert(value: String, pattern: String): String? {
+        val timeZoneFormatter = formatFactory.create(TIME_ZONE_PATTERN)
+        val dateFormatter = formatFactory.create(pattern)
 
-        return try {
-            val date = formatter.parse(value)
-            formatter.applyPattern(pattern)
-
-            formatter.format(date)
+        val timeZoneDate = try {
+            timeZoneFormatter.parse(value)
         } catch (exception: ParseException) {
             throw IllegalArgumentException("Error when parsing date from value: $value")
         }
+
+        return dateFormatter.format(timeZoneDate)
     }
 }
