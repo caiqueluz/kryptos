@@ -53,7 +53,8 @@ class CurrencyAdapter(
                 val detailDialogVO = CurrencyDetailDialogVO(
                     image = item.image,
                     name = item.name,
-                    symbol = item.symbol
+                    symbol = item.symbol,
+                    lastUpdatedDate = item.quote.priceInUsd.lastUpdatedDate
                 )
 
                 onItemClickAction.invoke(detailDialogVO)

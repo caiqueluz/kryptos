@@ -39,6 +39,7 @@ class CurrencyDetailDialogFragment(
     private fun setupLayout() {
         binding.currencyDetailName.text = detailDialogVO.name
         binding.currencyDetailSymbol.text = detailDialogVO.symbol
+        binding.currencyDetailLastUpdatedDate.text = detailDialogVO.lastUpdatedDate
 
         detailDialogVO.image?.let { image ->
             binding.currencyDetailImage.setImageBitmap(image)
