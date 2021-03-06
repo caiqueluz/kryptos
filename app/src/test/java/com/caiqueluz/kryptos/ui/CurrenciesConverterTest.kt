@@ -4,6 +4,8 @@ import android.graphics.Bitmap
 import com.caiqueluz.kryptos.data.domain.*
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
+import com.caiqueluz.kryptos.ui.converter.DateConverter
+import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
@@ -45,7 +47,10 @@ class CurrenciesConverterTest {
     )
 
     private val spyQuoteConverter = CurrencyQuoteConverter(
-        numberFormatter = NumberFormat.getCurrencyInstance(Locale.US)
+        numberFormatter = NumberFormat.getCurrencyInstance(Locale.US),
+        dateConverter = DateConverter(
+            formatFactory = DateFormatFactory()
+        )
     )
 
     private val converter = CurrenciesConverter(
@@ -109,13 +114,26 @@ class CurrenciesConverterTest {
         assertEquals(expected, actual)
     }
 
+    @Test
+    fun whenConvertCurrenciesIsCalled_verifyResponseHasCorrectLastUpdatedDate() {
+        val expected = "08:29, em 06 de Março"
+        val actual =
+            converter.convertCurrencies(
+                fakeListingResponse,
+                fakeImagesResponse
+            ).currencies[0].quote.priceInUsd.lastUpdatedDate
+
+        assertEquals(expected, actual)
+    }
+
     private fun fakeListingDTO() = CurrenciesListingItemDTO(
         id = 5,
         name = "name",
         symbol = "symbol",
         quote = CurrencyQuoteDTO(
             priceInUsd = CurrencyUsdPriceDTO(
-                price = 1234.56
+                price = 1234.56,
+                lastUpdatedDate = "2021-03-06T20:29:02.000Z"
             )
         )
     )

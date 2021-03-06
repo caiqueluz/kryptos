@@ -32,7 +32,7 @@ class CurrenciesConverter @Inject constructor(
         val quoteDTO = listingItem.quote
         val quote = quoteConverter.convertQuote(quoteDTO)
 
-        CurrencyItemVO(
+        return@map CurrencyItemVO(
             name = listingItem.name,
             symbol = listingItem.symbol,
             image = imageLoader.loadImage(dto.imageUrl),
