@@ -1,9 +1,6 @@
 package com.caiqueluz.kryptos.di
 
-import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
-import com.caiqueluz.kryptos.ui.converter.DateConverter
-import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
+import com.caiqueluz.kryptos.ui.converter.*
 import com.caiqueluz.kryptos.utils.ImageLoader
 import dagger.Module
 import dagger.Provides
@@ -17,8 +14,13 @@ import java.util.*
 object UiModule {
 
     @Provides
-    fun provideDateFormatFactory(): DateFormatFactory =
-        DateFormatFactory()
+    fun provideTimeZoneFactory(): TimeZoneFactory =
+        TimeZoneFactory()
+
+    @Provides
+    fun provideDateFormatFactory(
+        timeZoneFactory: TimeZoneFactory
+    ): DateFormatFactory = DateFormatFactory(timeZoneFactory)
 
     @Provides
     fun provideDateConverter(

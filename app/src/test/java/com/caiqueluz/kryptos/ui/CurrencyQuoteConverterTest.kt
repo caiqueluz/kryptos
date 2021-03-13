@@ -5,6 +5,7 @@ import com.caiqueluz.kryptos.data.domain.CurrencyUsdPriceDTO
 import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
 import com.caiqueluz.kryptos.ui.converter.DateConverter
 import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
+import com.caiqueluz.kryptos.ui.converter.TimeZoneFactory
 import com.nhaarman.mockitokotlin2.eq
 import com.nhaarman.mockitokotlin2.spy
 import com.nhaarman.mockitokotlin2.verify
@@ -22,10 +23,12 @@ class CurrencyQuoteConverterTest {
         NumberFormat.getCurrencyInstance(Locale.US)
     )
 
+    private val fakeTimeZoneFactory = TimeZoneFactory()
+
     private val converter = CurrencyQuoteConverter(
         numberFormatter = spyNumberFormatter,
         dateConverter = DateConverter(
-            formatFactory = DateFormatFactory()
+            formatFactory = DateFormatFactory(fakeTimeZoneFactory)
         )
     )
 

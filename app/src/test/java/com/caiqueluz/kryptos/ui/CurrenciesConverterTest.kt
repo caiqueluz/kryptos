@@ -2,10 +2,7 @@ package com.caiqueluz.kryptos.ui
 
 import android.graphics.Bitmap
 import com.caiqueluz.kryptos.data.domain.*
-import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
-import com.caiqueluz.kryptos.ui.converter.DateConverter
-import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
+import com.caiqueluz.kryptos.ui.converter.*
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
@@ -46,16 +43,18 @@ class CurrenciesConverterTest {
         )
     )
 
-    private val spyQuoteConverter = CurrencyQuoteConverter(
+    private val fakeTimeZoneFactory = TimeZoneFactory()
+
+    private val fakeQuoteConverter = CurrencyQuoteConverter(
         numberFormatter = NumberFormat.getCurrencyInstance(Locale.US),
         dateConverter = DateConverter(
-            formatFactory = DateFormatFactory()
+            formatFactory = DateFormatFactory(fakeTimeZoneFactory)
         )
     )
 
     private val converter = CurrenciesConverter(
         imageLoader = mockImageLoader,
-        quoteConverter = spyQuoteConverter
+        quoteConverter = fakeQuoteConverter
     )
 
     @Test
