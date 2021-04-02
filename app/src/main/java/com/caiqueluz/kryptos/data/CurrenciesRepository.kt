@@ -12,6 +12,6 @@ class CurrenciesRepository @Inject constructor(
     suspend fun fetchCurrenciesListing(limit: Int): Response<CurrenciesListingDTO> =
         api.fetchCurrenciesListing(limit)
 
-    suspend fun fetchCurrenciesImages(ids: String): Response<CurrenciesImagesDTO> =
-        api.fetchCurrenciesImages(ids)
+    suspend fun fetchCurrenciesWithImages(ids: String): Response<CurrenciesImagesDTO> =
+        api.fetchCurrenciesWithImages(ids)
 }

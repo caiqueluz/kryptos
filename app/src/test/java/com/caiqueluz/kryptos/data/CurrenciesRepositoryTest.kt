@@ -14,10 +14,7 @@ import org.junit.runners.JUnit4
 class CurrenciesRepositoryTest {
 
     private val mockApi = mock<CurrenciesApi>()
-
-    private val repository = CurrenciesRepository(
-        api = mockApi
-    )
+    private val repository = CurrenciesRepository(mockApi)
 
     @Test
     fun whenFetchCurrenciesListingIsCalled_verifyApiIsCalled() = runBlockingTest {
@@ -27,9 +24,9 @@ class CurrenciesRepositoryTest {
     }
 
     @Test
-    fun whenFetchCurrenciesImagesIsCalled_verifyApiIsCalled() = runBlockingTest {
-        repository.fetchCurrenciesImages("1,2,3")
+    fun whenFetchCurrenciesWithImagesIsCalled_verifyApiIsCalled() = runBlockingTest {
+        repository.fetchCurrenciesWithImages("1,2,3")
 
-        verify(mockApi).fetchCurrenciesImages(eq("1,2,3"))
+        verify(mockApi).fetchCurrenciesWithImages(eq("1,2,3"))
     }
 }

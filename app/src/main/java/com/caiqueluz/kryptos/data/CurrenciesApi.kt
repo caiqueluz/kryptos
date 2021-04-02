@@ -14,7 +14,7 @@ interface CurrenciesApi {
     ): Response<CurrenciesListingDTO>
 
     @GET("/v1/cryptocurrency/info")
-    suspend fun fetchCurrenciesImages(
+    suspend fun fetchCurrenciesWithImages(
         @Query("id") ids: String
     ): Response<CurrenciesImagesDTO>
 }

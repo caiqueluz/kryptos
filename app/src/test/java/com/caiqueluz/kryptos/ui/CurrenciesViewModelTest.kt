@@ -1,9 +1,9 @@
 package com.caiqueluz.kryptos.ui
 
 import com.caiqueluz.kryptos.*
+import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.data.domain.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.domain.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
@@ -37,20 +37,20 @@ class CurrenciesViewModelTest : CoroutinesTest() {
     @Test
     fun whenFetchCurrenciesIsCalled_verifyLoadingResponse() = runBlockingTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
-        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(imagesResponse)
+        whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
         val observer = networkResponseObserver<CurrenciesVO>()
         viewModel.currencies.observeForever(observer)
 
         viewModel.fetchCurrencies()
 
-        verifyLoadingResponse(observer, 2)
+        verifyLoadingResponse(observer)
     }
 
     @Test
     fun whenFetchCurrenciesIsCalled_verifyContentResponse() = runBlockingTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
-        whenever(mockRepository.fetchCurrenciesImages(any())).thenReturn(imagesResponse)
+        whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
         val observer = networkResponseObserver<CurrenciesVO>()
         viewModel.currencies.observeForever(observer)

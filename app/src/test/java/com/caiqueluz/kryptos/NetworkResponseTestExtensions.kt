@@ -12,33 +12,25 @@ import retrofit2.Response
 inline fun <reified TYPE> successResponse(): Response<TYPE> =
     Response.success(mock())
 
-fun <TYPE> errorResponse(): Response<TYPE> =
-    Response.error(404, mock())
+fun <TYPE> errorResponse(): Response<TYPE> = Response.error(404, mock())
 
 fun <TYPE> networkResponseObserver(): Observer<NetworkResponse<TYPE>> = mock()
 
-fun <TYPE> verifyLoadingResponse(
-    observer: Observer<NetworkResponse<TYPE>>,
-    times: Int
-) {
+fun <TYPE> verifyLoadingResponse(observer: Observer<NetworkResponse<TYPE>>) {
     val captor = argumentCaptor<NetworkResponse<TYPE>>()
-    verify(observer, times(times)).onChanged(captor.capture())
+    verify(observer, times(2)).onChanged(captor.capture())
 
     assertTrue(captor.firstValue is NetworkResponse.Loading)
 }
 
-fun <TYPE> verifyContentResponse(
-    observer: Observer<NetworkResponse<TYPE>>
-) {
+fun <TYPE> verifyContentResponse(observer: Observer<NetworkResponse<TYPE>>) {
     val captor = argumentCaptor<NetworkResponse<TYPE>>()
     verify(observer, times(2)).onChanged(captor.capture())
 
     assertTrue(captor.lastValue is NetworkResponse.Content)
 }
 
-fun <TYPE> verifyErrorResponse(
-    observer: Observer<NetworkResponse<TYPE>>
-) {
+fun <TYPE> verifyErrorResponse(observer: Observer<NetworkResponse<TYPE>>) {
     val captor = argumentCaptor<NetworkResponse<TYPE>>()
     verify(observer, times(2)).onChanged(captor.capture())
 

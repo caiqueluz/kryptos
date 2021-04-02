@@ -24,8 +24,8 @@ class CurrenciesViewModel @Inject constructor(
     private val converter: CurrenciesConverter
 ) : ViewModel() {
 
-    private val _currenciesListing = MutableLiveData<Int>()
-    val currencies = _currenciesListing.switchMap { limit ->
+    private val _currencies = MutableLiveData<Int>()
+    val currencies = _currencies.switchMap { limit ->
         networkResponseLiveData(dispatcher) {
             repository
                 .fetchCurrenciesListing(limit)
@@ -33,7 +33,7 @@ class CurrenciesViewModel @Inject constructor(
         }.combine(dispatcher) { listing ->
             val ids = converter.convertIds(listing)
 
-            repository.fetchCurrenciesImages(ids)
+            repository.fetchCurrenciesWithImages(ids)
                 .mapResponse { images ->
                     converter.convertCurrencies(listing, images)
                 }
@@ -41,6 +41,6 @@ class CurrenciesViewModel @Inject constructor(
     }
 
     fun fetchCurrencies() {
-        _currenciesListing.postValue(CURRENCIES_LISTING_LIMIT)
+        _currencies.postValue(CURRENCIES_LISTING_LIMIT)
     }
 }
