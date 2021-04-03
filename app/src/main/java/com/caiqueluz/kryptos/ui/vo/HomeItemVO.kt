@@ -1,4 +1,8 @@
 package com.caiqueluz.kryptos.ui.vo
 
-class HomeItemVO {
-}
+import androidx.fragment.app.Fragment
+
+class HomeItemVO(
+    val tab: String,
+    val fragment: Fragment
+)

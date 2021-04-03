@@ -1,7 +1,7 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.data.domain.CurrencyQuoteDTO
-import com.caiqueluz.kryptos.data.domain.CurrencyUsdPriceDTO
+import com.caiqueluz.kryptos.data.dto.CurrencyQuoteDTO
+import com.caiqueluz.kryptos.data.dto.CurrencyUsdPriceDTO
 import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
 import com.caiqueluz.kryptos.ui.converter.DateConverter
 import com.caiqueluz.kryptos.ui.converter.DateFormatFactory

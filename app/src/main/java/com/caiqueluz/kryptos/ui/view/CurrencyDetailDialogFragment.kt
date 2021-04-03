@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caiqueluz.kryptos.databinding.DialogCurrencyDetailBinding
-import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class CurrencyDetailDialogFragment(
@@ -30,8 +30,8 @@ class CurrencyDetailDialogFragment(
         return dialog
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         setupLayout()
     }

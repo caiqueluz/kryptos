@@ -4,8 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.caiqueluz.kryptos.databinding.CurrencyListItemBinding
-import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
-import com.caiqueluz.kryptos.ui.domain.CurrencyItemVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 
 class CurrencyAdapter(
     private val currencies: List<CurrencyItemVO>,

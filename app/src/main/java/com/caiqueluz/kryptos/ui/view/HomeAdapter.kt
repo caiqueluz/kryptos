@@ -1,16 +1,16 @@
 package com.caiqueluz.kryptos.ui.view
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.caiqueluz.kryptos.ui.vo.HomeItemVO
 
-class HomePagerAdapter(
-    containerFragment: Fragment,
-    private val items: List<HomeItemVO>
-) : FragmentStateAdapter(containerFragment) {
+class HomeAdapter(
+    containerActivity: FragmentActivity,
+    private val items: List<Fragment>
+) : FragmentStateAdapter(containerActivity) {
 
     override fun createFragment(position: Int): Fragment =
-        items[position].fragment
+        items[position]
 
     override fun getItemCount(): Int = items.size
 }

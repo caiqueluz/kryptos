@@ -1,7 +1,7 @@
 package com.caiqueluz.kryptos.data
 
-import com.caiqueluz.kryptos.data.domain.CurrenciesImagesDTO
-import com.caiqueluz.kryptos.data.domain.CurrenciesListingDTO
+import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
+import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
 import retrofit2.Response
 import javax.inject.Inject
 

@@ -1,11 +1,11 @@
 package com.caiqueluz.kryptos.ui.converter
 
-import com.caiqueluz.kryptos.data.domain.CurrenciesImagesDTO
-import com.caiqueluz.kryptos.data.domain.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.domain.CurrenciesListingItemDTO
-import com.caiqueluz.kryptos.data.domain.CurrencyImageItemDTO
-import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
-import com.caiqueluz.kryptos.ui.domain.CurrencyItemVO
+import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
+import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
+import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
+import com.caiqueluz.kryptos.data.dto.CurrencyImageItemDTO
+import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 import com.caiqueluz.kryptos.utils.ImageLoader
 import javax.inject.Inject
 

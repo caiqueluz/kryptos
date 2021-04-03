@@ -1,9 +1,9 @@
 package com.caiqueluz.kryptos.ui.converter
 
-import com.caiqueluz.kryptos.data.domain.CurrencyQuoteDTO
-import com.caiqueluz.kryptos.data.domain.CurrencyUsdPriceDTO
-import com.caiqueluz.kryptos.ui.domain.CurrencyQuoteVO
-import com.caiqueluz.kryptos.ui.domain.CurrencyUsdPriceVO
+import com.caiqueluz.kryptos.data.dto.CurrencyQuoteDTO
+import com.caiqueluz.kryptos.data.dto.CurrencyUsdPriceDTO
+import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyUsdPriceVO
 import java.text.NumberFormat
 import javax.inject.Inject
 

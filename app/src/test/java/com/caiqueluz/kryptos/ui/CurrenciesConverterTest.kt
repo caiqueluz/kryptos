@@ -1,7 +1,7 @@
 package com.caiqueluz.kryptos.ui
 
 import android.graphics.Bitmap
-import com.caiqueluz.kryptos.data.domain.*
+import com.caiqueluz.kryptos.data.dto.*
 import com.caiqueluz.kryptos.ui.converter.*
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.nhaarman.mockitokotlin2.any

@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.ui.domain
+package com.caiqueluz.kryptos.ui.vo
 
 import android.graphics.Bitmap
 

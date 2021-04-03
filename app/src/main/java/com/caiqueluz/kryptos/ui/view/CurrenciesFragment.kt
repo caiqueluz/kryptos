@@ -8,9 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.caiqueluz.kryptos.databinding.FragmentCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse
-import com.caiqueluz.kryptos.ui.domain.CurrenciesVO
-import com.caiqueluz.kryptos.ui.domain.CurrencyDetailDialogVO
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
+import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
+import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -65,7 +65,7 @@ class CurrenciesFragment : Fragment() {
     ) {
         CurrencyDetailDialogFragment(detailDialogVO)
             .show(
-                childFragmentManager, null
+                parentFragmentManager, null
             )
     }
 
@@ -75,7 +75,7 @@ class CurrenciesFragment : Fragment() {
 
         ErrorDialogFragment { viewModel.fetchCurrencies() }
             .show(
-                childFragmentManager, null
+                parentFragmentManager, null
             )
     }
 }
