@@ -28,18 +28,21 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.items.observe(this) { items ->
-            val tabs = items.map { it.tab }
             val fragments = items.map { it.fragment }
+            val tabs = items.map { it.tab }
 
-            setupLayout(tabs, fragments)
+            setupAdapter(fragments)
+            setupTabs(tabs)
         }
     }
 
-    private fun setupLayout(tabs: List<String>, fragments: List<Fragment>) {
-        with(binding) {
-            val adapter = HomeAdapter(this@HomeActivity, fragments)
-            homeViewPager.adapter = adapter
+    private fun setupAdapter(fragments: List<Fragment>) {
+        val adapter = HomeAdapter(this@HomeActivity, fragments)
+        binding.homeViewPager.adapter = adapter
+    }
 
+    private fun setupTabs(tabs: List<String>) {
+        with(binding) {
             TabLayoutMediator(homeTabContainer, homeViewPager) { tab, position ->
                 tab.text = tabs[position]
             }.attach()

@@ -12,13 +12,13 @@ class HomeItemFactory @Inject constructor(
 
     fun create(): List<HomeItemVO> = listOf(
         HomeItemVO(
-            resources.getString(R.string.home_tab_currencies), CurrenciesFragment()
+            resources.getString(R.string.screen_currencies_title), CurrenciesFragment()
         ),
         HomeItemVO(
-            resources.getString(R.string.home_tab_news), CurrenciesFragment()
+            resources.getString(R.string.screen_news_title), CurrenciesFragment()
         ),
         HomeItemVO(
-            resources.getString(R.string.home_settings), CurrenciesFragment()
+            resources.getString(R.string.screen_settings_title), CurrenciesFragment()
         )
     )
 }

@@ -5,7 +5,7 @@
     <string name="error_message">Erro ao carregar informações.</string>
     <string name="button_try_again">Tentar novamente</string>
 
-    <string name="home_tab_currencies">Criptomoedas</string>
-    <string name="home_tab_news">Notícias</string>
-    <string name="home_settings">Configurações</string>
+    <string name="screen_currencies_title">Criptomoedas</string>
+    <string name="screen_news_title">Notícias</string>
+    <string name="screen_settings_title">Configurações</string>
 </resources>
