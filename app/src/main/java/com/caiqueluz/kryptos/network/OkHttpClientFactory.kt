@@ -1,6 +1,5 @@
 package com.caiqueluz.kryptos.network
 
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
@@ -10,7 +9,7 @@ private const val READ_TIMEOUT = 30L
 
 class OkHttpClientFactory @Inject constructor(
     private val okHttpBuilder: OkHttpClient.Builder,
-    private val authenticationInterceptor: Interceptor,
+    private val authenticationInterceptor: NetworkAuthenticationInterceptor,
     private val httpLoggingInterceptor: HttpLoggingInterceptor
 ) {
 
