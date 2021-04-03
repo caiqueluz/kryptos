@@ -16,7 +16,7 @@ import org.junit.runners.JUnit4
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
-class CurrenciesViewModelTest : CoroutinesTest() {
+class CurrenciesViewModelTest : ConcurrentTest() {
 
     private val mockRepository = mock<CurrenciesRepository>()
 

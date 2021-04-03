@@ -11,7 +11,7 @@ import org.junit.Before
 import org.junit.Rule
 
 @ExperimentalCoroutinesApi
-open class CoroutinesTest {
+open class ConcurrentTest {
 
     @get:Rule
     val rule = InstantTaskExecutorRule()
