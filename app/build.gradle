@@ -1,22 +1,25 @@
-plugins {
-    id 'com.android.application'
-    id 'kotlin-android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
-}
+import com.caiqueluz.buildsrc.AppConfig
+import com.caiqueluz.buildsrc.Dependencies
+import com.caiqueluz.buildsrc.Plugins
+import com.caiqueluz.buildsrc.Versions
+
+apply plugin: Plugins.ANDROID_APPLICATION
+apply plugin: Plugins.KOTLIN_ANDROID
+apply plugin: Plugins.KAPT
+apply plugin: Plugins.HILT
 
 android {
-    compileSdkVersion AppConfig.compileSdk
-    buildToolsVersion AppConfig.buildTools
+    compileSdkVersion AppConfig.COMPILE_SDK
+    buildToolsVersion AppConfig.BUILD_TOOLS
 
     defaultConfig {
-        applicationId AppConfig.applicationId
-        minSdkVersion AppConfig.minSdk
-        targetSdkVersion AppConfig.targetSdk
-        versionCode AppConfig.versionCode
-        versionName AppConfig.versionName
+        applicationId AppConfig.APPLICATION_ID
+        minSdkVersion AppConfig.MIN_SDK
+        targetSdkVersion AppConfig.TARGET_SDK
+        versionCode AppConfig.VERSION_CODE
+        versionName AppConfig.VERSION_NAME
 
-        testInstrumentationRunner AppConfig.testInstrumentationRunner
+        testInstrumentationRunner AppConfig.TEST_INSTRUMENTATION_RUNNER
     }
 
     buildTypes {
@@ -35,7 +38,7 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = Versions.jvmTarget
+        jvmTarget = Versions.Generic.JVM_TARGET
     }
     buildFeatures {
         viewBinding true
@@ -48,37 +51,37 @@ android {
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:${Versions.kotlin}"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.arch.core:core-common:2.1.0'
-    implementation 'androidx.arch.core:core-runtime:2.1.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'com.google.code.gson:gson:2.8.6'
-    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
-    implementation "com.google.dagger:hilt-android:${Versions.hilt}"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.fragment:fragment-ktx:1.3.2'
-    implementation 'com.squareup.picasso:picasso:2.71828'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation "androidx.viewpager2:viewpager2:1.0.0"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    androidTestImplementation 'androidx.test:runner:1.3.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'org.mockito:mockito-core:2.8.9'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.2'
-    testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+    implementation Dependencies.Generic.kotlinStdLib
 
-    kapt "com.google.dagger:hilt-android-compiler:${Versions.hilt}"
+    implementation Dependencies.Library.Android.coreKtx
+    implementation Dependencies.Library.Android.appCompat
+    implementation Dependencies.Library.Android.material
+    implementation Dependencies.Library.Android.constraintLayout
+    implementation Dependencies.Library.Android.archCoreCommon
+    implementation Dependencies.Library.Android.archCoreRuntime
+    implementation Dependencies.Library.Android.hilt
+    implementation Dependencies.Library.Android.fragmentKtx
+    implementation Dependencies.Library.Android.viewPager2
+    implementation Dependencies.Library.Android.lifecycleViewModel
+    implementation Dependencies.Library.Android.lifecycleLiveData
+    implementation Dependencies.Library.Android.lifecycleRuntime
+
+    implementation Dependencies.Library.retrofit
+    implementation Dependencies.Library.retrofitConverterGson
+    implementation Dependencies.Library.gson
+    implementation Dependencies.Library.okHttp
+    implementation Dependencies.Library.okHttpLoggingInterceptor
+    implementation Dependencies.Library.picasso
+
+    testImplementation Dependencies.Test.junit
+    testImplementation Dependencies.Test.mockitoCore
+    testImplementation Dependencies.Test.mockitoKotlin
+    testImplementation Dependencies.Test.coroutinesTest
+    testImplementation Dependencies.Test.archCoreTesting
+
+    androidTestImplementation Dependencies.Test.extJUnit
+    androidTestImplementation Dependencies.Test.espressoCore
+    androidTestImplementation Dependencies.Test.androidTestRunner
+
+    kapt Dependencies.Generic.hiltAndroidCompiler
 }
