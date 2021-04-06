@@ -4,63 +4,63 @@ object Dependencies {
 
     object Generic {
 
-        val kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Generic.KOTLIN}"
-        val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Versions.Generic.HILT}"
+        const val KOTLIN_STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Generic.KOTLIN}"
+        const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.Generic.HILT}"
 
-        val buildGradle = "com.android.tools.build:gradle:${Versions.Generic.BUILD_GRADLE}"
-        val kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Generic.KOTLIN}"
-        val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.Generic.HILT}"
+        const val BUILD_GRADLE = "com.android.tools.build:gradle:${Versions.Generic.BUILD_GRADLE}"
+        const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Generic.KOTLIN}"
+        const val HILT_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:${Versions.Generic.HILT}"
     }
 
     object Library {
 
         object Android {
 
-            val lifecycleViewModel =
+            const val LIFECYCLE_VIEW_MODEL =
                 "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.Library.Android.LIFECYCLE}"
-            val lifecycleLiveData =
+            const val LIFECYCLE_LIVE_DATA =
                 "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.Library.Android.LIFECYCLE}"
-            val lifecycleRuntime =
+            const val LIFECYCLE_RUNTIME =
                 "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.Library.Android.LIFECYCLE}"
 
-            val coreKtx = "androidx.core:core-ktx:${Versions.Library.Android.KTX}"
-            val fragmentKtx = "androidx.fragment:fragment-ktx:${Versions.Library.Android.KTX}"
+            const val CORE_KTX = "androidx.core:core-ktx:${Versions.Library.Android.KTX}"
+            const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${Versions.Library.Android.KTX}"
 
-            val archCoreCommon = "androidx.arch.core:core-common:${Versions.Library.Android.ARCH}"
-            val archCoreRuntime = "androidx.arch.core:core-runtime:${Versions.Library.Android.ARCH}"
+            const val ARCH_CORE_COMMON = "androidx.arch.core:core-common:${Versions.Library.Android.ARCH}"
+            const val ARCH_CORE_RUNTIME = "androidx.arch.core:core-runtime:${Versions.Library.Android.ARCH}"
 
-            val hilt = "com.google.dagger:hilt-android:${Versions.Generic.HILT}"
-            val material =
+            const val HILT = "com.google.dagger:hilt-android:${Versions.Generic.HILT}"
+            const val MATERIAL =
                 "com.google.android.material:material:${Versions.Library.Android.MATERIAL}"
-            val appCompat = "androidx.appcompat:appcompat:${Versions.Library.Android.APP_COMPAT}"
-            val constraintLayout =
+            const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Library.Android.APP_COMPAT}"
+            const val CONSTRAINT_LAYOUT =
                 "androidx.constraintlayout:constraintlayout:${Versions.Library.Android.CONSTRAINT_LAYOUT}"
-            val viewPager2 = "androidx.viewpager2:viewpager2:${Versions.Library.Android.VIEW_PAGER_2}"
+            const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.Library.Android.VIEW_PAGER_2}"
         }
 
-        val okHttp = "com.squareup.okhttp3:okhttp:${Versions.Library.OK_HTTP}"
-        val okHttpLoggingInterceptor =
+        const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Library.OK_HTTP}"
+        const val OK_HTTP_LOGGING_INTERCEPTOR =
             "com.squareup.okhttp3:logging-interceptor:${Versions.Library.OK_HTTP}"
-        val gson = "com.google.code.gson:gson:${Versions.Library.GSON}"
-        val retrofit = "com.squareup.retrofit2:retrofit:${Versions.Library.RETROFIT}"
-        val retrofitConverterGson =
+        const val GSON = "com.google.code.gson:gson:${Versions.Library.GSON}"
+        const val RETROFIT = "com.squareup.retrofit2:retrofit:${Versions.Library.RETROFIT}"
+        const val RETROFIT_CONVERTER_GSON =
             "com.squareup.retrofit2:converter-gson:${Versions.Library.RETROFIT}"
-        val picasso = "com.squareup.picasso:picasso:${Versions.Library.PICASSO}"
+        const val PICASSO = "com.squareup.picasso:picasso:${Versions.Library.PICASSO}"
     }
 
     object Test {
 
-        val junit = "junit:junit:${Versions.Test.JUNIT}"
-        val extJUnit = "androidx.test.ext:junit:${Versions.Test.EXT_JUNIT}"
-        val mockitoCore = "org.mockito:mockito-core:${Versions.Test.MOCKITO_CORE}"
-        val mockitoKotlin =
+        const val JUNIT = "junit:junit:${Versions.Test.JUNIT}"
+        const val EXT_JUNIT = "androidx.test.ext:junit:${Versions.Test.EXT_JUNIT}"
+        const val MOCKITO_CORE = "org.mockito:mockito-core:${Versions.Test.MOCKITO_CORE}"
+        const val MOCKITO_KOTLIN =
             "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.Test.MOCKITO_KOTLIN}"
 
-        val archCoreTesting = "androidx.arch.core:core-testing:${Versions.Library.Android.ARCH}"
-        val androidTestRunner = "androidx.test:runner:${Versions.Test.ANDROID_TEST_RUNNER}"
+        const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Library.Android.ARCH}"
+        const val ANDROID_TEST_RUNNER = "androidx.test:runner:${Versions.Test.ANDROID_TEST_RUNNER}"
 
-        val coroutinesTest =
+        const val COROUTINES_TEST =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.COROUTINES_TEST}"
-        val espressoCore = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
+        const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
     }
 }

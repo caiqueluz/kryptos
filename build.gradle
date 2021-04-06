@@ -8,9 +8,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath Dependencies.Generic.buildGradle
-        classpath Dependencies.Generic.kotlinGradlePlugin
-        classpath Dependencies.Generic.hiltGradlePlugin
+        classpath Dependencies.Generic.BUILD_GRADLE
+        classpath Dependencies.Generic.KOTLIN_GRADLE_PLUGIN
+        classpath Dependencies.Generic.HILT_GRADLE_PLUGIN
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files

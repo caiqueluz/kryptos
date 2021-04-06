@@ -51,37 +51,37 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.Generic.kotlinStdLib
+    implementation Dependencies.Generic.KOTLIN_STD_LIB
 
-    implementation Dependencies.Library.Android.coreKtx
-    implementation Dependencies.Library.Android.appCompat
-    implementation Dependencies.Library.Android.material
-    implementation Dependencies.Library.Android.constraintLayout
-    implementation Dependencies.Library.Android.archCoreCommon
-    implementation Dependencies.Library.Android.archCoreRuntime
-    implementation Dependencies.Library.Android.hilt
-    implementation Dependencies.Library.Android.fragmentKtx
-    implementation Dependencies.Library.Android.viewPager2
-    implementation Dependencies.Library.Android.lifecycleViewModel
-    implementation Dependencies.Library.Android.lifecycleLiveData
-    implementation Dependencies.Library.Android.lifecycleRuntime
+    implementation Dependencies.Library.Android.CORE_KTX
+    implementation Dependencies.Library.Android.APP_COMPAT
+    implementation Dependencies.Library.Android.MATERIAL
+    implementation Dependencies.Library.Android.CONSTRAINT_LAYOUT
+    implementation Dependencies.Library.Android.ARCH_CORE_COMMON
+    implementation Dependencies.Library.Android.ARCH_CORE_RUNTIME
+    implementation Dependencies.Library.Android.HILT
+    implementation Dependencies.Library.Android.FRAGMENT_KTX
+    implementation Dependencies.Library.Android.VIEW_PAGER_2
+    implementation Dependencies.Library.Android.LIFECYCLE_VIEW_MODEL
+    implementation Dependencies.Library.Android.LIFECYCLE_LIVE_DATA
+    implementation Dependencies.Library.Android.LIFECYCLE_RUNTIME
 
-    implementation Dependencies.Library.retrofit
-    implementation Dependencies.Library.retrofitConverterGson
-    implementation Dependencies.Library.gson
-    implementation Dependencies.Library.okHttp
-    implementation Dependencies.Library.okHttpLoggingInterceptor
-    implementation Dependencies.Library.picasso
+    implementation Dependencies.Library.RETROFIT
+    implementation Dependencies.Library.RETROFIT_CONVERTER_GSON
+    implementation Dependencies.Library.GSON
+    implementation Dependencies.Library.OK_HTTP
+    implementation Dependencies.Library.OK_HTTP_LOGGING_INTERCEPTOR
+    implementation Dependencies.Library.PICASSO
 
-    testImplementation Dependencies.Test.junit
-    testImplementation Dependencies.Test.mockitoCore
-    testImplementation Dependencies.Test.mockitoKotlin
-    testImplementation Dependencies.Test.coroutinesTest
-    testImplementation Dependencies.Test.archCoreTesting
+    testImplementation Dependencies.Test.JUNIT
+    testImplementation Dependencies.Test.MOCKITO_CORE
+    testImplementation Dependencies.Test.MOCKITO_KOTLIN
+    testImplementation Dependencies.Test.COROUTINES_TEST
+    testImplementation Dependencies.Test.ARCH_CORE_TESTING
 
-    androidTestImplementation Dependencies.Test.extJUnit
-    androidTestImplementation Dependencies.Test.espressoCore
-    androidTestImplementation Dependencies.Test.androidTestRunner
+    androidTestImplementation Dependencies.Test.EXT_JUNIT
+    androidTestImplementation Dependencies.Test.ESPRESSO_CORE
+    androidTestImplementation Dependencies.Test.ANDROID_TEST_RUNNER
 
-    kapt Dependencies.Generic.hiltAndroidCompiler
+    kapt Dependencies.Generic.HILT_ANDROID_COMPILER
 }
