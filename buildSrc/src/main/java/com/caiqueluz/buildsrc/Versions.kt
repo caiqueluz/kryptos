@@ -41,5 +41,6 @@ object Versions {
         const val MOCKITO_KOTLIN = "2.2.0"
         const val COROUTINES_TEST = "1.4.2"
         const val ESPRESSO_CORE = "3.3.0"
+        const val ROBOLECTRIC = "4.4"
     }
 }

@@ -45,6 +45,7 @@ android {
     }
     testOptions {
         unitTests {
+            includeAndroidResources = true
             returnDefaultValues = true
         }
     }
@@ -78,6 +79,7 @@ dependencies {
     testImplementation Dependencies.Test.MOCKITO_KOTLIN
     testImplementation Dependencies.Test.COROUTINES_TEST
     testImplementation Dependencies.Test.ARCH_CORE_TESTING
+    testImplementation Dependencies.Test.ROBOLECTRIC
 
     androidTestImplementation Dependencies.Test.EXT_JUNIT
     androidTestImplementation Dependencies.Test.ESPRESSO_CORE
