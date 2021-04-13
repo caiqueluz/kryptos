@@ -1,18 +1,14 @@
 package com.caiqueluz.kryptos.di
 
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object ThreadHandlingModule {
+const val IO_DISPATCHER = "IO_DISPATCHER"
 
-    @IODispatcher
-    @Provides
-    fun provideIODispatcher(): CoroutineDispatcher =
+val threadHandlingModule = module {
+    single(named(IO_DISPATCHER)) {
         Dispatchers.IO
+    }
 }

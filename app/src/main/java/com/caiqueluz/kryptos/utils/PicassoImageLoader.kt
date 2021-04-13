@@ -1,13 +1,10 @@
 package com.caiqueluz.kryptos.utils
 
 import android.graphics.Bitmap
-import com.caiqueluz.kryptos.di.IODispatcher
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.*
-import javax.inject.Inject
 
-class PicassoImageLoader @Inject constructor(
-    @IODispatcher
+class PicassoImageLoader(
     private val dispatcher: CoroutineDispatcher,
     private val picasso: Picasso
 ) : ImageLoader {

@@ -4,9 +4,8 @@ import android.content.res.Resources
 import com.caiqueluz.kryptos.R
 import com.caiqueluz.kryptos.ui.view.CurrenciesFragment
 import com.caiqueluz.kryptos.ui.vo.HomeItemVO
-import javax.inject.Inject
 
-class HomeItemFactory @Inject constructor(
+class HomeItemFactory(
     private val resources: Resources
 ) {
 

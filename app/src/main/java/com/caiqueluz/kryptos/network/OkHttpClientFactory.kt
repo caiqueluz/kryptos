@@ -3,11 +3,10 @@ package com.caiqueluz.kryptos.network
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
-import javax.inject.Inject
 
 private const val READ_TIMEOUT = 30L
 
-class OkHttpClientFactory @Inject constructor(
+class OkHttpClientFactory(
     private val okHttpBuilder: OkHttpClient.Builder,
     private val authenticationInterceptor: NetworkAuthenticationInterceptor,
     private val httpLoggingInterceptor: HttpLoggingInterceptor

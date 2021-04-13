@@ -1,22 +1,20 @@
 package com.caiqueluz.kryptos.ui.view
 
 import android.os.Bundle
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.caiqueluz.kryptos.databinding.ActivityHomeBinding
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import com.google.android.material.tabs.TabLayoutMediator
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class HomeActivity : AppCompatActivity() {
 
     private val binding by lazy {
         ActivityHomeBinding.inflate(layoutInflater)
     }
 
-    private val viewModel by viewModels<HomeViewModel>()
+    private val viewModel by inject<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

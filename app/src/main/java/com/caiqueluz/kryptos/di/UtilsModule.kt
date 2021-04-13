@@ -3,22 +3,15 @@ package com.caiqueluz.kryptos.di
 import com.caiqueluz.kryptos.utils.ImageLoader
 import com.caiqueluz.kryptos.utils.PicassoImageLoader
 import com.squareup.picasso.Picasso
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
-import kotlinx.coroutines.CoroutineDispatcher
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 
-@Module
-@InstallIn(SingletonComponent::class)
-object UtilsModule {
+val utilsModule = module {
+    single {
+        Picasso.get()
+    }
 
-    @Provides
-    fun providePicassoInstance(): Picasso = Picasso.get()
-
-    @Provides
-    fun provideImageLoader(
-        picasso: Picasso,
-        @IODispatcher dispatcher: CoroutineDispatcher
-    ): ImageLoader = PicassoImageLoader(dispatcher, picasso)
+    single<ImageLoader> {
+        PicassoImageLoader(get(qualifier = named(IO_DISPATCHER)), picasso = get())
+    }
 }

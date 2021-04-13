@@ -5,22 +5,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.caiqueluz.kryptos.databinding.FragmentCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
-import dagger.hilt.android.AndroidEntryPoint
+import org.koin.android.ext.android.inject
 
-@AndroidEntryPoint
 class CurrenciesFragment : Fragment() {
 
     private val binding by lazy {
         FragmentCurrenciesBinding.inflate(layoutInflater)
     }
 
-    private val viewModel by viewModels<CurrenciesViewModel>()
+    private val viewModel by inject<CurrenciesViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

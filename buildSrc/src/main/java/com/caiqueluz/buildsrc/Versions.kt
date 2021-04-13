@@ -5,7 +5,6 @@ object Versions {
     object Generic {
 
         const val KOTLIN = "1.4.30"
-        const val HILT = "2.31.2-alpha"
         const val BUILD_GRADLE = "4.1.2"
         const val JVM_TARGET = "1.8"
     }
@@ -24,6 +23,7 @@ object Versions {
             const val VIEW_PAGER_2 = "1.0.0"
         }
 
+        const val KOIN = "2.2.2"
         const val OK_HTTP = "4.9.0"
         const val GSON = "2.8.6"
         const val RETROFIT = "2.9.0"

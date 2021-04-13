@@ -7,9 +7,8 @@ import com.caiqueluz.kryptos.data.dto.CurrencyImageItemDTO
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 import com.caiqueluz.kryptos.utils.ImageLoader
-import javax.inject.Inject
 
-class CurrenciesConverter @Inject constructor(
+class CurrenciesConverter(
     private val imageLoader: ImageLoader,
     private val quoteConverter: CurrencyQuoteConverter
 ) {

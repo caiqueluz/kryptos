@@ -2,12 +2,11 @@ package com.caiqueluz.kryptos.ui.converter
 
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.inject.Inject
 
 private const val LOCALE_LANGUAGE = "pt"
 private const val LOCALE_COUNTRY = "br"
 
-class DateFormatFactory @Inject constructor(
+class DateFormatFactory(
     private val timeZoneFactory: TimeZoneFactory
 ) {
 

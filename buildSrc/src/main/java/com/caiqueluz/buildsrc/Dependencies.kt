@@ -5,11 +5,8 @@ object Dependencies {
     object Generic {
 
         const val KOTLIN_STD_LIB = "org.jetbrains.kotlin:kotlin-stdlib:${Versions.Generic.KOTLIN}"
-        const val HILT_ANDROID_COMPILER = "com.google.dagger:hilt-android-compiler:${Versions.Generic.HILT}"
-
         const val BUILD_GRADLE = "com.android.tools.build:gradle:${Versions.Generic.BUILD_GRADLE}"
         const val KOTLIN_GRADLE_PLUGIN = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.Generic.KOTLIN}"
-        const val HILT_GRADLE_PLUGIN = "com.google.dagger:hilt-android-gradle-plugin:${Versions.Generic.HILT}"
     }
 
     object Library {
@@ -29,7 +26,6 @@ object Dependencies {
             const val ARCH_CORE_COMMON = "androidx.arch.core:core-common:${Versions.Library.Android.ARCH}"
             const val ARCH_CORE_RUNTIME = "androidx.arch.core:core-runtime:${Versions.Library.Android.ARCH}"
 
-            const val HILT = "com.google.dagger:hilt-android:${Versions.Generic.HILT}"
             const val MATERIAL =
                 "com.google.android.material:material:${Versions.Library.Android.MATERIAL}"
             const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Library.Android.APP_COMPAT}"
@@ -37,6 +33,8 @@ object Dependencies {
                 "androidx.constraintlayout:constraintlayout:${Versions.Library.Android.CONSTRAINT_LAYOUT}"
             const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.Library.Android.VIEW_PAGER_2}"
         }
+
+        const val KOIN_GRADLE_PLUGIN = "org.koin:koin-gradle-plugin:${Versions.Library.KOIN}"
 
         const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Library.OK_HTTP}"
         const val OK_HTTP_LOGGING_INTERCEPTOR =
@@ -46,6 +44,11 @@ object Dependencies {
         const val RETROFIT_CONVERTER_GSON =
             "com.squareup.retrofit2:converter-gson:${Versions.Library.RETROFIT}"
         const val PICASSO = "com.squareup.picasso:picasso:${Versions.Library.PICASSO}"
+
+        const val KOIN_CORE = "org.koin:koin-core:${Versions.Library.KOIN}"
+        const val KOIN_SCOPE = "org.koin:koin-androidx-scope:${Versions.Library.KOIN}"
+        const val KOIN_VIEW_MODEL = "org.koin:koin-androidx-viewmodel:${Versions.Library.KOIN}"
+        const val KOIN_FRAGMENT = "org.koin:koin-androidx-fragment:${Versions.Library.KOIN}"
     }
 
     object Test {
@@ -62,5 +65,6 @@ object Dependencies {
         const val COROUTINES_TEST =
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.COROUTINES_TEST}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
+        const val KOIN_TEST = "org.koin:koin-test:${Versions.Library.KOIN}"
     }
 }

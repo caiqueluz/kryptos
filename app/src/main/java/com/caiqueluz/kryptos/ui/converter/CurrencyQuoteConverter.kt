@@ -5,11 +5,10 @@ import com.caiqueluz.kryptos.data.dto.CurrencyUsdPriceDTO
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyUsdPriceVO
 import java.text.NumberFormat
-import javax.inject.Inject
 
 private const val LAST_UPDATED_DATE_PATTERN = "hh:mm, 'em' dd 'de' MMMM"
 
-class CurrencyQuoteConverter @Inject constructor(
+class CurrencyQuoteConverter(
     private val numberFormatter: NumberFormat,
     private val dateConverter: DateConverter
 ) {

@@ -1,11 +1,10 @@
 package com.caiqueluz.kryptos.ui.converter
 
 import java.text.ParseException
-import javax.inject.Inject
 
 private const val TIME_ZONE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
 
-class DateConverter @Inject constructor(
+class DateConverter(
     private val formatFactory: DateFormatFactory
 ) {
 

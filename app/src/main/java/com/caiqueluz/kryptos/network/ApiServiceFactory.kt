@@ -1,9 +1,8 @@
 package com.caiqueluz.kryptos.network
 
 import retrofit2.Retrofit
-import javax.inject.Inject
 
-class ApiServiceFactory @Inject constructor(
+class ApiServiceFactory(
     private val retrofit: Retrofit
 ) {
 

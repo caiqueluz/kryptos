@@ -2,9 +2,8 @@ package com.caiqueluz.kryptos.network
 
 import okhttp3.Interceptor
 import okhttp3.Response
-import javax.inject.Inject
 
-class NetworkAuthenticationInterceptor @Inject constructor(
+class NetworkAuthenticationInterceptor(
     private val headerConfig: AuthenticationHeaderConfig
 ) : Interceptor {
 

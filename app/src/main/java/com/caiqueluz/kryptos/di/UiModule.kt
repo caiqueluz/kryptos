@@ -1,59 +1,56 @@
 package com.caiqueluz.kryptos.di
 
-import android.content.Context
-import android.content.res.Resources
 import com.caiqueluz.kryptos.ui.HomeItemFactory
 import com.caiqueluz.kryptos.ui.converter.*
-import com.caiqueluz.kryptos.utils.ImageLoader
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ActivityContext
-import dagger.hilt.android.qualifiers.ApplicationContext
-import dagger.hilt.components.SingletonComponent
+import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
+import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
+import org.koin.android.ext.koin.androidContext
+import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.core.qualifier.named
+import org.koin.dsl.module
 import java.text.NumberFormat
 import java.util.*
 
-@Module
-@InstallIn(SingletonComponent::class)
-object UiModule {
-
-    @Provides
-    fun provideTimeZoneFactory(): TimeZoneFactory =
+val uiModule = module {
+    single {
         TimeZoneFactory()
+    }
 
-    @Provides
-    fun provideDateFormatFactory(
-        timeZoneFactory: TimeZoneFactory
-    ): DateFormatFactory = DateFormatFactory(timeZoneFactory)
+    single {
+        DateFormatFactory(get())
+    }
 
-    @Provides
-    fun provideDateConverter(
-        formatFactory: DateFormatFactory
-    ): DateConverter = DateConverter(formatFactory)
+    single {
+        DateConverter(get())
+    }
 
-    @Provides
-    fun provideNumberFormatter(): NumberFormat =
+    single {
         NumberFormat.getCurrencyInstance(Locale.US)
+    }
 
-    @Provides
-    fun provideQuoteConverter(
-        numberFormatter: NumberFormat,
-        dateConverter: DateConverter
-    ): CurrencyQuoteConverter = CurrencyQuoteConverter(
-        numberFormatter, dateConverter
-    )
+    single {
+        CurrencyQuoteConverter(get(), get())
+    }
 
-    @Provides
-    fun provideCurrenciesConverter(
-        imageLoader: ImageLoader,
-        quoteConverter: CurrencyQuoteConverter
-    ): CurrenciesConverter = CurrenciesConverter(
-        imageLoader, quoteConverter
-    )
+    single {
+        CurrenciesConverter(get(), get())
+    }
 
-    @Provides
-    fun provideHomeItemFactory(
-        @ApplicationContext context: Context
-    ): HomeItemFactory = HomeItemFactory(context.resources)
+    single {
+        androidContext().resources
+    }
+
+    single {
+        HomeItemFactory(get())
+    }
+
+    viewModel {
+        HomeViewModel(get())
+    }
+
+    viewModel {
+        CurrenciesViewModel(
+            get(qualifier = named(IO_DISPATCHER)), get(), get()
+        )
+    }
 }

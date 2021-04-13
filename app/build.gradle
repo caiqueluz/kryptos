@@ -6,7 +6,7 @@ import com.caiqueluz.buildsrc.Versions
 apply plugin: Plugins.ANDROID_APPLICATION
 apply plugin: Plugins.KOTLIN_ANDROID
 apply plugin: Plugins.KAPT
-apply plugin: Plugins.HILT
+apply plugin: Plugins.KOIN
 
 android {
     compileSdkVersion AppConfig.COMPILE_SDK
@@ -59,7 +59,6 @@ dependencies {
     implementation Dependencies.Library.Android.CONSTRAINT_LAYOUT
     implementation Dependencies.Library.Android.ARCH_CORE_COMMON
     implementation Dependencies.Library.Android.ARCH_CORE_RUNTIME
-    implementation Dependencies.Library.Android.HILT
     implementation Dependencies.Library.Android.FRAGMENT_KTX
     implementation Dependencies.Library.Android.VIEW_PAGER_2
     implementation Dependencies.Library.Android.LIFECYCLE_VIEW_MODEL
@@ -72,16 +71,19 @@ dependencies {
     implementation Dependencies.Library.OK_HTTP
     implementation Dependencies.Library.OK_HTTP_LOGGING_INTERCEPTOR
     implementation Dependencies.Library.PICASSO
+    implementation Dependencies.Library.KOIN_CORE
+    implementation Dependencies.Library.KOIN_SCOPE
+    implementation Dependencies.Library.KOIN_VIEW_MODEL
+    implementation Dependencies.Library.KOIN_FRAGMENT
 
     testImplementation Dependencies.Test.JUNIT
     testImplementation Dependencies.Test.MOCKITO_CORE
     testImplementation Dependencies.Test.MOCKITO_KOTLIN
     testImplementation Dependencies.Test.COROUTINES_TEST
     testImplementation Dependencies.Test.ARCH_CORE_TESTING
+    testImplementation Dependencies.Test.KOIN_TEST
 
     androidTestImplementation Dependencies.Test.EXT_JUNIT
     androidTestImplementation Dependencies.Test.ESPRESSO_CORE
     androidTestImplementation Dependencies.Test.ANDROID_TEST_RUNNER
-
-    kapt Dependencies.Generic.HILT_ANDROID_COMPILER
 }

@@ -2,86 +2,61 @@ package com.caiqueluz.kryptos.di
 
 import com.caiqueluz.kryptos.BuildConfig
 import com.caiqueluz.kryptos.network.*
-import dagger.Module
-import dagger.Provides
-import dagger.hilt.InstallIn
-import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-@Module
-@InstallIn(SingletonComponent::class)
-object NetworkModule {
+val networkModule = module {
+    single {
+        Retrofit.Builder()
+    }
 
-    @Provides
-    fun provideRetrofitBuilder(): Retrofit.Builder = Retrofit.Builder()
-
-    @Provides
-    fun provideRetrofitInstance(
-        apiClientConfig: ApiClientConfig
-    ): Retrofit = apiClientConfig.create()
-
-    @Provides
-    fun provideConverterFactory(): Converter.Factory =
+    single<Converter.Factory> {
         GsonConverterFactory.create()
+    }
 
-    @Provides
-    fun provideOkHttpClientBuilder(): OkHttpClient.Builder =
+    single {
         OkHttpClient.Builder()
+    }
 
-    @Provides
-    fun provideOkHttpClientFactory(
-        okHttpBuilder: OkHttpClient.Builder,
-        authenticationInterceptor: NetworkAuthenticationInterceptor,
-        httpLoggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClientFactory = OkHttpClientFactory(
-        okHttpBuilder,
-        authenticationInterceptor,
-        httpLoggingInterceptor
-    )
+    single {
+        ApiServiceFactory(get())
+    }
 
-    @Provides
-    fun provideOkHttpClient(
-        okHttpClientFactory: OkHttpClientFactory
-    ): OkHttpClient = okHttpClientFactory.create()
-
-    @Provides
-    fun provideGsonConverterFactory(): GsonConverterFactory =
-        GsonConverterFactory.create()
-
-    @Provides
-    fun provideApiClientConfig(
-        retrofitBuilder: Retrofit.Builder,
-        converterFactory: GsonConverterFactory,
-        okHttpClient: OkHttpClient
-    ): ApiClientConfig = ApiClientConfig(
-        BuildConfig.BASE_URL, retrofitBuilder, converterFactory, okHttpClient
-    )
-
-    @Provides
-    fun provideApiServiceFactory(
-        retrofit: Retrofit
-    ): ApiServiceFactory = ApiServiceFactory(retrofit)
-
-    @Provides
-    fun provideAuthenticationHeaderConfig(): AuthenticationHeaderConfig =
+    single {
         AuthenticationHeaderConfig(
             header = "X-CMC_PRO_API_KEY", value = BuildConfig.API_KEY
         )
+    }
 
-    @Provides
-    fun provideNetworkAuthenticationInterceptor(
-        headerConfig: AuthenticationHeaderConfig
-    ): NetworkAuthenticationInterceptor = NetworkAuthenticationInterceptor(
-        headerConfig
-    )
+    single {
+        NetworkAuthenticationInterceptor(get())
+    }
 
-    @Provides
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor =
+    single {
         HttpLoggingInterceptor().setLevel(
             HttpLoggingInterceptor.Level.BODY
         )
+    }
+
+    single {
+        OkHttpClientFactory(get(), get(), get())
+    }
+
+    single {
+        get<OkHttpClientFactory>().create()
+    }
+
+    single {
+        ApiClientConfig(
+            BuildConfig.BASE_URL, get(), get(), get()
+        )
+    }
+
+    single {
+        get<ApiClientConfig>().create()
+    }
 }

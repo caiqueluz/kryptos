@@ -4,12 +4,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.map
 import com.caiqueluz.kryptos.ui.HomeItemFactory
-import dagger.hilt.android.lifecycle.HiltViewModel
-import javax.inject.Inject
 
-@HiltViewModel
-class HomeViewModel @Inject constructor(
-    factory: HomeItemFactory
+class HomeViewModel(
+    private val factory: HomeItemFactory
 ) : ViewModel() {
 
     private val _items = MutableLiveData<Unit>()
