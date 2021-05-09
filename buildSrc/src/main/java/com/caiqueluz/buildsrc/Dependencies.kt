@@ -58,6 +58,7 @@ object Dependencies {
         const val MOCKITO_CORE = "org.mockito:mockito-core:${Versions.Test.MOCKITO_CORE}"
         const val MOCKITO_KOTLIN =
             "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.Test.MOCKITO_KOTLIN}"
+        const val MOCKITO_ANDROID = "org.mockito:mockito-android:${Versions.Test.MOCKITO_CORE}"
 
         const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Library.Android.ARCH}"
         const val ANDROID_TEST_RUNNER = "androidx.test:runner:${Versions.Test.ANDROID_TEST_RUNNER}"
@@ -66,5 +67,6 @@ object Dependencies {
             "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.COROUTINES_TEST}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
         const val KOIN_TEST = "org.koin:koin-test:${Versions.Library.KOIN}"
+        const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.Test.ROBOLECTRIC}"
     }
 }

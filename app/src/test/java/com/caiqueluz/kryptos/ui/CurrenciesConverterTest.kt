@@ -115,7 +115,7 @@ class CurrenciesConverterTest {
 
     @Test
     fun whenConvertCurrenciesIsCalled_verifyResponseHasCorrectLastUpdatedDate() {
-        val expected = "08:29, em 06 de Março"
+        val expected = "08:29, em 06 de março"
         val actual =
             converter.convertCurrencies(
                 fakeListingResponse,

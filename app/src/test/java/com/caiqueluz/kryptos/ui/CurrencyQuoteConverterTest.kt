@@ -56,7 +56,7 @@ class CurrencyQuoteConverterTest {
 
     @Test
     fun whenConvertQuoteIsCalled_verifyResponseHasCorrectFormattedDate() {
-        val expected = "08:29, em 06 de Março"
+        val expected = "08:29, em 06 de março"
         val actual = converter.convertQuote(fakeCurrencyQuoteDTO).priceInUsd.lastUpdatedDate
 
         assertEquals(expected, actual)

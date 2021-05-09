@@ -45,7 +45,20 @@ android {
     }
     testOptions {
         unitTests {
+            includeAndroidResources = true
             returnDefaultValues = true
+        }
+    }
+    sourceSets {
+        String sharedDir = 'src/sharedTest/java'
+        String sharedResources = 'src/sharedTest/assets'
+        test {
+            java.srcDir sharedDir
+            resources.srcDirs += sharedResources
+        }
+        androidTest {
+            java.srcDir sharedDir
+            resources.srcDirs += sharedResources
         }
     }
 }
@@ -77,13 +90,18 @@ dependencies {
     implementation Dependencies.Library.KOIN_FRAGMENT
 
     testImplementation Dependencies.Test.JUNIT
+    testImplementation Dependencies.Test.EXT_JUNIT
     testImplementation Dependencies.Test.MOCKITO_CORE
     testImplementation Dependencies.Test.MOCKITO_KOTLIN
     testImplementation Dependencies.Test.COROUTINES_TEST
     testImplementation Dependencies.Test.ARCH_CORE_TESTING
-    testImplementation Dependencies.Test.KOIN_TEST
+    testImplementation Dependencies.Test.ROBOLECTRIC
+    testImplementation Dependencies.Test.ESPRESSO_CORE
 
     androidTestImplementation Dependencies.Test.EXT_JUNIT
     androidTestImplementation Dependencies.Test.ESPRESSO_CORE
+    androidTestImplementation Dependencies.Test.MOCKITO_ANDROID
     androidTestImplementation Dependencies.Test.ANDROID_TEST_RUNNER
+    androidTestImplementation Dependencies.Test.ARCH_CORE_TESTING
+    androidTestImplementation Dependencies.Test.ROBOLECTRIC
 }
