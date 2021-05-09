@@ -7,7 +7,7 @@ Aplicativo de criptomoedas construído com o objetivo de consolidar meus conheci
 Bibliotecas utlilizadas
 
 
-Hilt para a injeção de dependências<br/>
+Koin para a injeção de dependências<br/>
 ViewBinding para o binding dos layouts<br/>
 Retrofit e OkHttp para o consumo de apis<br/>
 Coroutines para a programação assíncrona<br/>
