@@ -61,6 +61,7 @@ object Dependencies {
         const val MOCKITO_ANDROID = "org.mockito:mockito-android:${Versions.Test.MOCKITO_CORE}"
 
         const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Library.Android.ARCH}"
+        const val FRAGMENT_TESTING = "androidx.fragment:fragment-testing:${Versions.Test.FRAGMENT_TESTING}"
         const val ANDROID_TEST_RUNNER = "androidx.test:runner:${Versions.Test.ANDROID_TEST_RUNNER}"
 
         const val COROUTINES_TEST =

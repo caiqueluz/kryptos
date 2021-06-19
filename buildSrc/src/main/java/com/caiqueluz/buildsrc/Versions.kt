@@ -35,6 +35,7 @@ object Versions {
         const val JUNIT = "4.12"
         const val EXT_JUNIT = "1.1.2"
 
+        const val FRAGMENT_TESTING = "1.3.3"
         const val ANDROID_TEST_RUNNER = "1.3.0"
 
         const val MOCKITO_CORE = "3.8.0"

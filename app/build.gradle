@@ -95,13 +95,25 @@ dependencies {
     testImplementation Dependencies.Test.MOCKITO_KOTLIN
     testImplementation Dependencies.Test.COROUTINES_TEST
     testImplementation Dependencies.Test.ARCH_CORE_TESTING
+
+    debugImplementation(Dependencies.Test.FRAGMENT_TESTING) {
+        exclude group: 'androidx.test', module: 'core'
+    }
+
     testImplementation Dependencies.Test.ROBOLECTRIC
     testImplementation Dependencies.Test.ESPRESSO_CORE
 
     androidTestImplementation Dependencies.Test.EXT_JUNIT
     androidTestImplementation Dependencies.Test.ESPRESSO_CORE
+    androidTestImplementation Dependencies.Test.MOCKITO_CORE
     androidTestImplementation Dependencies.Test.MOCKITO_ANDROID
+    androidTestImplementation Dependencies.Test.MOCKITO_KOTLIN
     androidTestImplementation Dependencies.Test.ANDROID_TEST_RUNNER
     androidTestImplementation Dependencies.Test.ARCH_CORE_TESTING
+
+    debugImplementation(Dependencies.Test.FRAGMENT_TESTING) {
+        exclude group: 'androidx.test', module: 'core'
+    }
+
     androidTestImplementation Dependencies.Test.ROBOLECTRIC
 }
