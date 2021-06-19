@@ -2,15 +2,10 @@ package com.caiqueluz.kryptos.ui.converter
 
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
-import com.caiqueluz.kryptos.data.dto.CurrencyImageItemDTO
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
-import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
-import com.caiqueluz.kryptos.utils.ImageLoader
 
 class CurrenciesConverter(
-    private val imageLoader: ImageLoader,
-    private val quoteConverter: CurrencyQuoteConverter
+    private val itemConverter: CurrencyItemConverter
 ) {
 
     fun convertIds(listing: CurrenciesListingDTO): String =
@@ -21,27 +16,6 @@ class CurrenciesConverter(
     fun convertCurrencies(
         listing: CurrenciesListingDTO, images: CurrenciesImagesDTO
     ): CurrenciesVO = CurrenciesVO(
-        currencies = images.currenciesImages.convertCurrencyItems(listing)
+        currencies = itemConverter.convertCurrencyItems(images.currenciesImages, listing)
     )
-
-    private fun Map<String, CurrencyImageItemDTO>.convertCurrencyItems(
-        listing: CurrenciesListingDTO
-    ): List<CurrencyItemVO> = this.map { (_, dto) ->
-        val listingItem = listing.getListingItem(dto)
-        val quoteDTO = listingItem.quote
-        val quote = quoteConverter.convertQuote(quoteDTO)
-
-        return@map CurrencyItemVO(
-            name = listingItem.name,
-            symbol = listingItem.symbol,
-            image = imageLoader.loadImage(dto.imageUrl),
-            quote = quote
-        )
-    }
-
-    private fun CurrenciesListingDTO.getListingItem(
-        imageItem: CurrencyImageItemDTO
-    ): CurrenciesListingItemDTO = this.currencies.first { listingItem ->
-        listingItem.id == imageItem.id
-    }
 }

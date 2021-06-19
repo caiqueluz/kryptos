@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.ui
+package com.caiqueluz.kryptos
 
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

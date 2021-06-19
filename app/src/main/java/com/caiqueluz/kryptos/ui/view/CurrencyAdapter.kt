@@ -49,7 +49,6 @@ class CurrencyAdapter(
 
         private fun setupPriceInformationClickListener(item: CurrencyItemVO) {
             binding.currencyItemPriceInformation.setOnClickListener {
-
                 val detailDialogVO = CurrencyDetailDialogVO(
                     image = item.image,
                     name = item.name,

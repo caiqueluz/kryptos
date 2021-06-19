@@ -1,5 +1,7 @@
 package com.caiqueluz.kryptos
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.caiqueluz.kryptos.network.NetworkResponse
 import com.nhaarman.mockitokotlin2.argumentCaptor
@@ -36,3 +38,16 @@ fun <TYPE> verifyErrorResponse(observer: Observer<NetworkResponse<TYPE>>) {
 
     assertTrue(captor.lastValue is NetworkResponse.Error)
 }
+
+fun <TYPE> Ongoing
+
+fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockLoading() =
+    MutableLiveData(NetworkResponse.Loading)
+
+fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockContent(
+    content: NetworkResponse.Content<TYPE>
+) = MutableLiveData(content)
+
+fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockError(
+    error: NetworkResponse.Error
+) = MutableLiveData(error)
