@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.ui
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -9,6 +9,7 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.times
 import com.nhaarman.mockitokotlin2.verify
 import org.junit.Assert.assertTrue
+import org.mockito.stubbing.OngoingStubbing
 import retrofit2.Response
 
 inline fun <reified TYPE> successResponse(): Response<TYPE> =
@@ -39,15 +40,19 @@ fun <TYPE> verifyErrorResponse(observer: Observer<NetworkResponse<TYPE>>) {
     assertTrue(captor.lastValue is NetworkResponse.Error)
 }
 
-fun <TYPE> Ongoing
+fun <TYPE> OngoingStubbing<LiveData<NetworkResponse<TYPE>>>.mockLoading() =
+    thenReturn(
+        MutableLiveData(NetworkResponse.Loading)
+    )
 
-fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockLoading() =
-    MutableLiveData(NetworkResponse.Loading)
+inline fun <reified TYPE> OngoingStubbing<LiveData<NetworkResponse<TYPE>>>.mockContent(
+    content: TYPE = mock()
+) = thenReturn(
+    MutableLiveData(NetworkResponse.Content(content))
+)
 
-fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockContent(
-    content: NetworkResponse.Content<TYPE>
-) = MutableLiveData(content)
-
-fun <TYPE> LiveData<NetworkResponse<TYPE>>.mockError(
-    error: NetworkResponse.Error
-) = MutableLiveData(error)
+fun <TYPE> OngoingStubbing<LiveData<NetworkResponse<TYPE>>>.mockError(
+    error: NetworkResponse.Error = mock()
+) = thenReturn(
+    MutableLiveData(error)
+)

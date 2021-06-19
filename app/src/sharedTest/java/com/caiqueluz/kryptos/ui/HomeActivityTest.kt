@@ -7,6 +7,8 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.caiqueluz.kryptos.R
+import com.caiqueluz.kryptos.TestKryptosApplication
+import com.caiqueluz.kryptos.injectTestModule
 import com.caiqueluz.kryptos.ui.view.HomeActivity
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import com.caiqueluz.kryptos.ui.vo.HomeItemVO
@@ -33,7 +35,7 @@ class HomeActivityTest {
 
     @Before
     fun before() {
-        injectTestModule()
+        setupTestModule()
         launch()
     }
 
@@ -63,7 +65,7 @@ class HomeActivityTest {
         )
     }
 
-    private fun injectTestModule() {
+    private fun setupTestModule() {
         injectTestModule {
             single { spyViewModel }
         }

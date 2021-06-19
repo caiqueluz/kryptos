@@ -58,9 +58,7 @@ class CurrenciesFragment : Fragment() {
         )
     }
 
-    private fun onPriceInformationClickAction(
-        detailDialogVO: CurrencyDetailDialogVO
-    ) {
+    private fun onPriceInformationClickAction(detailDialogVO: CurrencyDetailDialogVO) {
         CurrencyDetailDialogFragment(detailDialogVO)
             .show(
                 parentFragmentManager, null
