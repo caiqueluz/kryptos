@@ -1,8 +1,6 @@
 package com.caiqueluz.kryptos.ui
 
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
-import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.data.dto.CurrencyImageItemDTO
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.converter.CurrencyItemConverter
@@ -31,14 +29,6 @@ class CurrenciesConverterTest {
         itemConverter = mockItemConverter
     )
 
-    private val fakeCurrenciesListingDTO = CurrenciesListingDTO(
-        currencies = listOf(
-            createFakeListingItemDTO(id = 1),
-            createFakeListingItemDTO(id = 2),
-            createFakeListingItemDTO(id = 3)
-        )
-    )
-
     private val fakeCurrenciesImagesDTO = CurrenciesImagesDTO(
         currenciesImages = mapOf(
             "1" to CurrencyImageItemDTO(id = 1, String()),
@@ -56,8 +46,4 @@ class CurrenciesConverterTest {
 
         assertEquals(expected, actual)
     }
-
-    private fun createFakeListingItemDTO(id: Int) = CurrenciesListingItemDTO(
-        id = id, name = String(), symbol = String(), quote = mock()
-    )
 }
