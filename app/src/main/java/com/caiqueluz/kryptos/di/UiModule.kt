@@ -33,11 +33,11 @@ val uiModule = module {
     }
 
     single {
-        CurrencyItemConverter(get(), get())
+        CurrencyItemConverter(get())
     }
 
     single {
-        CurrenciesConverter(get())
+        CurrenciesConverter(get(), get())
     }
 
     single {
