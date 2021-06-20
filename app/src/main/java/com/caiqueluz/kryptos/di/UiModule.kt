@@ -48,13 +48,17 @@ val uiModule = module {
         HomeItemFactory(get())
     }
 
+    single {
+        CurrenciesIdsConverter()
+    }
+
     viewModel {
         HomeViewModel(get())
     }
 
     viewModel {
         CurrenciesViewModel(
-            get(qualifier = named(IO_DISPATCHER)), get(), get()
+            get(qualifier = named(IO_DISPATCHER)), get(), get(), get()
         )
     }
 }

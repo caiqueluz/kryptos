@@ -48,14 +48,6 @@ class CurrenciesConverterTest {
     )
 
     @Test
-    fun whenConvertIdsIsCalled_verifyResponseIsCorrect() {
-        val expected = "1,2,3"
-        val actual = converter.convertIds(fakeCurrenciesListingDTO)
-
-        assertEquals(expected, actual)
-    }
-
-    @Test
     fun whenConvertCurrenciesIsCalled_verifyResponseSizeIsCorrect() {
         val expected = 3
         val actual = converter.convertCurrencies(
