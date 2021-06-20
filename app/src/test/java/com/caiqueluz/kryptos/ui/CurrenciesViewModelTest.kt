@@ -1,12 +1,13 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.*
+import com.caiqueluz.kryptos.ConcurrentTest
 import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
-import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
+import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
+import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
@@ -20,9 +21,12 @@ class CurrenciesViewModelTest : ConcurrentTest() {
 
     private val mockRepository = mock<CurrenciesRepository>()
 
-    private val mockConverter = mock<CurrenciesConverter> {
-        on { convertCurrencies(any(), any()) } doReturn mock()
+    private val mockIdsConverter = mock<CurrenciesIdsConverter> {
         on { convertIds(anyOrNull()) } doReturn String()
+    }
+
+    private val mockCurrenciesConverter = mock<CurrenciesConverter> {
+        on { convertCurrencies(any(), any()) } doReturn mock()
     }
 
     private val listingResponse = successResponse<CurrenciesListingDTO>()
@@ -31,7 +35,8 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     private val viewModel = CurrenciesViewModel(
         dispatcher = testDispatcher,
         repository = mockRepository,
-        converter = mockConverter
+        idsConverter = mockIdsConverter,
+        currenciesConverter = mockCurrenciesConverter
     )
 
     @Test
