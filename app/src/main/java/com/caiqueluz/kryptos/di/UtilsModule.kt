@@ -19,6 +19,9 @@ val utilsModule = module {
     }
 
     single<ImageLoader> {
-        PicassoImageLoader(get(qualifier = named(IO_DISPATCHER)), picasso = get())
+        PicassoImageLoader(
+            dispatcher = get(qualifier = named(IO_DISPATCHER)),
+            picasso = get()
+        )
     }
 }

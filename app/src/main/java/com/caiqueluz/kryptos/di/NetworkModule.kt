@@ -23,17 +23,22 @@ val networkModule = module {
     }
 
     single {
-        ApiServiceFactory(get())
-    }
-
-    single {
-        AuthenticationHeaderConfig(
-            header = "X-CMC_PRO_API_KEY", value = BuildConfig.API_KEY
+        ApiServiceFactory(
+            retrofit = get()
         )
     }
 
     single {
-        NetworkAuthenticationInterceptor(get())
+        AuthenticationHeaderConfig(
+            header = "X-CMC_PRO_API_KEY",
+            value = BuildConfig.API_KEY
+        )
+    }
+
+    single {
+        NetworkAuthenticationInterceptor(
+            headerConfig = get()
+        )
     }
 
     single {
@@ -43,7 +48,11 @@ val networkModule = module {
     }
 
     single {
-        OkHttpClientFactory(get(), get(), get())
+        OkHttpClientFactory(
+            okHttpBuilder = get(),
+            authenticationInterceptor = get(),
+            httpLoggingInterceptor = get()
+        )
     }
 
     single {
@@ -52,7 +61,10 @@ val networkModule = module {
 
     single {
         ApiClientConfig(
-            BuildConfig.BASE_URL, get(), get(), get()
+            baseUrl = BuildConfig.BASE_URL,
+            retrofitBuilder = get(),
+            converterFactory = get(),
+            okHttpClient = get()
         )
     }
 

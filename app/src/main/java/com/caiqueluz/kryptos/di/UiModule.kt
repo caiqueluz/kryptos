@@ -17,11 +17,15 @@ val uiModule = module {
     }
 
     single {
-        DateFormatFactory(get())
+        DateFormatFactory(
+            timeZoneFactory = get()
+        )
     }
 
     single {
-        DateConverter(get())
+        DateConverter(
+            formatFactory = get()
+        )
     }
 
     single {
@@ -29,15 +33,23 @@ val uiModule = module {
     }
 
     single {
-        CurrencyQuoteConverter(get(), get())
+        CurrencyQuoteConverter(
+            numberFormatter = get(),
+            dateConverter = get()
+        )
     }
 
     single {
-        CurrencyItemConverter(get())
+        CurrencyItemConverter(
+            imageLoader = get()
+        )
     }
 
     single {
-        CurrenciesConverter(get(), get())
+        CurrenciesConverter(
+            quoteConverter = get(),
+            itemConverter = get()
+        )
     }
 
     single {
@@ -45,7 +57,9 @@ val uiModule = module {
     }
 
     single {
-        HomeItemFactory(get())
+        HomeItemFactory(
+            resources = get()
+        )
     }
 
     single {
@@ -53,12 +67,17 @@ val uiModule = module {
     }
 
     viewModel {
-        HomeViewModel(get())
+        HomeViewModel(
+            factory = get()
+        )
     }
 
     viewModel {
         CurrenciesViewModel(
-            get(qualifier = named(IO_DISPATCHER)), get(), get(), get()
+            dispatcher = get(qualifier = named(IO_DISPATCHER)),
+            repository = get(),
+            idsConverter = get(),
+            currenciesConverter = get()
         )
     }
 }

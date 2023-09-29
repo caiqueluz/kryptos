@@ -11,6 +11,8 @@ val dataModule = module {
     }
 
     single {
-        CurrenciesRepository(get())
+        CurrenciesRepository(
+            api = get()
+        )
     }
 }
