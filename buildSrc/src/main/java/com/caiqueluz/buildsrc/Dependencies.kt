@@ -29,7 +29,7 @@ object Dependencies {
             const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.Library.Android.VIEW_PAGER_2}"
         }
 
-        const val KOIN_GRADLE_PLUGIN = "org.koin:koin-gradle-plugin:${Versions.Library.KOIN}"
+        const val KOIN_GRADLE_PLUGIN = "io.insert-koin:koin-gradle-plugin:${Versions.Library.KOIN}"
 
         const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Library.OK_HTTP}"
         const val OK_HTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.Library.OK_HTTP}"
@@ -38,10 +38,10 @@ object Dependencies {
         const val RETROFIT_CONVERTER_GSON = "com.squareup.retrofit2:converter-gson:${Versions.Library.RETROFIT}"
         const val PICASSO = "com.squareup.picasso:picasso:${Versions.Library.PICASSO}"
 
-        const val KOIN_CORE = "org.koin:koin-core:${Versions.Library.KOIN}"
-        const val KOIN_SCOPE = "org.koin:koin-androidx-scope:${Versions.Library.KOIN}"
-        const val KOIN_VIEW_MODEL = "org.koin:koin-androidx-viewmodel:${Versions.Library.KOIN}"
-        const val KOIN_FRAGMENT = "org.koin:koin-androidx-fragment:${Versions.Library.KOIN}"
+        const val KOIN_CORE = "io.insert-koin:koin-core:${Versions.Library.KOIN}"
+        const val KOIN_SCOPE = "io.insert-koin:koin-androidx-scope:${Versions.Library.KOIN}"
+        const val KOIN_VIEW_MODEL = "io.insert-koin:koin-androidx-viewmodel:${Versions.Library.KOIN}"
+        const val KOIN_FRAGMENT = "io.insert-koin:koin-androidx-fragment:${Versions.Library.KOIN}"
     }
 
     object Test {
@@ -58,7 +58,7 @@ object Dependencies {
 
         const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.COROUTINES_TEST}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
-        const val KOIN_TEST = "org.koin:koin-test:${Versions.Library.KOIN}"
+        const val KOIN_TEST = "io.insert-koin:koin-test:${Versions.Library.KOIN}"
         const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.Test.ROBOLECTRIC}"
     }
 }
