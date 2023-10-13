@@ -1,9 +1,9 @@
 package com.caiqueluz.kryptos.network
 
-import com.nhaarman.mockitokotlin2.eq
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.spy
-import com.nhaarman.mockitokotlin2.verify
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.spy
+import org.mockito.kotlin.verify
 import okhttp3.OkHttpClient
 import org.junit.Test
 import org.junit.runner.RunWith

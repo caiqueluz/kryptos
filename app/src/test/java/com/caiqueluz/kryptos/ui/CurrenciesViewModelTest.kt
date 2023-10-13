@@ -8,7 +8,11 @@ import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
-import com.nhaarman.mockitokotlin2.*
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.anyOrNull
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.any
+import org.mockito.kotlin.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import org.junit.Test

@@ -15,8 +15,8 @@ import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyUsdPriceVO
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.whenever
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.whenever
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import org.junit.Before
 import org.junit.Test

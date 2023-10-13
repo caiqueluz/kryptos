@@ -1,9 +1,6 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
-import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
-import com.nhaarman.mockitokotlin2.mock
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith

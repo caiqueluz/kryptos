@@ -12,9 +12,9 @@ import com.caiqueluz.kryptos.injectTestModule
 import com.caiqueluz.kryptos.ui.view.HomeActivity
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import com.caiqueluz.kryptos.ui.vo.HomeItemVO
-import com.nhaarman.mockitokotlin2.doReturn
-import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.spy
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.spy
 import org.hamcrest.core.AllOf.allOf
 import org.junit.Before
 import org.junit.Test
