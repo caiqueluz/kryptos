@@ -49,7 +49,7 @@ object Dependencies {
         const val JUNIT = "junit:junit:${Versions.Test.JUNIT}"
         const val EXT_JUNIT = "androidx.test.ext:junit:${Versions.Test.EXT_JUNIT}"
         const val MOCKITO_CORE = "org.mockito:mockito-core:${Versions.Test.MOCKITO_CORE}"
-        const val MOCKITO_KOTLIN = "com.nhaarman.mockitokotlin2:mockito-kotlin:${Versions.Test.MOCKITO_KOTLIN}"
+        const val MOCKITO_KOTLIN = "org.mockito.kotlin:mockito-kotlin:${Versions.Test.MOCKITO_KOTLIN}"
         const val MOCKITO_ANDROID = "org.mockito:mockito-android:${Versions.Test.MOCKITO_CORE}"
 
         const val ARCH_CORE_TESTING = "androidx.arch.core:core-testing:${Versions.Library.Android.ARCH}"

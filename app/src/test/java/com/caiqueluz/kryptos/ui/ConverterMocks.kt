@@ -2,7 +2,7 @@ package com.caiqueluz.kryptos.ui
 
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
-import com.nhaarman.mockitokotlin2.mock
+import org.mockito.kotlin.mock
 
 val fakeCurrenciesListingDTO = CurrenciesListingDTO(
     currencies = listOf(

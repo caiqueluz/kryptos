@@ -38,8 +38,8 @@ object Versions {
         const val FRAGMENT_TESTING = "1.3.3"
         const val ANDROID_TEST_RUNNER = "1.3.0"
 
-        const val MOCKITO_CORE = "3.8.0"
-        const val MOCKITO_KOTLIN = "2.2.0"
+        const val MOCKITO_CORE = "5.6.0"
+        const val MOCKITO_KOTLIN = "5.1.0"
         const val COROUTINES_TEST = "1.4.2"
         const val ESPRESSO_CORE = "3.3.0"
         const val ROBOLECTRIC = "4.5.1"

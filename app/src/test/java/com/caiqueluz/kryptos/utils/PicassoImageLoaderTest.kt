@@ -2,7 +2,6 @@ package com.caiqueluz.kryptos.utils
 
 import android.graphics.Bitmap
 import com.caiqueluz.kryptos.ConcurrentTest
-import com.nhaarman.mockitokotlin2.*
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -10,6 +9,10 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
