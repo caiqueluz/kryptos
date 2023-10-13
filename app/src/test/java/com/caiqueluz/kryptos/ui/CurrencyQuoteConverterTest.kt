@@ -14,7 +14,7 @@ import org.mockito.kotlin.eq
 import org.mockito.kotlin.spy
 import org.mockito.kotlin.verify
 import java.text.NumberFormat
-import java.util.*
+import java.util.Locale
 
 @RunWith(JUnit4::class)
 class CurrencyQuoteConverterTest {
