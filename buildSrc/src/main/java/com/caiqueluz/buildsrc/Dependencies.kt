@@ -27,10 +27,13 @@ object Dependencies {
             const val APP_COMPAT = "androidx.appcompat:appcompat:${Versions.Library.Android.APP_COMPAT}"
             const val CONSTRAINT_LAYOUT = "androidx.constraintlayout:constraintlayout:${Versions.Library.Android.CONSTRAINT_LAYOUT}"
             const val VIEW_PAGER_2 = "androidx.viewpager2:viewpager2:${Versions.Library.Android.VIEW_PAGER_2}"
+
+            const val COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Library.COROUTINES}"
         }
 
         const val KOIN_GRADLE_PLUGIN = "io.insert-koin:koin-gradle-plugin:${Versions.Library.KOIN}"
 
+        const val COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Library.COROUTINES}"
         const val OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Library.OK_HTTP}"
         const val OK_HTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.Library.OK_HTTP}"
         const val GSON = "com.google.code.gson:gson:${Versions.Library.GSON}"
@@ -56,7 +59,7 @@ object Dependencies {
         const val FRAGMENT_TESTING = "androidx.fragment:fragment-testing:${Versions.Test.FRAGMENT_TESTING}"
         const val ANDROID_TEST_RUNNER = "androidx.test:runner:${Versions.Test.ANDROID_TEST_RUNNER}"
 
-        const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Test.COROUTINES_TEST}"
+        const val COROUTINES_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.Library.COROUTINES}"
         const val ESPRESSO_CORE = "androidx.test.espresso:espresso-core:${Versions.Test.ESPRESSO_CORE}"
         const val KOIN_TEST = "io.insert-koin:koin-test:${Versions.Library.KOIN}"
         const val ROBOLECTRIC = "org.robolectric:robolectric:${Versions.Test.ROBOLECTRIC}"

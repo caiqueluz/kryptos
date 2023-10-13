@@ -3,7 +3,7 @@ package com.caiqueluz.kryptos
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.TestCoroutineDispatcher
+import kotlinx.coroutines.test.UnconfinedTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
@@ -16,7 +16,7 @@ open class ConcurrentTest {
     @get:Rule
     val rule = InstantTaskExecutorRule()
 
-    val testDispatcher = TestCoroutineDispatcher()
+    val testDispatcher = UnconfinedTestDispatcher()
 
     @Before
     fun setup() {
@@ -26,6 +26,5 @@ open class ConcurrentTest {
     @After
     fun tearDown() {
         Dispatchers.resetMain()
-        testDispatcher.cleanupTestCoroutines()
     }
 }

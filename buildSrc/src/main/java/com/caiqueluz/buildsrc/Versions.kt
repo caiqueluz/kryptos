@@ -4,7 +4,7 @@ object Versions {
 
     object Generic {
 
-        const val KOTLIN = "1.8.0"
+        const val KOTLIN = "1.8.20"
         const val BUILD_GRADLE = "8.0.0"
         const val JVM_TARGET = "17"
     }
@@ -23,6 +23,7 @@ object Versions {
             const val VIEW_PAGER_2 = "1.0.0"
         }
 
+        const val COROUTINES = "1.7.3"
         const val KOIN = "2.2.2"
         const val OK_HTTP = "4.9.0"
         const val GSON = "2.8.6"
@@ -40,7 +41,6 @@ object Versions {
 
         const val MOCKITO_CORE = "5.6.0"
         const val MOCKITO_KOTLIN = "5.1.0"
-        const val COROUTINES_TEST = "1.4.2"
         const val ESPRESSO_CORE = "3.3.0"
         const val ROBOLECTRIC = "4.5.1"
     }

@@ -9,7 +9,7 @@ import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.test.runTest
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -44,7 +44,7 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     )
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyLoadingResponse() = runBlockingTest {
+    fun whenFetchCurrenciesIsCalled_verifyLoadingResponse() = runTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
@@ -57,7 +57,7 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     }
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyContentResponse() = runBlockingTest {
+    fun whenFetchCurrenciesIsCalled_verifyContentResponse() = runTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
@@ -70,7 +70,7 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     }
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyErrorResponse() = runBlockingTest {
+    fun whenFetchCurrenciesIsCalled_verifyErrorResponse() = runTest {
         val response = errorResponse<CurrenciesListingDTO>()
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
 
