@@ -1,11 +1,11 @@
 package com.caiqueluz.kryptos.network
 
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.verify
 import retrofit2.Retrofit
 
 @RunWith(JUnit4::class)

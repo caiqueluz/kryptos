@@ -5,13 +5,13 @@ import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.ui.converter.CurrencyItemConverter
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
 import com.caiqueluz.kryptos.utils.ImageLoader
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.mock
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.any
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.mock
 
 @RunWith(JUnit4::class)
 class CurrencyItemConverterTest {

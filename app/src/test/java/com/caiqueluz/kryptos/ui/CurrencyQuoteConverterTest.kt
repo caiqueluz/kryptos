@@ -6,13 +6,13 @@ import com.caiqueluz.kryptos.ui.converter.CurrencyQuoteConverter
 import com.caiqueluz.kryptos.ui.converter.DateConverter
 import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
 import com.caiqueluz.kryptos.ui.converter.TimeZoneFactory
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.spy
-import org.mockito.kotlin.verify
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.spy
+import org.mockito.kotlin.verify
 import java.text.NumberFormat
 import java.util.*
 

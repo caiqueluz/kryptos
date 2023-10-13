@@ -1,7 +1,11 @@
 package com.caiqueluz.kryptos.di
 
 import com.caiqueluz.kryptos.BuildConfig
-import com.caiqueluz.kryptos.network.*
+import com.caiqueluz.kryptos.network.ApiClientConfig
+import com.caiqueluz.kryptos.network.ApiServiceFactory
+import com.caiqueluz.kryptos.network.AuthenticationHeaderConfig
+import com.caiqueluz.kryptos.network.NetworkAuthenticationInterceptor
+import com.caiqueluz.kryptos.network.OkHttpClientFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module

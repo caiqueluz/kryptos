@@ -1,7 +1,7 @@
 package com.caiqueluz.kryptos.ui.converter
 
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 private const val LOCALE_LANGUAGE = "pt"
 private const val LOCALE_COUNTRY = "br"

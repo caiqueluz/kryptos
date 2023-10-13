@@ -1,13 +1,13 @@
 package com.caiqueluz.kryptos.network
 
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.spy
-import org.mockito.kotlin.verify
 import okhttp3.OkHttpClient
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.mock
+import org.mockito.kotlin.spy
+import org.mockito.kotlin.verify
 import java.util.concurrent.TimeUnit
 
 @RunWith(JUnit4::class)

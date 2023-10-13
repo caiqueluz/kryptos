@@ -2,7 +2,9 @@ package com.caiqueluz.kryptos.utils
 
 import android.graphics.Bitmap
 import com.squareup.picasso.Picasso
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 
 class PicassoImageLoader(
     private val dispatcher: CoroutineDispatcher,

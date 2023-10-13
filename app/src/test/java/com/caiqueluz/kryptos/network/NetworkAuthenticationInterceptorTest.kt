@@ -1,14 +1,14 @@
 package com.caiqueluz.kryptos.network
 
-import org.mockito.kotlin.doReturn
-import org.mockito.kotlin.eq
-import org.mockito.kotlin.spy
-import org.mockito.kotlin.verify
 import okhttp3.Interceptor
 import okhttp3.Request
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+import org.mockito.kotlin.doReturn
+import org.mockito.kotlin.eq
+import org.mockito.kotlin.spy
+import org.mockito.kotlin.verify
 
 @RunWith(JUnit4::class)
 class NetworkAuthenticationInterceptorTest {
