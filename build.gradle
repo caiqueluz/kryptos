@@ -4,8 +4,8 @@ buildscript {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
+
     dependencies {
         classpath Dependencies.Generic.BUILD_GRADLE
         classpath Dependencies.Generic.KOTLIN_GRADLE_PLUGIN
@@ -17,7 +17,6 @@ allprojects {
     repositories {
         mavenCentral()
         google()
-        jcenter()
     }
 }
 
