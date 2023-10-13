@@ -9,8 +9,9 @@ apply plugin: Plugins.KAPT
 apply plugin: Plugins.KOIN
 
 android {
-    compileSdkVersion AppConfig.COMPILE_SDK
-    buildToolsVersion AppConfig.BUILD_TOOLS
+    namespace = AppConfig.APPLICATION_ID
+    compileSdk = AppConfig.COMPILE_SDK
+    buildToolsVersion - AppConfig.BUILD_TOOLS
 
     defaultConfig {
         applicationId AppConfig.APPLICATION_ID
@@ -33,29 +34,37 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
+
     kotlinOptions {
         jvmTarget = Versions.Generic.JVM_TARGET
     }
+
     buildFeatures {
-        viewBinding true
+        viewBinding = true
+        buildConfig = true
     }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
             returnDefaultValues = true
         }
     }
+
     sourceSets {
         String sharedDir = 'src/sharedTest/java'
         String sharedResources = 'src/sharedTest/assets'
+
         test {
             java.srcDir sharedDir
             resources.srcDirs += sharedResources
         }
+
         androidTest {
             java.srcDir sharedDir
             resources.srcDirs += sharedResources

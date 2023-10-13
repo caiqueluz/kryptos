@@ -4,9 +4,9 @@ object Versions {
 
     object Generic {
 
-        const val KOTLIN = "1.4.30"
-        const val BUILD_GRADLE = "4.1.2"
-        const val JVM_TARGET = "1.8"
+        const val KOTLIN = "1.8.0"
+        const val BUILD_GRADLE = "8.0.0"
+        const val JVM_TARGET = "17"
     }
 
     object Library {
