@@ -44,40 +44,79 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     )
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyLoadingResponse() = runTest {
+    fun whenOnScreenStartedIsCalled_verifyLoadingResponse() = runTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
         val observer = networkResponseObserver<CurrenciesVO>()
         viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrencies()
+        viewModel.onScreenStarted()
 
         verifyLoadingResponse(observer)
     }
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyContentResponse() = runTest {
+    fun whenOnScreenStartedIsCalled_verifyContentResponse() = runTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
         val observer = networkResponseObserver<CurrenciesVO>()
         viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrencies()
+        viewModel.onScreenStarted()
 
         verifyContentResponse(observer)
     }
 
     @Test
-    fun whenFetchCurrenciesIsCalled_verifyErrorResponse() = runTest {
+    fun whenOnScreenStartedIsCalled_verifyErrorResponse() = runTest {
         val response = errorResponse<CurrenciesListingDTO>()
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
 
         val observer = networkResponseObserver<CurrenciesVO>()
         viewModel.currencies.observeForever(observer)
 
-        viewModel.fetchCurrencies()
+        viewModel.onScreenStarted()
+
+        verifyErrorResponse(observer)
+    }
+
+    @Test
+    fun whenOnErrorModalTryAgainButtonClickedIsCalled_verifyLoadingResponse() = runTest {
+        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
+        whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
+
+        val observer = networkResponseObserver<CurrenciesVO>()
+        viewModel.currencies.observeForever(observer)
+
+        viewModel.onErrorModalTryAgainButtonClicked()
+
+        verifyLoadingResponse(observer)
+    }
+
+    @Test
+    fun whenOnErrorModalTryAgainButtonClickedIsCalled_verifyContentResponse() = runTest {
+        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
+        whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
+
+        val observer = networkResponseObserver<CurrenciesVO>()
+        viewModel.currencies.observeForever(observer)
+
+        viewModel.onErrorModalTryAgainButtonClicked()
+
+        verifyContentResponse(observer)
+    }
+
+    @Test
+    fun whenOnErrorModalTryAgainButtonClickedCalled_verifyErrorResponse() = runTest {
+        val response = errorResponse<CurrenciesListingDTO>()
+        whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
+
+        val observer = networkResponseObserver<CurrenciesVO>()
+        viewModel.currencies.observeForever(observer)
+
+        viewModel.onErrorModalTryAgainButtonClicked()
 
         verifyErrorResponse(observer)
     }

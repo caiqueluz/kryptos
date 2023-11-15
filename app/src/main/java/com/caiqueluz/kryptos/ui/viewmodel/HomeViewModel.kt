@@ -14,7 +14,7 @@ class HomeViewModel(
         return@map factory.create()
     }
 
-    fun createHomeItems() {
+    fun onScreenStarted() {
         _items.postValue(Unit)
     }
 }

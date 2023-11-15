@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.createHomeItems()
+        viewModel.onScreenStarted()
         setupObservers()
     }
 

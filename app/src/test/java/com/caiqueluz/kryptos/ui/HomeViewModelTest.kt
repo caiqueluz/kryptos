@@ -26,11 +26,11 @@ class HomeViewModelTest : ConcurrentTest() {
     private val viewModel = HomeViewModel(mockFactory)
 
     @Test
-    fun whenCreateHomeItemsIsCalled_verifyResponseIsCorrect() {
+    fun whenOnScreenStartedIsCalled_verifyResponseIsCorrect() {
         val observer = mock<Observer<List<HomeItemVO>>>()
         viewModel.items.observeForever(observer)
 
-        viewModel.createHomeItems()
+        viewModel.onScreenStarted()
 
         verify(observer).onChanged(
             check { response ->

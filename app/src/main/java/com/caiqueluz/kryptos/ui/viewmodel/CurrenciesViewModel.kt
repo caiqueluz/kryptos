@@ -37,7 +37,15 @@ class CurrenciesViewModel(
         }
     }
 
-    fun fetchCurrencies() {
+    fun onScreenStarted() {
+        loadCurrencies()
+    }
+
+    fun onErrorModalTryAgainButtonClicked() {
+        loadCurrencies()
+    }
+
+    private fun loadCurrencies() {
         _currencies.postValue(CURRENCIES_LISTING_LIMIT)
     }
 }
