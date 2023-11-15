@@ -54,11 +54,11 @@ class CurrenciesFragment : Fragment() {
 
         binding.currenciesRecyclerView.adapter = CurrencyAdapter(
             currencies = data.currencies,
-            onItemClickAction = ::onPriceInformationClickAction
+            onItemClicked = ::onPriceInformationItemClicked
         )
     }
 
-    private fun onPriceInformationClickAction(detailDialogVO: CurrencyDetailDialogVO) {
+    private fun onPriceInformationItemClicked(detailDialogVO: CurrencyDetailDialogVO) {
         CurrencyDetailDialogFragment(detailDialogVO)
             .show(
                 parentFragmentManager, null
@@ -69,9 +69,8 @@ class CurrenciesFragment : Fragment() {
         binding.currenciesRecyclerView.visibility = View.GONE
         binding.currenciesLoadingProgressbar.visibility = View.GONE
 
-        ErrorDialogFragment { viewModel.fetchCurrencies() }
-            .show(
-                parentFragmentManager, null
-            )
+        ErrorDialogFragment(
+            onTryAgainButtonClicked = viewModel::onErrorModalTryAgainButtonClicked
+        ).show(parentFragmentManager, null)
     }
 }

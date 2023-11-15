@@ -9,7 +9,7 @@ import com.caiqueluz.kryptos.databinding.DialogErrorBinding
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class ErrorDialogFragment(
-    private val tryAgainAction: () -> Unit
+    private val onTryAgainButtonClicked: () -> Unit
 ) : BottomSheetDialogFragment() {
 
     private val binding by lazy {
@@ -35,7 +35,7 @@ class ErrorDialogFragment(
     private fun setupTryAgainButtonClickListener(dialog: Dialog) {
         binding.buttonTryAgain.setOnClickListener {
             dialog.dismiss()
-            tryAgainAction.invoke()
+            onTryAgainButtonClicked.invoke()
         }
     }
 }

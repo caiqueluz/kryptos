@@ -9,7 +9,7 @@ import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 
 class CurrencyAdapter(
     private val currencies: List<CurrencyItemVO>,
-    private val onItemClickAction: (CurrencyDetailDialogVO) -> Unit
+    private val onItemClicked: (CurrencyDetailDialogVO) -> Unit
 ) : RecyclerView.Adapter<CurrencyAdapter.CurrencyViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -56,7 +56,7 @@ class CurrencyAdapter(
                     lastUpdatedDate = item.quote.priceInUsd.lastUpdatedDate
                 )
 
-                onItemClickAction.invoke(detailDialogVO)
+                onItemClicked.invoke(detailDialogVO)
             }
         }
     }
