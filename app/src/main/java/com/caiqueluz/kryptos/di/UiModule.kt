@@ -63,9 +63,7 @@ val uiModule = module {
     }
 
     single {
-        HomeItemFactory(
-            resources = get()
-        )
+        HomeItemFactory()
     }
 
     single {
