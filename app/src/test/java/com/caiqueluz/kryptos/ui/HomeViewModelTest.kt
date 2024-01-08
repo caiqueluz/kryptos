@@ -10,7 +10,6 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.kotlin.check
-import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.verify
 
@@ -18,12 +17,8 @@ import org.mockito.kotlin.verify
 @RunWith(JUnit4::class)
 class HomeViewModelTest : ConcurrentTest() {
 
-    private val fakeFactoryResponse = listOf(HomeItemVO("Mock", mock()))
-    private val mockFactory = mock<HomeItemFactory> {
-        on { create() } doReturn fakeFactoryResponse
-    }
-
-    private val viewModel = HomeViewModel(mockFactory)
+    private val factory = HomeItemFactory()
+    private val viewModel = HomeViewModel(factory)
 
     @Test
     fun whenOnScreenStartedIsCalled_verifyResponseIsCorrect() {
@@ -34,7 +29,7 @@ class HomeViewModelTest : ConcurrentTest() {
 
         verify(observer).onChanged(
             check { response ->
-                assertTrue(response == fakeFactoryResponse)
+                assertTrue(response == factory.create())
             }
         )
     }

@@ -26,7 +26,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupObservers() {
         viewModel.items.observe(this) { items ->
-            val fragments = items.map { it.fragment }
+            val fragments = items.map { it.toHomeTabFragment() }
             val tabs = items.map { resources.getString(it.tabResId) }
 
             setupAdapter(fragments)
