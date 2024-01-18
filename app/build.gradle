@@ -1,17 +1,14 @@
 import com.caiqueluz.buildsrc.AppConfig
-import com.caiqueluz.buildsrc.Dependencies
-import com.caiqueluz.buildsrc.Plugins
-import com.caiqueluz.buildsrc.Versions
 
-apply plugin: Plugins.ANDROID_APPLICATION
-apply plugin: Plugins.KOTLIN_ANDROID
-apply plugin: Plugins.KAPT
-apply plugin: Plugins.KOIN
+apply plugin: libs.plugins.androidApplication.get().pluginId
+apply plugin: libs.plugins.kotlin.android.get().pluginId
+apply plugin: libs.plugins.kotlin.kapt.get().pluginId
+apply plugin: libs.plugins.koin.get().pluginId
 
 android {
     namespace = AppConfig.APPLICATION_ID
     compileSdk = AppConfig.COMPILE_SDK
-    buildToolsVersion - AppConfig.BUILD_TOOLS
+    buildToolsVersion = AppConfig.BUILD_TOOLS
 
     defaultConfig {
         applicationId AppConfig.APPLICATION_ID
@@ -41,7 +38,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = Versions.Generic.JVM_TARGET
+        jvmTarget = AppConfig.JVM_TARGET
     }
 
     buildFeatures {
@@ -73,60 +70,60 @@ android {
 }
 
 dependencies {
-    implementation Dependencies.Generic.KOTLIN_STD_LIB
+    implementation libs.kotlin.stdLib
 
-    implementation Dependencies.Library.Android.CORE_KTX
-    implementation Dependencies.Library.Android.APP_COMPAT
-    implementation Dependencies.Library.Android.MATERIAL
-    implementation Dependencies.Library.Android.CONSTRAINT_LAYOUT
-    implementation Dependencies.Library.Android.ARCH_CORE_COMMON
-    implementation Dependencies.Library.Android.ARCH_CORE_RUNTIME
-    implementation Dependencies.Library.Android.FRAGMENT_KTX
-    implementation Dependencies.Library.Android.VIEW_PAGER_2
-    implementation Dependencies.Library.Android.LIFECYCLE_VIEW_MODEL
-    implementation Dependencies.Library.Android.LIFECYCLE_LIVE_DATA
-    implementation Dependencies.Library.Android.LIFECYCLE_RUNTIME
-    implementation Dependencies.Library.Android.COROUTINES_ANDROID
+    implementation libs.androidx.core.coreKtx
+    implementation libs.androidx.appCompat
+    implementation libs.google.material
+    implementation libs.androidx.constraintLayout
+    implementation libs.androidx.archCore.common
+    implementation libs.androidx.archCore.runtime
+    implementation libs.androidx.fragment.fragmentKtx
+    implementation libs.androidx.viewPager2
+    implementation libs.androidx.lifecycle.viewModel
+    implementation libs.androidx.lifecycle.liveData
+    implementation libs.androidx.lifecycle.runtime
+    implementation libs.coroutines.android
 
-    implementation Dependencies.Library.COROUTINES_CORE
-    implementation Dependencies.Library.RETROFIT
-    implementation Dependencies.Library.RETROFIT_CONVERTER_GSON
-    implementation Dependencies.Library.GSON
-    implementation Dependencies.Library.OK_HTTP
-    implementation Dependencies.Library.OK_HTTP_LOGGING_INTERCEPTOR
-    implementation Dependencies.Library.PICASSO
-    implementation Dependencies.Library.KOIN_CORE
-    implementation Dependencies.Library.KOIN_SCOPE
-    implementation Dependencies.Library.KOIN_VIEW_MODEL
-    implementation Dependencies.Library.KOIN_FRAGMENT
+    implementation libs.coroutines.core
+    implementation libs.retrofit
+    implementation libs.retrofit.converterGson
+    implementation libs.gson
+    implementation libs.okHttp
+    implementation libs.okHttp.loggingInterceptor
+    implementation libs.picasso
+    implementation libs.koin.core
+    implementation libs.koin.scope
+    implementation libs.koin.viewModel
+    implementation libs.koin.fragment
 
-    testImplementation Dependencies.Test.JUNIT
-    testImplementation Dependencies.Test.EXT_JUNIT
-    testImplementation Dependencies.Test.MOCKITO_CORE
-    testImplementation Dependencies.Test.MOCKITO_KOTLIN
-    testImplementation Dependencies.Test.MOCKITO_ANDROID
-    testImplementation Dependencies.Test.COROUTINES_TEST
-    testImplementation Dependencies.Test.ARCH_CORE_TESTING
+    testImplementation libs.junit
+    testImplementation libs.androidx.testJUnit
+    testImplementation libs.mockito.core
+    testImplementation libs.mockito.kotlin
+    testImplementation libs.mockito.android
+    testImplementation libs.coroutines.test
+    testImplementation libs.androidx.archCore.testing
 
-    debugImplementation(Dependencies.Test.FRAGMENT_TESTING) {
+    debugImplementation(libs.androidx.fragment.fragmentTesting) {
         exclude group: 'androidx.test', module: 'core'
     }
 
-    testImplementation Dependencies.Test.ROBOLECTRIC
-    testImplementation Dependencies.Test.ESPRESSO_CORE
+    testImplementation libs.robolectric
+    testImplementation libs.androidx.testEspresso.core
 
-    androidTestImplementation Dependencies.Test.EXT_JUNIT
-    androidTestImplementation Dependencies.Test.ESPRESSO_CORE
-    androidTestImplementation Dependencies.Test.MOCKITO_CORE
-    androidTestImplementation Dependencies.Test.MOCKITO_ANDROID
-    androidTestImplementation Dependencies.Test.MOCKITO_KOTLIN
-    androidTestImplementation Dependencies.Test.ANDROID_TEST_RUNNER
-    androidTestImplementation Dependencies.Test.COROUTINES_TEST
-    androidTestImplementation Dependencies.Test.ARCH_CORE_TESTING
+    androidTestImplementation libs.androidx.testJUnit
+    androidTestImplementation libs.androidx.testEspresso.core
+    androidTestImplementation libs.mockito.core
+    androidTestImplementation libs.mockito.android
+    androidTestImplementation libs.mockito.kotlin
+    androidTestImplementation libs.androidx.testRunner
+    androidTestImplementation libs.coroutines.test
+    androidTestImplementation libs.androidx.archCore.testing
 
-    debugImplementation(Dependencies.Test.FRAGMENT_TESTING) {
+    debugImplementation(libs.androidx.fragment.fragmentTesting) {
         exclude group: 'androidx.test', module: 'core'
     }
 
-    androidTestImplementation Dependencies.Test.ROBOLECTRIC
+    androidTestImplementation libs.robolectric
 }
