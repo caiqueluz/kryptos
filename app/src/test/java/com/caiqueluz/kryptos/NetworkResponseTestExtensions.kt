@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos.ui
+package com.caiqueluz.kryptos
 
 import androidx.lifecycle.Observer
 import com.caiqueluz.kryptos.network.NetworkResponse

@@ -4,10 +4,16 @@ import com.caiqueluz.kryptos.ConcurrentTest
 import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
+import com.caiqueluz.kryptos.errorResponse
+import com.caiqueluz.kryptos.networkResponseObserver
+import com.caiqueluz.kryptos.successResponse
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
+import com.caiqueluz.kryptos.verifyContentResponse
+import com.caiqueluz.kryptos.verifyErrorResponse
+import com.caiqueluz.kryptos.verifyLoadingResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
