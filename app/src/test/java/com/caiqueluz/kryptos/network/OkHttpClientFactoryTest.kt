@@ -23,10 +23,28 @@ class OkHttpClientFactoryTest {
     )
 
     @Test
+    fun whenCreateIsCalled_verifyResponseHasCorrectConnectionTimeout() {
+        okHttpFactory.create()
+
+        verify(spyOkHttpBuilder).connectTimeout(
+            timeout = eq(30L), unit = eq(TimeUnit.SECONDS)
+        )
+    }
+
+    @Test
     fun whenCreateIsCalled_verifyResponseHasCorrectReadTimeout() {
         okHttpFactory.create()
 
         verify(spyOkHttpBuilder).readTimeout(
+            timeout = eq(30L), unit = eq(TimeUnit.SECONDS)
+        )
+    }
+
+    @Test
+    fun whenCreateIsCalled_verifyResponseHasCorrectWriteTimeout() {
+        okHttpFactory.create()
+
+        verify(spyOkHttpBuilder).writeTimeout(
             timeout = eq(30L), unit = eq(TimeUnit.SECONDS)
         )
     }
