@@ -12,5 +12,7 @@ object AppConfig {
     const val VERSION_CODE = 1
     const val VERSION_NAME = "1.0"
 
+    const val JVM_TARGET = "17"
+
     const val TEST_INSTRUMENTATION_RUNNER = "androidx.test.runner.AndroidJUnitRunner"
 }
