@@ -4,7 +4,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
-private const val READ_TIMEOUT = 30L
+private const val TIMEOUT = 30L
 
 class OkHttpClientFactory(
     private val okHttpBuilder: OkHttpClient.Builder,
@@ -15,6 +15,8 @@ class OkHttpClientFactory(
     fun create(): OkHttpClient = okHttpBuilder
         .addInterceptor(authenticationInterceptor)
         .addInterceptor(httpLoggingInterceptor)
-        .readTimeout(READ_TIMEOUT, TimeUnit.SECONDS)
+        .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
+        .readTimeout(TIMEOUT, TimeUnit.SECONDS)
+        .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
         .build()
 }
