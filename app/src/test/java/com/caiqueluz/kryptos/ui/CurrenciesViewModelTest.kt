@@ -1,6 +1,7 @@
 package com.caiqueluz.kryptos.ui
 
-import com.caiqueluz.kryptos.ConcurrentTest
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import com.caiqueluz.kryptos.CoroutinesTestRule
 import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
@@ -16,6 +17,7 @@ import com.caiqueluz.kryptos.verifyErrorResponse
 import com.caiqueluz.kryptos.verifyLoadingResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
@@ -27,7 +29,13 @@ import org.mockito.kotlin.whenever
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
-class CurrenciesViewModelTest : ConcurrentTest() {
+class CurrenciesViewModelTest {
+
+    @get:Rule
+    val coroutinesRule = CoroutinesTestRule()
+
+    @get:Rule
+    val instantTaskRule = InstantTaskExecutorRule()
 
     private val mockRepository = mock<CurrenciesRepository>()
 
@@ -43,7 +51,7 @@ class CurrenciesViewModelTest : ConcurrentTest() {
     private val imagesResponse = successResponse<CurrenciesImagesDTO>()
 
     private val viewModel = CurrenciesViewModel(
-        dispatcher = testDispatcher,
+        dispatcher = coroutinesRule.dispatcher,
         repository = mockRepository,
         idsConverter = mockIdsConverter,
         currenciesConverter = mockCurrenciesConverter
