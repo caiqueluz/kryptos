@@ -6,15 +6,11 @@ import com.caiqueluz.kryptos.data.CurrenciesRepository
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
 import com.caiqueluz.kryptos.errorResponse
-import com.caiqueluz.kryptos.networkResponseObserver
 import com.caiqueluz.kryptos.successResponse
 import com.caiqueluz.kryptos.ui.converter.CurrenciesConverter
 import com.caiqueluz.kryptos.ui.converter.CurrenciesIdsConverter
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
-import com.caiqueluz.kryptos.verifyContentResponse
-import com.caiqueluz.kryptos.verifyErrorResponse
-import com.caiqueluz.kryptos.verifyLoadingResponse
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
@@ -43,8 +39,10 @@ class CurrenciesViewModelTest {
         on { convertIds(anyOrNull()) } doReturn String()
     }
 
+    private val mockCurrencies = mock<CurrenciesVO>()
+
     private val mockCurrenciesConverter = mock<CurrenciesConverter> {
-        on { convertCurrencies(any(), any()) } doReturn mock()
+        on { convertCurrencies(any(), any()) } doReturn mockCurrencies
     }
 
     private val listingResponse = successResponse<CurrenciesListingDTO>()
@@ -62,12 +60,9 @@ class CurrenciesViewModelTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onScreenStarted()
-
-        verifyLoadingResponse(observer)
+        robot()
+            .start()
+            .expectLoading()
     }
 
     @Test
@@ -75,12 +70,9 @@ class CurrenciesViewModelTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onScreenStarted()
-
-        verifyContentResponse(observer)
+        robot()
+            .start()
+            .expectContent(content = mockCurrencies)
     }
 
     @Test
@@ -88,12 +80,9 @@ class CurrenciesViewModelTest {
         val response = errorResponse<CurrenciesListingDTO>()
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onScreenStarted()
-
-        verifyErrorResponse(observer)
+        robot()
+            .start()
+            .expectError()
     }
 
     @Test
@@ -101,12 +90,10 @@ class CurrenciesViewModelTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onErrorModalTryAgainButtonClicked()
-
-        verifyLoadingResponse(observer)
+        robot()
+            .start()
+            .clickOnErrorModalTryAgainButton()
+            .expectLoading()
     }
 
     @Test
@@ -114,12 +101,10 @@ class CurrenciesViewModelTest {
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(listingResponse)
         whenever(mockRepository.fetchCurrenciesWithImages(any())).thenReturn(imagesResponse)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onErrorModalTryAgainButtonClicked()
-
-        verifyContentResponse(observer)
+        robot()
+            .start()
+            .clickOnErrorModalTryAgainButton()
+            .expectContent(content = mockCurrencies)
     }
 
     @Test
@@ -127,11 +112,11 @@ class CurrenciesViewModelTest {
         val response = errorResponse<CurrenciesListingDTO>()
         whenever(mockRepository.fetchCurrenciesListing(any())).thenReturn(response)
 
-        val observer = networkResponseObserver<CurrenciesVO>()
-        viewModel.currencies.observeForever(observer)
-
-        viewModel.onErrorModalTryAgainButtonClicked()
-
-        verifyErrorResponse(observer)
+        robot()
+            .start()
+            .clickOnErrorModalTryAgainButton()
+            .expectError()
     }
+
+    private fun robot() = CurrenciesTestRobot(viewModel = viewModel)
 }

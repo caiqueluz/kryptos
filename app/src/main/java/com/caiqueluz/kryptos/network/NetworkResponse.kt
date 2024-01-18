@@ -4,9 +4,9 @@ sealed class NetworkResponse<out TYPE> {
 
     object Loading : NetworkResponse<Nothing>()
 
-    class Content<TYPE>(val content: TYPE) : NetworkResponse<TYPE>()
+    data class Content<TYPE>(val content: TYPE) : NetworkResponse<TYPE>()
 
-    class Error(val error: Throwable) : NetworkResponse<Nothing>()
+    data class Error(val error: Throwable) : NetworkResponse<Nothing>()
 }
 
 fun <TYPE> buildNetworkResponse(content: TYPE?): NetworkResponse<TYPE> =

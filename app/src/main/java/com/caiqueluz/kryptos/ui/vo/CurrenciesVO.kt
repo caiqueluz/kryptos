@@ -1,5 +1,5 @@
 package com.caiqueluz.kryptos.ui.vo
 
-class CurrenciesVO(
+data class CurrenciesVO(
     val currencies: List<CurrencyItemVO>
 )
