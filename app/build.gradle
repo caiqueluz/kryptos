@@ -105,25 +105,11 @@ dependencies {
     testImplementation libs.coroutines.test
     testImplementation libs.androidx.archCore.testing
 
-    debugImplementation(libs.androidx.fragment.fragmentTesting) {
-        exclude group: 'androidx.test', module: 'core'
-    }
-
-    testImplementation libs.robolectric
-    testImplementation libs.androidx.testEspresso.core
-
     androidTestImplementation libs.androidx.testJUnit
-    androidTestImplementation libs.androidx.testEspresso.core
     androidTestImplementation libs.mockito.core
     androidTestImplementation libs.mockito.android
     androidTestImplementation libs.mockito.kotlin
     androidTestImplementation libs.androidx.testRunner
     androidTestImplementation libs.coroutines.test
     androidTestImplementation libs.androidx.archCore.testing
-
-    debugImplementation(libs.androidx.fragment.fragmentTesting) {
-        exclude group: 'androidx.test', module: 'core'
-    }
-
-    androidTestImplementation libs.robolectric
 }
