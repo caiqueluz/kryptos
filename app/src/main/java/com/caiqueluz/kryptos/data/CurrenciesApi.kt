@@ -11,10 +11,10 @@ interface CurrenciesApi {
     @GET("/v1/cryptocurrency/listings/latest")
     suspend fun fetchCurrenciesListing(
         @Query("limit") limit: Int
-    ): Response<CurrenciesListingDTO>
+    ): CurrenciesListingDTO
 
     @GET("/v1/cryptocurrency/info")
     suspend fun fetchCurrenciesWithImages(
         @Query("id") ids: String
-    ): Response<CurrenciesImagesDTO>
+    ): CurrenciesImagesDTO
 }

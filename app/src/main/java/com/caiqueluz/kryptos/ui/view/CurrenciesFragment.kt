@@ -5,11 +5,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.caiqueluz.kryptos.databinding.FragmentCurrenciesBinding
 import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class CurrenciesFragment : Fragment() {
@@ -34,11 +38,15 @@ class CurrenciesFragment : Fragment() {
     }
 
     private fun setupObservers() {
-        viewModel.currencies.observe(viewLifecycleOwner) { response ->
-            when (response) {
-                is NetworkResponse.Loading -> renderLoading()
-                is NetworkResponse.Content -> renderContent(response.content)
-                is NetworkResponse.Error -> renderError()
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.currencies.collect { response ->
+                    when (response) {
+                        is NetworkResponse.Loading -> renderLoading()
+                        is NetworkResponse.Content -> renderContent(response.content)
+                        is NetworkResponse.Error -> renderError()
+                    }
+                }
             }
         }
     }

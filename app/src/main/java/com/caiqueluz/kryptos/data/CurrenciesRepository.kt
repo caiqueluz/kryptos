@@ -8,9 +8,9 @@ class CurrenciesRepository(
     private val api: CurrenciesApi
 ) {
 
-    suspend fun fetchCurrenciesListing(limit: Int): Response<CurrenciesListingDTO> =
+    suspend fun fetchCurrenciesListing(limit: Int): CurrenciesListingDTO =
         api.fetchCurrenciesListing(limit)
 
-    suspend fun fetchCurrenciesWithImages(ids: String): Response<CurrenciesImagesDTO> =
+    suspend fun fetchCurrenciesWithImages(ids: String): CurrenciesImagesDTO =
         api.fetchCurrenciesWithImages(ids)
 }
