@@ -12,11 +12,6 @@ class CurrenciesTestRobot(
 
     private val networkResponses = mutableListOf<NetworkResponse<CurrenciesVO>>()
 
-    init {
-        viewModel.currencies
-            .observeForever { networkResponses.add(it) }
-    }
-
     fun start(): CurrenciesTestRobot {
         viewModel.onScreenStarted()
 

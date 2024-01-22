@@ -8,16 +8,3 @@ sealed class NetworkResponse<out TYPE> {
 
     object Error : NetworkResponse<Nothing>()
 }
-
-fun <TYPE> buildNetworkResponse(content: TYPE?): NetworkResponse<TYPE> =
-    when (content != null) {
-        true -> buildContentNetworkResponse(content)
-        false -> buildErrorNetworkResponse()
-    }
-
-fun <TYPE> buildErrorNetworkResponse(
-    throwable: Throwable = Throwable()
-): NetworkResponse<TYPE> = NetworkResponse.Error
-
-private fun <TYPE> buildContentNetworkResponse(body: TYPE): NetworkResponse<TYPE> =
-    NetworkResponse.Content(content = body)
