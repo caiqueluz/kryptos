@@ -16,7 +16,7 @@ class CurrencyItemConverter(
     ): CurrencyItemVO = CurrencyItemVO(
         name = listingItem.name,
         symbol = listingItem.symbol,
-        image = imageLoader.loadImage(imageUrl),
+        imageUrl = imageUrl,
         quote = quote
     )
 }

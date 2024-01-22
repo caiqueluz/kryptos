@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import com.caiqueluz.kryptos.databinding.DialogCurrencyDetailBinding
 import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.squareup.picasso.Picasso
 
 class CurrencyDetailDialogFragment(
     private val detailDialogVO: CurrencyDetailDialogVO
@@ -42,8 +44,10 @@ class CurrencyDetailDialogFragment(
             currencyDetailSymbol.text = detailDialogVO.symbol
             currencyDetailLastUpdatedDate.text = detailDialogVO.lastUpdatedDate
 
-            detailDialogVO.image?.let { image ->
-                currencyDetailImage.setImageBitmap(image)
+            detailDialogVO.imageUrl?.let { url ->
+                Picasso.get()
+                    .load(url.toUri())
+                    .into(currencyDetailImage)
             }
         }
     }

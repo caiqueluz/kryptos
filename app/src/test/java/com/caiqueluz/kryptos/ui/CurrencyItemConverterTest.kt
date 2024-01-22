@@ -56,7 +56,7 @@ class CurrencyItemConverterTest {
         val expected = mockImage
         val actual = converter.convertCurrencyItem(
             fakeListingItemDTO, mockQuoteVO, mockImageUrl
-        ).image
+        ).imageUrl
 
         assertEquals(expected, actual)
     }

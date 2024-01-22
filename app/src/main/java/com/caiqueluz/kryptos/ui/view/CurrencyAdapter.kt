@@ -2,10 +2,12 @@ package com.caiqueluz.kryptos.ui.view
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.net.toUri
 import androidx.recyclerview.widget.RecyclerView
 import com.caiqueluz.kryptos.databinding.CurrencyListItemBinding
 import com.caiqueluz.kryptos.ui.vo.CurrencyDetailDialogVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
+import com.squareup.picasso.Picasso
 
 class CurrencyAdapter(
     private val currencies: List<CurrencyItemVO>,
@@ -34,8 +36,10 @@ class CurrencyAdapter(
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(item: CurrencyItemVO) {
-            item.image?.let {
-                binding.currencyItemImage.setImageBitmap(it)
+            item.imageUrl?.let { url ->
+                Picasso.get()
+                    .load(url.toUri())
+                    .into(binding.currencyItemImage)
             }
 
             binding.currencyItemName.text = item.name
@@ -50,7 +54,7 @@ class CurrencyAdapter(
         private fun setupPriceInformationClickListener(item: CurrencyItemVO) {
             binding.currencyItemPriceInformation.setOnClickListener {
                 val detailDialogVO = CurrencyDetailDialogVO(
-                    image = item.image,
+                    imageUrl = item.imageUrl,
                     name = item.name,
                     symbol = item.symbol,
                     lastUpdatedDate = item.quote.priceInUsd.lastUpdatedDate
