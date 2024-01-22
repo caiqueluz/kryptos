@@ -1,16 +1,21 @@
 package com.caiqueluz.kryptos.ui
 
+import app.cash.turbine.TurbineContext
 import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
+import kotlinx.coroutines.CoroutineScope
 import org.junit.Assert.assertTrue
-import org.junit.Assert.assertEquals
 
 class CurrenciesTestRobot(
+    turbineContext: TurbineContext,
+    private val backgroundScope: CoroutineScope,
     private val viewModel: CurrenciesViewModel
 ) {
 
-    private val networkResponses = mutableListOf<NetworkResponse<CurrenciesVO>>()
+    private val turbine = with(turbineContext) {
+        viewModel.currencies.testIn(backgroundScope)
+    }
 
     fun start(): CurrenciesTestRobot {
         viewModel.onScreenStarted()
@@ -24,21 +29,14 @@ class CurrenciesTestRobot(
         return this
     }
 
-    fun expectLoading() {
-        val expected = NetworkResponse.Loading
-        val actual = networkResponses.first()
-
-        assertEquals(expected, actual)
+    suspend fun expect(response: NetworkResponse<CurrenciesVO>) {
+        assertTrue(response == turbine.awaitItem())
     }
 
-    fun expectContent(content: CurrenciesVO) {
-        val expected = NetworkResponse.Content(content)
-        val actual = networkResponses[1]
-
-        assertEquals(expected, actual)
-    }
-
-    fun expectError() {
-        assertTrue(networkResponses[1] is NetworkResponse.Error)
+    suspend fun expectInOrder(vararg responses: NetworkResponse<CurrenciesVO>) {
+        responses.forEach { response ->
+            val actual = turbine.awaitItem()
+            assertTrue(actual == response)
+        }
     }
 }
