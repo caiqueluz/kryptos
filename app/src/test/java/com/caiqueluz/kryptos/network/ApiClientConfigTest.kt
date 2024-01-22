@@ -15,7 +15,7 @@ import retrofit2.Retrofit
 @RunWith(JUnit4::class)
 class ApiClientConfigTest {
 
-    private val mockBaseUrl = "https://mockurl.com"
+    private val mockBaseUrl = ApiBaseUrl(value = "https://mockurl.com")
     private val spyRetrofitBuilder = spy<Retrofit.Builder>()
 
     private val mockConverterFactory = mock<Converter.Factory>()
@@ -37,7 +37,7 @@ class ApiClientConfigTest {
 
     @Test
     fun whenCreateIsCalled_verifyApiClientHasCorrectBaseUrl() {
-        verify(spyRetrofitBuilder).baseUrl(mockBaseUrl)
+        verify(spyRetrofitBuilder).baseUrl(mockBaseUrl.value)
     }
 
     @Test
