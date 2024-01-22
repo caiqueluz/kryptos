@@ -1,6 +1,6 @@
 [versions]
 
-kotlin = "1.8.20"
+kotlin = "1.9.22"
 coroutines = "1.7.3"
 androidGradlePlugin = "8.2.1"
 
