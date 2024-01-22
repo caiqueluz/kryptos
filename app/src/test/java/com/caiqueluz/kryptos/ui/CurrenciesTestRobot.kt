@@ -29,10 +29,6 @@ class CurrenciesTestRobot(
         return this
     }
 
-    suspend fun expect(response: NetworkResponse<CurrenciesVO>) {
-        assertTrue(response == turbine.awaitItem())
-    }
-
     suspend fun expectInOrder(vararg responses: NetworkResponse<CurrenciesVO>) {
         responses.forEach { response ->
             val actual = turbine.awaitItem()

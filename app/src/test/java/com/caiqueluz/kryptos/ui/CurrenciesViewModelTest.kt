@@ -112,7 +112,7 @@ class CurrenciesViewModelTest {
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
         robot
-            .start()
+            .clickOnErrorModalTryAgainButton()
             .expectInOrder(
                 NetworkResponse.Loading,
                 NetworkResponse.Content(
@@ -164,7 +164,7 @@ class CurrenciesViewModelTest {
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
         robot
-            .start()
+            .clickOnErrorModalTryAgainButton()
             .expectInOrder(
                 NetworkResponse.Loading,
                 NetworkResponse.Error
