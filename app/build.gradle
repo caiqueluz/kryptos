@@ -89,6 +89,9 @@ dependencies {
     testImplementation libs.mockito.android
     testImplementation libs.coroutines.test
     testImplementation libs.androidx.archCore.testing
+    testImplementation libs.okHttp.mockWebServer
+    testImplementation libs.koin.test
+    testImplementation libs.turbine
 
     androidTestImplementation libs.androidx.testJUnit
     androidTestImplementation libs.mockito.core

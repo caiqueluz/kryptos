@@ -24,6 +24,7 @@ mockito-core = "5.6.0"
 mockito-kotlin = "5.1.0"
 
 junit = "4.12"
+turbine = "1.0.0"
 
 [libraries]
 
@@ -54,6 +55,7 @@ picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "pic
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 okHttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
 okHttp-loggingInterceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp" }
+okHttp-mockWebServer = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "okHttp" }
 retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converterGson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 
@@ -63,11 +65,13 @@ mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", versio
 
 koin-gradlePlugin = { group = "io.insert-koin", name = "koin-gradle-plugin", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
+koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
 koin-scope = { group = "io.insert-koin", name = "koin-androidx-scope", version.ref = "koin" }
 koin-viewModel = { group = "io.insert-koin", name = "koin-androidx-viewmodel", version.ref = "koin" }
 koin-fragment = { group = "io.insert-koin", name = "koin-androidx-fragment", version.ref = "koin" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
+turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 
 [plugins]
 
