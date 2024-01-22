@@ -1,28 +1,18 @@
 package com.caiqueluz.kryptos.ui
 
-import android.graphics.Bitmap
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.ui.converter.CurrencyItemConverter
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
-import com.caiqueluz.kryptos.utils.ImageLoader
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.kotlin.any
-import org.mockito.kotlin.doReturn
 import org.mockito.kotlin.mock
 
 @RunWith(JUnit4::class)
 class CurrencyItemConverterTest {
 
-    private val mockImage = mock<Bitmap>()
-
-    private val mockImageLoader = mock<ImageLoader> {
-        on { loadImage(any()) } doReturn mockImage
-    }
-
-    private val converter = CurrencyItemConverter(imageLoader = mockImageLoader)
+    private val converter = CurrencyItemConverter()
 
     private val mockQuoteVO = mock<CurrencyQuoteVO>()
     private val mockImageUrl = "mockurl.com"
@@ -53,7 +43,8 @@ class CurrencyItemConverterTest {
 
     @Test
     fun whenConvertCurrencyItemIsCalled_verifyResponseImageIsCorrect() {
-        val expected = mockImage
+        val expected = mockImageUrl
+
         val actual = converter.convertCurrencyItem(
             fakeListingItemDTO, mockQuoteVO, mockImageUrl
         ).imageUrl
@@ -64,6 +55,7 @@ class CurrencyItemConverterTest {
     @Test
     fun whenConvertCurrencyItemIsCalled_verifyResponseQuoteIsCorrect() {
         val expected = mockQuoteVO
+
         val actual = converter.convertCurrencyItem(
             fakeListingItemDTO, mockQuoteVO, mockImageUrl
         ).quote

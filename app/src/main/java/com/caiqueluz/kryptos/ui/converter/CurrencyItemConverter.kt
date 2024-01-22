@@ -3,11 +3,8 @@ package com.caiqueluz.kryptos.ui.converter
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingItemDTO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO
-import com.caiqueluz.kryptos.utils.ImageLoader
 
-class CurrencyItemConverter(
-    private val imageLoader: ImageLoader
-) {
+class CurrencyItemConverter {
 
     fun convertCurrencyItem(
         listingItem: CurrenciesListingItemDTO,

@@ -46,9 +46,7 @@ val uiModule = module {
     }
 
     single {
-        CurrencyItemConverter(
-            imageLoader = get()
-        )
+        CurrencyItemConverter()
     }
 
     single {
