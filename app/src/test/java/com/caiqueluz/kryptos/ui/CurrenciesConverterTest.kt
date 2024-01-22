@@ -40,6 +40,7 @@ class CurrenciesConverterTest {
     @Test
     fun whenConvertCurrenciesIsCalled_verifyResponseSizeIsCorrect() {
         val expected = 3
+
         val actual = converter.convertCurrencies(
             fakeCurrenciesListingDTO, fakeCurrenciesImagesDTO
         ).currencies.size

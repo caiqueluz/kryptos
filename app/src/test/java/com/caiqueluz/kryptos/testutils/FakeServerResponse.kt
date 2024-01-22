@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 import okio.Buffer
 

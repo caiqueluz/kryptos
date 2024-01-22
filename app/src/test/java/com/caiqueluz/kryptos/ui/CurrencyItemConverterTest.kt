@@ -24,6 +24,7 @@ class CurrencyItemConverterTest {
     @Test
     fun whenConvertCurrencyItemIsCalled_verifyResponseNameIsCorrect() {
         val expected = "MockName"
+
         val actual = converter.convertCurrencyItem(
             fakeListingItemDTO, mockQuoteVO, mockImageUrl
         ).name
@@ -34,6 +35,7 @@ class CurrencyItemConverterTest {
     @Test
     fun whenConvertCurrencyItemIsCalled_verifyResponseSymbolIsCorrect() {
         val expected = "MOCK"
+
         val actual = converter.convertCurrencyItem(
             fakeListingItemDTO, mockQuoteVO, mockImageUrl
         ).symbol

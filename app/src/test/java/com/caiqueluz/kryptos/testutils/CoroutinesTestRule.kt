@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi

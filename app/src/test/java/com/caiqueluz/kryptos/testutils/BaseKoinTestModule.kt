@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 import com.caiqueluz.kryptos.network.ApiBaseUrl
 import org.koin.dsl.module

@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.TestWatcher

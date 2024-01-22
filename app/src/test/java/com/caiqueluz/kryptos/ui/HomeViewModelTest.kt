@@ -2,7 +2,7 @@ package com.caiqueluz.kryptos.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
-import com.caiqueluz.kryptos.CoroutinesTestRule
+import com.caiqueluz.kryptos.testutils.CoroutinesTestRule
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import com.caiqueluz.kryptos.ui.vo.HomeItemVO
 import kotlinx.coroutines.ExperimentalCoroutinesApi

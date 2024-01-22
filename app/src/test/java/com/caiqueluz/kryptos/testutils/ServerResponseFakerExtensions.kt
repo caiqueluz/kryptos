@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 fun ServerResponseFaker.fakeSuccessListingResponse(
     delay: Long? = null

@@ -1,15 +1,15 @@
 package com.caiqueluz.kryptos.ui
 
 import app.cash.turbine.TurbineContext
-import com.caiqueluz.kryptos.CoroutinesTestRule
-import com.caiqueluz.kryptos.MockWebServerRule
-import com.caiqueluz.kryptos.ServerResponseFaker
-import com.caiqueluz.kryptos.baseKoinTestModule
+import com.caiqueluz.kryptos.testutils.CoroutinesTestRule
+import com.caiqueluz.kryptos.testutils.MockWebServerRule
+import com.caiqueluz.kryptos.testutils.ServerResponseFaker
+import com.caiqueluz.kryptos.testutils.baseKoinTestModule
 import com.caiqueluz.kryptos.di.appModules
-import com.caiqueluz.kryptos.fakeErrorListingResponse
-import com.caiqueluz.kryptos.fakeSuccessListingResponse
+import com.caiqueluz.kryptos.testutils.fakeErrorListingResponse
+import com.caiqueluz.kryptos.testutils.fakeSuccessListingResponse
 import com.caiqueluz.kryptos.network.NetworkResponse
-import com.caiqueluz.kryptos.runTurbineTest
+import com.caiqueluz.kryptos.testutils.runTurbineTest
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyQuoteVO

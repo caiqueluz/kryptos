@@ -1,4 +1,4 @@
-package com.caiqueluz.kryptos
+package com.caiqueluz.kryptos.testutils
 
 import app.cash.turbine.TurbineContext
 import app.cash.turbine.turbineScope
