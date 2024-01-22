@@ -1,6 +1,7 @@
 package com.caiqueluz.kryptos.di
 
 import com.caiqueluz.kryptos.BuildConfig
+import com.caiqueluz.kryptos.network.ApiBaseUrl
 import com.caiqueluz.kryptos.network.ApiClientConfig
 import com.caiqueluz.kryptos.network.ApiServiceFactory
 import com.caiqueluz.kryptos.network.AuthenticationHeaderConfig
@@ -64,8 +65,14 @@ val networkModule = module {
     }
 
     single {
+        ApiBaseUrl(
+            value = BuildConfig.BASE_URL
+        )
+    }
+
+    single {
         ApiClientConfig(
-            baseUrl = BuildConfig.BASE_URL,
+            baseUrl = get(),
             retrofitBuilder = get(),
             converterFactory = get(),
             okHttpClient = get()
