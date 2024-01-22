@@ -16,9 +16,7 @@ fun <FROM, TO> NetworkResponse<FROM>.mapContent(
     is NetworkResponse.Content -> NetworkResponse.Content(
         content = transformation.invoke(this.content)
     )
-    is NetworkResponse.Error -> NetworkResponse.Error(
-        error = this.error
-    )
+    is NetworkResponse.Error -> NetworkResponse.Error
 }
 
 fun <TYPE> Response<TYPE>.asNetworkResponse(): NetworkResponse<TYPE> =

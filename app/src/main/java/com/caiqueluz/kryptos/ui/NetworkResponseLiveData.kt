@@ -15,6 +15,6 @@ fun <TYPE> networkResponseLiveData(
         val networkResponse = request.invoke()
         emit(networkResponse)
     } catch (exception: Exception) {
-        emit(NetworkResponse.Error(exception))
+        emit(NetworkResponse.Error)
     }
 }

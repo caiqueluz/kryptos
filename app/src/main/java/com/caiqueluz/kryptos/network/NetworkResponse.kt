@@ -6,7 +6,7 @@ sealed class NetworkResponse<out TYPE> {
 
     data class Content<TYPE>(val content: TYPE) : NetworkResponse<TYPE>()
 
-    data class Error(val error: Throwable) : NetworkResponse<Nothing>()
+    object Error : NetworkResponse<Nothing>()
 }
 
 fun <TYPE> buildNetworkResponse(content: TYPE?): NetworkResponse<TYPE> =
@@ -17,7 +17,7 @@ fun <TYPE> buildNetworkResponse(content: TYPE?): NetworkResponse<TYPE> =
 
 fun <TYPE> buildErrorNetworkResponse(
     throwable: Throwable = Throwable()
-): NetworkResponse<TYPE> = NetworkResponse.Error(throwable)
+): NetworkResponse<TYPE> = NetworkResponse.Error
 
 private fun <TYPE> buildContentNetworkResponse(body: TYPE): NetworkResponse<TYPE> =
     NetworkResponse.Content(content = body)

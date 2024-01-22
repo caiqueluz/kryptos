@@ -38,7 +38,7 @@ class CurrenciesFragment : Fragment() {
             when (response) {
                 is NetworkResponse.Loading -> renderLoading()
                 is NetworkResponse.Content -> renderContent(response.content)
-                is NetworkResponse.Error -> renderError(response.error)
+                is NetworkResponse.Error -> renderError()
             }
         }
     }
@@ -65,7 +65,7 @@ class CurrenciesFragment : Fragment() {
             )
     }
 
-    private fun renderError(error: Throwable) {
+    private fun renderError() {
         binding.currenciesRecyclerView.visibility = View.GONE
         binding.currenciesLoadingProgressbar.visibility = View.GONE
 
