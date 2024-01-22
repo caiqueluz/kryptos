@@ -1,6 +1,6 @@
 package com.caiqueluz.kryptos.ui.vo
 
-class CurrencyUsdPriceVO(
+data class CurrencyUsdPriceVO(
     val price: String,
     val lastUpdatedDate: String? = null
 )

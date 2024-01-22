@@ -1,5 +1,5 @@
 package com.caiqueluz.kryptos.ui.vo
 
-class CurrencyQuoteVO(
+data class CurrencyQuoteVO(
     val priceInUsd: CurrencyUsdPriceVO
 )
