@@ -2,7 +2,6 @@ package com.caiqueluz.kryptos.data
 
 import com.caiqueluz.kryptos.data.dto.CurrenciesImagesDTO
 import com.caiqueluz.kryptos.data.dto.CurrenciesListingDTO
-import retrofit2.Response
 
 class CurrenciesRepository(
     private val api: CurrenciesApi

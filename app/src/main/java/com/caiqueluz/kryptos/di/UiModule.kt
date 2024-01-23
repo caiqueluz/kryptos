@@ -11,73 +11,32 @@ import com.caiqueluz.kryptos.ui.converter.TimeZoneFactory
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import org.koin.android.ext.koin.androidContext
-import org.koin.androidx.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModelOf
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import java.text.NumberFormat
 import java.util.Locale
 
 val uiModule = module {
-    single {
-        TimeZoneFactory()
-    }
-
-    single {
-        DateFormatFactory(
-            timeZoneFactory = get()
-        )
-    }
-
-    single {
-        DateConverter(
-            formatFactory = get()
-        )
-    }
+    singleOf(::TimeZoneFactory)
+    singleOf(::DateFormatFactory)
+    singleOf(::DateConverter)
 
     single {
         NumberFormat.getCurrencyInstance(Locale.US)
     }
 
-    single {
-        CurrencyQuoteConverter(
-            numberFormatter = get(),
-            dateConverter = get()
-        )
-    }
-
-    single {
-        CurrencyItemConverter()
-    }
-
-    single {
-        CurrenciesConverter(
-            quoteConverter = get(),
-            itemConverter = get()
-        )
-    }
+    singleOf(::CurrencyQuoteConverter)
+    singleOf(::CurrencyItemConverter)
+    singleOf(::CurrenciesConverter)
 
     single {
         androidContext().resources
     }
 
-    single {
-        HomeItemFactory()
-    }
+    singleOf(::HomeItemFactory)
+    singleOf(::CurrenciesIdsConverter)
 
-    single {
-        CurrenciesIdsConverter()
-    }
-
-    viewModel {
-        HomeViewModel(
-            factory = get()
-        )
-    }
-
-    viewModel {
-        CurrenciesViewModel(
-            repository = get(),
-            idsConverter = get(),
-            currenciesConverter = get()
-        )
-    }
+    viewModelOf(::HomeViewModel)
+    viewModelOf(::CurrenciesViewModel)
 }

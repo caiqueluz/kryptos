@@ -9,6 +9,7 @@ import com.caiqueluz.kryptos.network.NetworkAuthenticationInterceptor
 import com.caiqueluz.kryptos.network.OkHttpClientFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -27,11 +28,7 @@ val networkModule = module {
         OkHttpClient.Builder()
     }
 
-    single {
-        ApiServiceFactory(
-            retrofit = get()
-        )
-    }
+    singleOf(::ApiServiceFactory)
 
     single {
         AuthenticationHeaderConfig(
@@ -40,11 +37,7 @@ val networkModule = module {
         )
     }
 
-    single {
-        NetworkAuthenticationInterceptor(
-            headerConfig = get()
-        )
-    }
+    singleOf(::NetworkAuthenticationInterceptor)
 
     single {
         HttpLoggingInterceptor().setLevel(
@@ -52,13 +45,7 @@ val networkModule = module {
         )
     }
 
-    single {
-        OkHttpClientFactory(
-            okHttpBuilder = get(),
-            authenticationInterceptor = get(),
-            httpLoggingInterceptor = get()
-        )
-    }
+    singleOf(::OkHttpClientFactory)
 
     single {
         get<OkHttpClientFactory>().create()
@@ -70,14 +57,7 @@ val networkModule = module {
         )
     }
 
-    single {
-        ApiClientConfig(
-            baseUrl = get(),
-            retrofitBuilder = get(),
-            converterFactory = get(),
-            okHttpClient = get()
-        )
-    }
+    singleOf(::ApiClientConfig)
 
     single {
         get<ApiClientConfig>().create()
