@@ -62,16 +62,6 @@ class ServerResponseFaker : Dispatcher() {
         return this
     }
 
-    fun answer(code: Int, buffer: Buffer): ServerResponseFaker {
-        this.currentResponse = currentResponse
-            .copy(
-                code = code,
-                body = BufferBody(value = buffer)
-            )
-
-        return this
-    }
-
     fun delay(durationInSeconds: Long): ServerResponseFaker {
         this.currentResponse = currentResponse.copy(delayInSeconds = durationInSeconds)
 
