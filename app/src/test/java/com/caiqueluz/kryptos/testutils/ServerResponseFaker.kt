@@ -3,7 +3,6 @@ package com.caiqueluz.kryptos.testutils
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.RecordedRequest
-import okio.Buffer
 import java.util.concurrent.TimeUnit
 import com.caiqueluz.kryptos.testutils.FakeResponseBody.StringBody
 import com.caiqueluz.kryptos.testutils.FakeResponseBody.BufferBody
