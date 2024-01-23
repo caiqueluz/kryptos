@@ -17,7 +17,7 @@ androidx-testRunner = "1.5.2"
 google-material = "1.11.0"
 picasso = "2.71828"
 gson = "2.10.1"
-koin = "2.2.2"
+koin = "3.5.3"
 okHttp = "4.12.0"
 retrofit = "2.9.0"
 
@@ -66,10 +66,8 @@ mockito-kotlin = { group = "org.mockito.kotlin", name = "mockito-kotlin", versio
 
 koin-gradlePlugin = { group = "io.insert-koin", name = "koin-gradle-plugin", version.ref = "koin" }
 koin-core = { group = "io.insert-koin", name = "koin-core", version.ref = "koin" }
-koin-test = { group = "io.insert-koin", name = "koin-test", version.ref = "koin" }
-koin-scope = { group = "io.insert-koin", name = "koin-androidx-scope", version.ref = "koin" }
-koin-viewModel = { group = "io.insert-koin", name = "koin-androidx-viewmodel", version.ref = "koin" }
-koin-fragment = { group = "io.insert-koin", name = "koin-androidx-fragment", version.ref = "koin" }
+koin-testJunit4 = { group = "io.insert-koin", name = "koin-test-junit4", version.ref = "koin" }
+koin-android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 turbine = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }

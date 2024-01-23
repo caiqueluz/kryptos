@@ -78,9 +78,7 @@ dependencies {
     implementation libs.okHttp.loggingInterceptor
     implementation libs.picasso
     implementation libs.koin.core
-    implementation libs.koin.scope
-    implementation libs.koin.viewModel
-    implementation libs.koin.fragment
+    implementation libs.koin.android
 
     testImplementation libs.junit
     testImplementation libs.androidx.testJUnit
@@ -90,6 +88,6 @@ dependencies {
     testImplementation libs.coroutines.test
     testImplementation libs.androidx.archCore.testing
     testImplementation libs.okHttp.mockWebServer
-    testImplementation libs.koin.test
+    testImplementation libs.koin.testJunit4
     testImplementation libs.turbine
 }
