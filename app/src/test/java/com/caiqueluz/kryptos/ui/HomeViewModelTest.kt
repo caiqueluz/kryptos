@@ -1,19 +1,18 @@
 package com.caiqueluz.kryptos.ui
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import com.caiqueluz.kryptos.testutils.CoroutinesTestRule
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
-import com.caiqueluz.kryptos.ui.vo.HomeItemVO
+import com.caiqueluz.kryptos.ui.vo.HomeItemVO.News
+import com.caiqueluz.kryptos.ui.vo.HomeItemVO.Currencies
+import com.caiqueluz.kryptos.ui.vo.HomeItemVO.Settings
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import org.junit.Assert.assertTrue
+import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.kotlin.check
-import org.mockito.kotlin.mock
-import org.mockito.kotlin.verify
+import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
 @RunWith(JUnit4::class)
@@ -29,16 +28,16 @@ class HomeViewModelTest {
     private val viewModel = HomeViewModel(factory)
 
     @Test
-    fun whenOnScreenStartedIsCalled_verifyResponseIsCorrect() {
-        val observer = mock<Observer<List<HomeItemVO>>>()
-        viewModel.items.observeForever(observer)
+    fun whenStarted_verifyItemsOrderIsCorrect() = runTest {
+        val expected =
+            listOf(
+                Currencies,
+                News,
+                Settings
+            )
 
-        viewModel.onScreenStarted()
+        val actual = viewModel.items.value
 
-        verify(observer).onChanged(
-            check { response ->
-                assertTrue(response == factory.create())
-            }
-        )
+        assertEquals(expected, actual)
     }
 }

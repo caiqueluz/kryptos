@@ -3,9 +3,13 @@ package com.caiqueluz.kryptos.ui.view
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.caiqueluz.kryptos.databinding.ActivityHomeBinding
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class HomeActivity : AppCompatActivity() {
@@ -20,17 +24,20 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        viewModel.onScreenStarted()
         setupObservers()
     }
 
     private fun setupObservers() {
-        viewModel.items.observe(this) { items ->
-            val fragments = items.map { it.toHomeTabFragment() }
-            val tabs = items.map { resources.getString(it.tabResId) }
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.items.collect { items ->
+                    val fragments = items.map { it.toHomeTabFragment() }
+                    val tabs = items.map { resources.getString(it.tabResId) }
 
-            setupAdapter(fragments)
-            setupTabs(tabs)
+                    setupAdapter(fragments)
+                    setupTabs(tabs)
+                }
+            }
         }
     }
 

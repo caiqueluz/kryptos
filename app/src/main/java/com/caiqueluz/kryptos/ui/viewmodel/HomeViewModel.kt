@@ -1,20 +1,14 @@
 package com.caiqueluz.kryptos.ui.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.map
 import com.caiqueluz.kryptos.ui.HomeItemFactory
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 
 class HomeViewModel(
-    private val factory: HomeItemFactory
+    factory: HomeItemFactory
 ) : ViewModel() {
 
-    private val _items = MutableLiveData<Unit>()
-    val items = _items.map {
-        return@map factory.create()
-    }
-
-    fun onScreenStarted() {
-        _items.postValue(Unit)
-    }
+    private val _items = MutableStateFlow(value = factory.create())
+    val items = _items.asStateFlow()
 }
