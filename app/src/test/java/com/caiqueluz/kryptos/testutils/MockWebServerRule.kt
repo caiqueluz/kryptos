@@ -7,8 +7,9 @@ import org.junit.runner.Description
 class MockWebServerRule : TestWatcher() {
 
     private lateinit var server: MockWebServer
+    private val responseDispatcher = ServerResponseDispatcher()
 
-    val responseDispatcher = ServerResponseDispatcher()
+    val faker = ServerResponseFaker(dispatcher = responseDispatcher)
 
     override fun starting(description: Description) {
         super.starting(description)

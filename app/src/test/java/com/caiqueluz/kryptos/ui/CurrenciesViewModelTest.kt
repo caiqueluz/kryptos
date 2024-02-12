@@ -6,7 +6,6 @@ import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.testutils.CoroutinesTestRule
 import com.caiqueluz.kryptos.testutils.CurrenciesServerFaker
 import com.caiqueluz.kryptos.testutils.MockWebServerRule
-import com.caiqueluz.kryptos.testutils.ServerResponseFaker
 import com.caiqueluz.kryptos.testutils.baseKoinTestModule
 import com.caiqueluz.kryptos.testutils.runTurbineTest
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
@@ -37,9 +36,7 @@ class CurrenciesViewModelTest {
     val serverRule = MockWebServerRule()
 
     private val serverFaker = CurrenciesServerFaker(
-        responseFaker = ServerResponseFaker(
-            dispatcher = serverRule.responseDispatcher
-        )
+        responseFaker = serverRule.faker
     )
 
     @Test
