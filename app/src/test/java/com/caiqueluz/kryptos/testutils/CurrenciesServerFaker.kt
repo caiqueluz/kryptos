@@ -1,31 +1,30 @@
 package com.caiqueluz.kryptos.testutils
 
-fun ServerResponseFaker.fakeSuccessListingResponse(
-    delay: Long? = null
+class CurrenciesServerFaker(
+    private val responseFaker: ServerResponseFaker
 ) {
-    this
-        .on(path = "/v1/cryptocurrency/listings/latest?limit=50")
-        .answer(code = 200, body = listingSuccessResponseBody())
-        .apply {
-            delay?.let { delay(durationInSeconds = it) }
-        }
-        .register()
 
-    this
-        .on(path = "/v1/cryptocurrency/info?id=1%2C2%2C3")
-        .answer(code = 200, body = imagesSuccessResponseBody())
-        .register()
-}
+    fun fakeSuccess() {
+        responseFaker
+            .on(path = "/v1/cryptocurrency/listings/latest?limit=50")
+            .answer(code = 200, body = listingSuccessResponseBody())
+            .register()
 
-fun ServerResponseFaker.fakeErrorListingResponse() {
-    this
-        .on(path = "/v1/cryptocurrency/listings/latest?limit=50")
-        .answer(code = 404, body = null)
-        .register()
-}
+        responseFaker
+            .on(path = "/v1/cryptocurrency/info?id=1%2C2%2C3")
+            .answer(code = 200, body = imagesSuccessResponseBody())
+            .register()
+    }
 
-private fun listingSuccessResponseBody() =
-    """
+    fun fakeError() {
+        responseFaker
+            .on(path = "/v1/cryptocurrency/listings/latest?limit=50")
+            .answer(code = 404, body = null)
+            .register()
+    }
+
+    private fun listingSuccessResponseBody() =
+        """
                 {
                     "data": [
                         {
@@ -65,8 +64,8 @@ private fun listingSuccessResponseBody() =
                 }
             """
 
-private fun imagesSuccessResponseBody() =
-    """
+    private fun imagesSuccessResponseBody() =
+        """
             {
                 "data": {
                     "1": {
@@ -84,3 +83,4 @@ private fun imagesSuccessResponseBody() =
                 }
             }
         """
+}

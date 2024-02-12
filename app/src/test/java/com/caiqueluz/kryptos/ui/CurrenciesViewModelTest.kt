@@ -1,14 +1,13 @@
 package com.caiqueluz.kryptos.ui
 
 import app.cash.turbine.TurbineContext
+import com.caiqueluz.kryptos.di.appModules
+import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.testutils.CoroutinesTestRule
+import com.caiqueluz.kryptos.testutils.CurrenciesServerFaker
 import com.caiqueluz.kryptos.testutils.MockWebServerRule
 import com.caiqueluz.kryptos.testutils.ServerResponseFaker
 import com.caiqueluz.kryptos.testutils.baseKoinTestModule
-import com.caiqueluz.kryptos.di.appModules
-import com.caiqueluz.kryptos.testutils.fakeErrorListingResponse
-import com.caiqueluz.kryptos.testutils.fakeSuccessListingResponse
-import com.caiqueluz.kryptos.network.NetworkResponse
 import com.caiqueluz.kryptos.testutils.runTurbineTest
 import com.caiqueluz.kryptos.ui.vo.CurrenciesVO
 import com.caiqueluz.kryptos.ui.vo.CurrencyItemVO
@@ -37,13 +36,15 @@ class CurrenciesViewModelTest {
     @get:Rule
     val serverRule = MockWebServerRule()
 
-    private val serverFaker = ServerResponseFaker(
-        dispatcher = serverRule.responseDispatcher
+    private val serverFaker = CurrenciesServerFaker(
+        responseFaker = ServerResponseFaker(
+            dispatcher = serverRule.responseDispatcher
+        )
     )
 
     @Test
     fun givenSuccess_whenOnScreenStartedIsCalled_thenResponseOrderIsLoadingContent() = runTurbineTest { turbineContext ->
-        serverFaker.fakeSuccessListingResponse()
+        serverFaker.fakeSuccess()
 
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
@@ -95,7 +96,7 @@ class CurrenciesViewModelTest {
 
     @Test
     fun givenError_whenOnScreenStartedIsCalled_thenResponseOrderIsLoadingError() = runTurbineTest { turbineContext ->
-        serverFaker.fakeErrorListingResponse()
+        serverFaker.fakeError()
 
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
@@ -109,7 +110,7 @@ class CurrenciesViewModelTest {
 
     @Test
     fun givenSuccess_whenOnErrorModalTryAgainButtonClickedIsCalled_thenResponseOrderIsLoadingContent() = runTurbineTest { turbineContext ->
-        serverFaker.fakeSuccessListingResponse()
+        serverFaker.fakeSuccess()
 
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
@@ -161,7 +162,7 @@ class CurrenciesViewModelTest {
 
     @Test
     fun givenError_whenOnErrorModalTryAgainButtonClickedIsCalled_thenResponseOrderIsLoadingError() = runTurbineTest { turbineContext ->
-        serverFaker.fakeErrorListingResponse()
+        serverFaker.fakeError()
 
         val robot = turbineContext.createRobot(backgroundScope = backgroundScope)
 
