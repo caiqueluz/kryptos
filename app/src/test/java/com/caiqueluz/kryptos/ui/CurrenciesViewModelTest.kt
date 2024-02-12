@@ -34,10 +34,12 @@ class CurrenciesViewModelTest {
         modules(appModules + listOf(baseKoinTestModule))
     }
 
-    private val serverFaker = ServerResponseFaker()
-
     @get:Rule
-    val serverRule = MockWebServerRule(faker = serverFaker)
+    val serverRule = MockWebServerRule()
+
+    private val serverFaker = ServerResponseFaker(
+        dispatcher = serverRule.responseDispatcher
+    )
 
     @Test
     fun givenSuccess_whenOnScreenStartedIsCalled_thenResponseOrderIsLoadingContent() = runTurbineTest { turbineContext ->

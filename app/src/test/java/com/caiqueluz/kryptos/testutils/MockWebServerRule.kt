@@ -4,17 +4,17 @@ import okhttp3.mockwebserver.MockWebServer
 import org.junit.rules.TestWatcher
 import org.junit.runner.Description
 
-class MockWebServerRule(
-    private val faker: ServerResponseFaker
-) : TestWatcher() {
+class MockWebServerRule : TestWatcher() {
 
     private lateinit var server: MockWebServer
+
+    val responseDispatcher = ServerResponseDispatcher()
 
     override fun starting(description: Description) {
         super.starting(description)
 
         server = MockWebServer().apply {
-            dispatcher = faker
+            dispatcher = responseDispatcher
             start(8080)
         }
     }
@@ -22,6 +22,7 @@ class MockWebServerRule(
     override fun finished(description: Description) {
         super.finished(description)
 
+        responseDispatcher.reset()
         server.shutdown()
     }
 }
