@@ -10,7 +10,6 @@ import com.caiqueluz.kryptos.ui.converter.DateFormatFactory
 import com.caiqueluz.kryptos.ui.converter.TimeZoneFactory
 import com.caiqueluz.kryptos.ui.viewmodel.CurrenciesViewModel
 import com.caiqueluz.kryptos.ui.viewmodel.HomeViewModel
-import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModelOf
 import org.koin.core.module.dsl.singleOf
 import org.koin.dsl.module
@@ -29,10 +28,6 @@ val uiModule = module {
     singleOf(::CurrencyQuoteConverter)
     singleOf(::CurrencyItemConverter)
     singleOf(::CurrenciesConverter)
-
-    single {
-        androidContext().resources
-    }
 
     singleOf(::HomeItemFactory)
     singleOf(::CurrenciesIdsConverter)
