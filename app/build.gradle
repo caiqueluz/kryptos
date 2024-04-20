@@ -1,23 +1,21 @@
-import com.caiqueluz.buildsrc.AppConfig
-
 apply plugin: libs.plugins.androidApplication.get().pluginId
 apply plugin: libs.plugins.kotlin.android.get().pluginId
 apply plugin: libs.plugins.kotlin.kapt.get().pluginId
 apply plugin: libs.plugins.koin.get().pluginId
 
 android {
-    namespace = AppConfig.APPLICATION_ID
-    compileSdk = AppConfig.COMPILE_SDK
-    buildToolsVersion = AppConfig.BUILD_TOOLS
+    namespace = "com.caiqueluz.kryptos"
+    compileSdk = 34
+    buildToolsVersion = "34.0.0"
 
     defaultConfig {
-        applicationId AppConfig.APPLICATION_ID
-        minSdkVersion AppConfig.MIN_SDK
-        targetSdkVersion AppConfig.TARGET_SDK
-        versionCode AppConfig.VERSION_CODE
-        versionName AppConfig.VERSION_NAME
+        applicationId "com.caiqueluz.kryptos"
+        minSdkVersion 21
+        targetSdkVersion 34
+        versionCode 1
+        versionName "1.0"
 
-        testInstrumentationRunner AppConfig.TEST_INSTRUMENTATION_RUNNER
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -38,7 +36,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.JVM_TARGET
+        jvmTarget = "17"
     }
 
     buildFeatures {
