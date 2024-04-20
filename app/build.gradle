@@ -19,7 +19,7 @@ android {
     }
 
     buildTypes {
-        all {
+        configureEach {
             buildConfigField "String", "BASE_URL", COINMARKETCAP_BASE_URL
             buildConfigField "String", "API_KEY", COINMARKETCAP_API_KEY
         }
