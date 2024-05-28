@@ -10,7 +10,7 @@ androidx-lifecycle = "2.8.0"
 androidx-archCore = "2.2.0"
 androidx-appCompat = "1.6.1"
 androidx-constraintLayout = "2.1.4"
-androidx-viewPager2 = "1.0.0"
+androidx-viewPager2 = "1.1.0"
 androidx-testJUnit = "1.1.5"
 androidx-testRunner = "1.5.2"
 
